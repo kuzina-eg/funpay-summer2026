@@ -1,0 +1,67 @@
+// Font sizes
+
+$text-size-xs: var(--text-size-xs, 10px);
+$text-size-sm: var(--text-size-sm, .75rem);
+$text-size: var(--text-size, .875rem);
+$text-size-md: var(--text-size-md, 1rem);
+$text-size-md-all: var(--text-size-md-all, 16px);
+$text-size-lg: var(--text-size-lg, 1.125rem);
+$text-size-xl: var(--text-size-xl, 1.25rem);
+
+$title-size-xs: var(--title-size-xs, 1.25rem);
+$title-size-sm: var(--title-size-sm, 1.5rem);
+$title-size: var(--title-size, 1.75rem);
+$title-size-md: var(--title-size-md, 2.25rem);
+$title-size-lg: var(--title-size-lg, 2.75rem);
+
+
+// Colors
+
+$color-base: var(--color-base, #151515);
+$color-base-rgb: var(--color-base-rgb, 21,21,21);
+$color-accent: var(--color-accent, #255FE4);
+$color-accent-rgb: var(--color-accent-rgb, 37,95,228);
+$color-accent-hover: var(--color-accent-hover, #0E47CB);
+$color-second: var(--color-second, #E9EFFC);
+$color-second-hover: var(--color-second-hover, #DBE4F9);
+$color-white: var(--color-white, #FFFFFF);
+$color-white-rgb: var(--color-white-rgb, 255,255,255);
+$color-black: var(--color-black, #07122E);
+$color-grey-dark: var(--color-grey-dark, #364157);
+$color-grey: var(--color-grey, #666E81);
+$color-grey-light: var(--color-grey-light, #959CAA);
+$color-disabled: var(--color-disabled, #E0E2E6);
+
+$background-backdrop: var(--background-backdrop, rgba(0,0,0,.8));
+
+
+// Base Settings
+
+$base-background: var(--base-background, #F5F6FB);
+$base-background-rgb: var(--base-background-rgb, 245,246,251);
+$base-font-family: var(--base-font-family, 'Onest', sans-serif);
+$base-font-weight: var(--base-font-weight, 500);
+$base-line-height: var(--base-line-height, 1.5);
+$container-max-width: var(--container-max-width, 1408px);
+$content-width: var(--content-width, 745px);
+$gutters: var(--gutters, 16px);
+$space-sm: var(--space-sm, 10px);
+$space: var(--space, 20px);
+$space-md: var(--space-md, 24px);
+$space-lg: var(--space-lg, 2rem);
+$space-section: var(--space-section, 6.25rem);
+$duration: var(--duration, .3s);
+
+
+// Sizes
+
+$icon-size: var(--icon-size, 24px); //1.5rem?
+$radius-xs: var(--radius-xs, .5rem);
+$radius-sm: var(--radius-sm, .75rem);
+$radius: var(--radius, 1rem);
+$radius-md: var(--radius-md, 1.25rem);
+$radius-lg: var(--radius-lg, 1.5rem);
+
+$button-height: var(--button-height, 44px);
+$button-height-md: var(--button-height-md, 3rem);
+$button-height-lg: var(--button-height-lg, 3.75rem);

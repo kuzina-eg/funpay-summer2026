@@ -1,0 +1,270 @@
+@use "@styles/lootery-summary2026/mixins" as *;
+
+.lootery-my-tickets {
+    &__title {
+        margin-bottom: 20px;
+    }
+
+    &__descr {
+        max-width: 295px;
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 16px;
+        line-height: 1.6;
+        text-align: center;
+
+        .ticket-text svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        @include media-min(mob-md) {
+            max-width: 380px;
+            font-size: 20px;
+
+            .ticket-text svg {
+                width: 24px;
+                height: 24px;
+            }
+        }
+
+        @include media-min(mob) {
+            max-width: none;
+            font-size: 28px;
+
+            .ticket-text svg {
+                width: 32px;
+                height: 32px;
+            }
+        }
+    }
+
+    &__note {
+        margin-left: 13.5%;
+        margin-right: 13.5%;
+        margin-top: 20px;
+        font-size: 14px;
+        line-height: 1.25;
+        text-align: center;
+        color: $color-grey;
+
+        @include media-min(mob-md) {
+            font-size: 16px;
+        }
+
+        @include media-min(mob) {
+            margin-top: 15px;
+            margin-left: 0;
+            margin-right: 0;
+            font-size: 20px;
+        }
+    }
+
+    &__box {
+        position: relative;
+        margin-top: 30px;
+        background: linear-gradient(270deg, #B4F1FF 0%, #EACEFF 100%);
+        border-radius: 16px;
+        padding: 40px 30px 54px;
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 300px;
+        text-align: center;
+
+        @include media-min(mob-md) {
+            padding: 40px 40px 45px;
+            margin-top: 44px;
+            margin-bottom: 16px;
+            //margin-left: 3.6%;
+            //margin-right: 3.6%;
+            max-width: 516px;
+        }
+
+        @include media-min(mob) {
+            max-width: $content-width;
+            margin: 68px auto 0;
+            padding: 40px 17% 50px;
+        }
+
+        &-photo {
+            position: absolute;
+            z-index: 15;
+            width: 120%;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%,-47%);
+            pointer-events: none;
+
+            @include media-min(mob-md) {
+                width: 136.82%;
+                transform: translate(-48.5%, -51%);
+            }
+
+            @include media-min(mob) {
+                width: 151.14%;
+                transform: translate(-53%,-54%);
+            }
+        }
+
+        &-title {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: .3rem;
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 1.4;
+
+            .ticket-text {
+                vertical-align: middle;
+
+                svg {
+                    width: 24px;
+                    height: 24px;
+                }
+            }
+
+            @include media-min(mob-md) {
+                font-size: 20px;
+
+                .ticket-text {
+                    svg {
+                        width: 32px;
+                        height: 32px;
+                    }
+                }
+            }
+
+            @include media-min(mob) {
+                font-size: 24px;
+
+                .ticket-text {
+                    svg {
+                        width: 32px;
+                        height: 32px;
+                    }
+                }
+            }
+        }
+
+        &-descr {
+            margin-top: 7px;
+            font-size: 12px;
+            line-height: 1.5;
+            color: $color-grey-dark;
+
+            p {
+                margin-bottom: 5px;
+
+                &:last-child {
+                    margin-bottom: 0;
+                }
+            }
+
+            @include media-min(mob-md) {
+                margin-top: 12px;
+                font-size: 14px;
+            }
+
+            @include media-min(mob) {
+                margin-top: 10px;
+            }
+        }
+
+        &-button {
+            margin-top: 20px;
+
+            .ui-button {
+                padding-left: 15px;
+                padding-right: 15px;
+            }
+
+            .lootery-winners & {
+                margin-top: 40px;
+            }
+
+            @include media-min(mob-md) {
+                margin-top: 30px;
+
+                .ui-button {
+                    padding-left: 30px;
+                    padding-right: 30px;
+                }
+            }
+
+            @include media-min(mob) {
+                margin-top: 40px;
+
+                .lootery-winners & {
+                    margin-top: 50px;
+                }
+
+                .ui-button {
+                    width: 308px;
+                }
+            }
+
+            @include media-min(tab) {
+                .ui-button {
+                    width: 319px;
+                }
+            }
+        }
+
+        &-title,
+        &-descr,
+        &-button {
+            @include media(mob) {
+                position: relative;
+                z-index: 10;
+            }
+        }
+
+        &-link {
+            text-align: center;
+            margin-top: 20px;
+            font-size: $text-size-md-all;
+        }
+    }
+}
+
+.lootery-modal-my-tickets {
+    max-height: 100%;
+
+    @include media-min(mob) {
+        padding-bottom: 30px;
+    }
+
+    &__action {
+        margin-top: -1px;
+        position: relative;
+    }
+
+    &__photo {
+        position: relative;
+        margin-top: -30px;
+
+        @include media-min(mob-md) {
+            margin-top: -40px;
+        }
+
+        @include media-min(mob) {
+            margin-top: -140px;
+        }
+    }
+
+    &__body {
+        height: 100%;
+        overflow: auto;
+        margin-right: -10px;
+        padding-right: 10px;
+        padding-top: 5px;
+
+        @include media-min(mob) {
+            margin-right: -15px;
+            padding-right: 15px;
+            @include scroll-bar;
+        }
+    }
+}

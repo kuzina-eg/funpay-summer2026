@@ -1,0 +1,254 @@
+---
+import Layout from '@layouts/Layout.astro';
+import Picture from '@components/modules/Picture.astro';
+
+import Promo from '@components/sections/Promo.astro';
+import Prizes from '@components/sections/Prizes.astro';
+import MyTickets from '@components/sections/MyTickets.astro';
+import Instructions from '@components/sections/Instructions.astro';
+import Faq from '@components/sections/Faq.astro';
+
+const prizes = [
+    {
+        title: 'Царь-пекарня',
+        count: '1 шт.',
+        image: 'pc',
+        param: 'RTX 5090 + 9800X3D',
+        text: 'Сідні Свіні геймерських компів. Зовнішній вигляд 10&nbsp;із 10, а&nbsp;начинка солодша, ніж у&nbsp;кремового торта. Конфіг з&nbsp;останньою відюхою та&nbsp;кастомним оформленням у&nbsp;стилі вашого улюбленого аніме (або що&nbsp;забажаєте).',
+        note: '*Зовнішній вигляд призу може відрізнятися від його зображення в&nbsp;рекламних матеріалах.',
+    },
+    {
+        title: 'Playstation 5 Pro',
+        count: '3 шт.',
+        image: 'playstation',
+        param: '',
+        text: 'Звір-машина від Sony з&nbsp;SSD п&rsquo;ятого розміру. Влізуть усі ексклюзиви і&nbsp;навіть більше. З&nbsp;іншого боку, а&nbsp;куди вони не&nbsp;влізуть.',
+        note: '',
+    },
+    {
+        title: 'Монітор LG 27GK790A-B',
+        count: '3 шт.',
+        image: 'lg',
+        param: '',
+        text: 'Син маминої подруги серед моніторів. OLED, 480&nbsp;Гц, мінімальний час відгуку. Зможете відвішувати флікшоти, як&nbsp;ZywOo або m0NESY.',
+        note: '',
+    },
+    {
+        title: 'iPhone 17 Pro Max',
+        count: '5 шт.',
+        image: 'iphone',
+        param: '',
+        text: 'Великий, матовий, гладкий. Приємно обдає руки прохолодою, коли у&nbsp;вас пар валить із&nbsp;вух. І&nbsp;досить міцний, щоб пережити будь-який тільт через злив катки.',
+        note: '*Зовнішній вигляд призу може відрізнятися від його зображення в&nbsp;рекламних матеріалах.',
+    },
+    {
+        title: 'OnePlus 15',
+        count: '5 шт.',
+        image: 'oneplus',
+        param: '',
+        text: 'Смартфон, який не&nbsp;вмирає на&nbsp;кожному оновленні Genshin. Топовий процесор, екран 165&nbsp;Гц та&nbsp;величезна батарея, якої вистачить, навіть якщо ви&nbsp;залишилися на&nbsp;продльонці.',
+        note: '*Зовнішній вигляд призу може відрізнятися від його зображення в&nbsp;рекламних матеріалах.',
+    },
+    {
+        title: 'Steam Deck OLED',
+        count: '10 шт.',
+        image: 'steam',
+        param: '',
+        text: 'Ваш бро у&nbsp;поїздках до&nbsp;незрозумілих родичів. Просто барикадуйте ванну, запускайте Arc Raiders і&nbsp;кемпіть, доки не&nbsp;винесуть двері.',
+        note: '',
+    },
+    {
+        title: 'Фірмовий стакан FunPay',
+        count: '50 шт.',
+        image: 'cup',
+        param: '',
+        text: 'Святий Грааль для поціновувачів протеїну, матчі на&nbsp;мигдальному та&nbsp;мінералки. Якщо ви&nbsp;не&nbsp;performative male, можете налити в&nbsp;нього і&nbsp;газованої води.',
+        note: '*Зовнішній вигляд призу може відрізнятися від його зображення в&nbsp;рекламних матеріалах.',
+    },
+    {
+        title: 'Фірмова толстовка FunPay',
+        count: '50 шт.',
+        image: 'hoodie',
+        param: '',
+        text: 'Легка броня.&nbsp;+10% до&nbsp;захисту від холоду, +15&nbsp;до&nbsp;стилю та&nbsp;випадковий бонус на&nbsp;удачу в&nbsp;торгівлі. Можна зачарувати у&nbsp;Михаіла на&nbsp;захист від &laquo;АУУУУУУ&raquo;.',
+        note: '*Зовнішній вигляд призу може відрізнятися від його зображення в&nbsp;рекламних матеріалах.',
+    },
+    {
+        title: 'Ігри на&nbsp;суму до&nbsp;100&nbsp;євро',
+        count: '100 шт.',
+        image: 'games10',
+        param: '',
+        text: 'Вистачить, щоб закупитися SilkSong&rsquo;ом для себе, брата і&nbsp;половини класу.',
+        note: '',
+    },
+    {
+        title: 'Ігри на&nbsp;суму до&nbsp;50 євро',
+        count: '100 шт.',
+        image: 'games5',
+        param: '',
+        text: 'Вистачить на&nbsp;Battlefield&nbsp;6, Dispatch або будь-яку іншу гру, яку обговорюють на&nbsp;ютубі.',
+        note: '',
+    },
+]
+
+const myTickets = [
+    {
+        orderNumber: '#4332-4852',
+        tickets: '<span class="text-nowrap">№648-221</span>, <span class="text-nowrap">№263-399</span>, <span class="text-nowrap">№359-452</span>',
+    },
+    {
+        orderNumber: '#4332-1843',
+        tickets: '<span class="text-nowrap">№256-654</span>, <span class="text-nowrap">№648-154</span>, <span class="text-nowrap">№478-007</span>, <span class="text-nowrap">№359-148</span>, <span class="text-nowrap">№457-059</span>',
+    },
+    {
+        orderNumber: '#4332-4852',
+        tickets: '<span class="text-nowrap">№648-221</span>, <span class="text-nowrap">№263-399</span>, <span class="text-nowrap">№359-452</span>',
+    },
+    {
+        orderNumber: '#4332-4852',
+        tickets: '<span class="text-nowrap">№648-221</span>, <span class="text-nowrap">№263-399</span>, <span class="text-nowrap">№359-452</span>',
+    },
+    {
+        orderNumber: '#4332-4852',
+        tickets: '<span class="text-nowrap">№648-221</span>, <span class="text-nowrap">№263-399</span>, <span class="text-nowrap">№359-452</span>',
+    },
+    {
+        orderNumber: '#4332-4852',
+        tickets: '<span class="text-nowrap">№648-221</span>, <span class="text-nowrap">№263-399</span>, <span class="text-nowrap">№359-452</span>',
+    },
+    {
+        orderNumber: '#4332-4852',
+        tickets: '<span class="text-nowrap">№648-221</span>, <span class="text-nowrap">№263-399</span>, <span class="text-nowrap">№359-452</span>',
+    },
+    {
+        orderNumber: '#4332-1843',
+        tickets: '<span class="text-nowrap">№256-654</span>, <span class="text-nowrap">№648-154</span>, <span class="text-nowrap">№478-007</span>, <span class="text-nowrap">№359-148</span>, <span class="text-nowrap">№457-059</span>',
+    },
+    {
+        orderNumber: '#4332-4852',
+        tickets: '<span class="text-nowrap">№648-221</span>, <span class="text-nowrap">№263-399</span>, <span class="text-nowrap">№359-452</span>',
+    },
+    {
+        orderNumber: '#4332-4852',
+        tickets: '<span class="text-nowrap">№648-221</span>, <span class="text-nowrap">№263-399</span>, <span class="text-nowrap">№359-452</span>',
+    },
+    {
+        orderNumber: '#4332-4852',
+        tickets: '<span class="text-nowrap">№648-221</span>, <span class="text-nowrap">№263-399</span>, <span class="text-nowrap">№359-452</span>',
+    },
+    {
+        orderNumber: '#4332-4852',
+        tickets: '<span class="text-nowrap">№648-221</span>, <span class="text-nowrap">№263-399</span>, <span class="text-nowrap">№359-452</span>',
+    },
+]
+
+const instructions = [
+    {
+        num: '1',
+        title: 'Купуйте або продавайте на&nbsp;FunPay',
+        text: 'Приєднайтеся до&nbsp;розіграшу, натиснувши кнопку &laquo;Взяти участь&raquo;. Купіть або продайте будь-яку послугу чи&nbsp;товар на&nbsp;суму від 1&nbsp;євро і&nbsp;отримайте перший квиток. Усього можна зібрати до&nbsp;100&nbsp;квитків.',
+        buttonText: 'Все, я&nbsp;за&nbsp;покупками.',
+    },
+    {
+        num: '2',
+        title: 'Накопичуйте<br> квитки',
+        text: 'Кожен квиток може виявитися призовим. Тож із&nbsp;Лутереї можна отримати не&nbsp;один, а&nbsp;одразу кілька класних подарунків.',
+        buttonText: 'Потрібно більше квитків!',
+    },
+    {
+        num: '3',
+        title: 'Дочекайтеся<br> підсумків',
+        text: '16&nbsp;січня ми&nbsp;завантажимо всі квитки в&nbsp;барабан та&nbsp;розіграємо призи у&nbsp;прямому ефірі на&nbsp;Twitch. Під час трансляції знайти їх&nbsp;можна за&nbsp;кнопкою &laquo;Переглянути мої квитки&raquo;. Не&nbsp;пропустіть ефір!',
+        buttonText: 'Підписуюсь на&nbsp;Twitch',
+    },
+]
+
+const faq = [
+    {
+        title: 'Де&nbsp;подивитися повні правила розіграшу?',
+        text: 'Повні правила розіграшу можна <a href="#">прочитати тут</a>',
+    },
+    {
+        title: 'Мені не&nbsp;нарахували квитки. Що&nbsp;робити?',
+        text: 'Перевірте, чи&nbsp;натиснули ви&nbsp;кнопку &laquo;Взяти участь&raquo;. А&nbsp;також статус ваших покупок та&nbsp;продажів&nbsp;&mdash; чи&nbsp;були вони завершені в&nbsp;період дії акції. Якщо терміни та&nbsp;умови дотримані, а&nbsp;квитків все&nbsp;ж немає, зверніться до&nbsp;підтримки. Вам допоможуть отримати відсутні квитки.',
+    },
+    {
+        title: 'Я&nbsp;торгую через &laquo;Угоди&raquo;. Чи&nbsp;враховуються мої продажі?',
+        text: 'Так, продажі, здійснені через механізм &laquo;Угоди&raquo;, враховуються. Курс нарахування квитків&nbsp;&mdash; той самий.',
+    },
+    {
+        title: 'Я&nbsp;торгую в&nbsp;іншій валюті, а&nbsp;не&nbsp;в&nbsp;рублях. Мої операції враховуються?',
+        text: 'Так, враховуються і&nbsp;ваші покупки, і&nbsp;продажі. Ви&nbsp;отримаєте квитки за&nbsp;внутрішнім курсом FunPay.',
+    },
+    {
+        title: 'Я&nbsp;торгував на&nbsp;FunPay, але не&nbsp;знав про акцію. Квитки прийдуть?',
+        text: 'Так, у&nbsp;розіграші враховуються всі покупки та&nbsp;продажі, здійснені з&nbsp;15&nbsp;грудня по&nbsp;15&nbsp;січня. Будь ласка, натисніть &laquo;ВЗЯТИ УЧАСТЬ&raquo; на&nbsp;головній сторінці Лутереї і&nbsp;ми&nbsp;нарахуємо квитки.',
+    },
+    {
+        title: 'Я&nbsp;не&nbsp;в&nbsp;Росії. Чи&nbsp;можу я&nbsp;брати участь у&nbsp;розіграші?',
+        text: 'Так. Ми&nbsp;намагатимемося доставити приз до&nbsp;вашого порогу, навіть якщо ви&nbsp;в&nbsp;Західній Роблоксії.',
+    },
+    {
+        title: 'Я&nbsp;виграв. Кому писати, щоб отримати приз?',
+        text: 'Вітаємо. Якщо ви&nbsp;виграли, ми&nbsp;зв&rsquo;яжемося з&nbsp;вами в&nbsp;особистих повідомленнях на&nbsp;FunPay, щоб обговорити доставку призу. Самостійно нікому писати не&nbsp;потрібно.',
+    },
+    {
+        title: 'Моє замовлення скасували. Квитки за&nbsp;нього залишаться у&nbsp;мене?',
+        text: 'Ні, квитки, отримані за&nbsp;скасований товар, відкликають. Вони не&nbsp;братимуть участі в&nbsp;розіграші.',
+    },
+]
+
+---
+<Layout title="Лутерея">
+
+    <Promo
+        statisticTextStart="Усього"
+        statisticTextLink="квитків"
+        statisticTextLast="у розіграші:"
+        statisticValue="135&nbsp;658&nbsp;224"
+        title="<span class='u-text-accent'>Лут</span>ерея"
+        text="Торгуйте на&nbsp;FunPay з&nbsp;15&nbsp;грудня по&nbsp;15&nbsp;січня та&nbsp;беріть участь у&nbsp;розіграші корисного луту!"
+        buttonText="Взяти участь"
+        buttonTextLogin="Мої квитки"
+        countdownTitle="До кінця залишилося:"
+        countdownDays="днів"
+        countdownHours="годин"
+        countdownMinutes="хвилин"
+    ></Promo>
+
+
+    <div class="container">
+        <Prizes
+            items={prizes}
+            modalText="Хочете бустанути свої шанси?<br> Торгуйте на&nbsp;FunPay"
+            buttonText="Іду торгувати"
+        ></Prizes>
+
+        <MyTickets
+            title="Мої квитки"
+            myTicketsText1="Кожне"
+            myTicketsText2="1 євро"
+            myTicketsText3="на&nbsp;FunPay приносить"
+            myTicketsText4="1&nbsp;квиток"
+            note="Чим більше квитків зібрано, тим вищий шанс отримати цінні призи"
+            myTicketsBoxTitle1="У вас"
+            myTicketsBoxTitle2="37 квитків"
+            myTicketsBoxText="<p>Усього учасників: <span class='ticket-participants'>235&nbsp;6589</span></p><p>Середня кількість квитків на учасника: <span class='ticket-average'>15</span></p>"
+            buttonText="Переглянути мої квитки"
+            items={myTickets}
+            tableParamName="Замовлення"
+            tableValueName="Квитки"
+        ></MyTickets>
+
+        <Instructions
+            title="Як взяти участь?"
+            items={instructions}
+            note="Важливо: у&nbsp;розіграші враховуються лише продажі та&nbsp;покупки, здійснені з&nbsp;15&nbsp;грудня по&nbsp;15&nbsp;січня. Торгуйте на&nbsp;FunPay та&nbsp;лутайтеся!"
+        ></Instructions>
+
+        <Faq
+            title="Залишились питання?"
+            items={faq}
+        ></Faq>
+    </div>
+</Layout>

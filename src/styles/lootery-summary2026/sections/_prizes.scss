@@ -1,0 +1,31 @@
+@use "@styles/lootery-summary2026/mixins" as *;
+
+.prizes {
+    display: grid;
+    gap: 10px;
+
+    @include grid-columns(2);
+
+    @include media-min(tab) {
+        gap: 15px;
+        grid-template-columns: 1fr 1fr 2fr 1fr 1fr;
+
+        //@include grid-columns(6);
+
+        grid-template-areas:
+            "second second first third third"
+            "fourth fourth first fifth fifth"
+            "sixth sixth seventh eighth  ninth";
+    }
+
+    &__plug {
+        display: none;
+
+        @include media(tab) {
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            padding-bottom: 4px;
+        }
+    }
+}

@@ -1,0 +1,74 @@
+@use "@styles/lootery-summary2026/mixins" as *;
+
+.lootery-countdown {
+    &__title {
+        margin-bottom: 10px;
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 1.4;
+
+        @include media-min(mob-md) {
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+
+        @include media-min(mob) {
+            margin-bottom: 20px;
+            font-size: 20px;
+        }
+    }
+
+    &__row {
+        display: flex;
+        justify-content: center;
+        gap: 5px;
+    }
+
+    &__item {
+        display: flex;
+        align-items: center;
+        height: $button-height;
+        gap: 5px;
+        padding: 0 15px;
+        border-radius: 12px;
+        background-color: $color-black;
+        color: $color-white;
+
+        @include media-min(mob-md) {
+            height: 60px;
+            padding: 0 20px;
+        }
+
+        @include media-min(mob) {
+            height: 77px;
+            padding: 0 40px;
+        }
+
+        &-num {
+            font-weight: 700;
+            font-size: 24px;
+            line-height: 1.4;
+
+            @include media-min(mob-md) {
+                font-size: 36px;
+            }
+
+            @include media-min(mob) {
+                font-size: 48px;
+            }
+        }
+
+        &-text {
+            font-size: 14px;
+            line-height: 1.4;
+
+            @include media-min(mob-md) {
+                font-size: 16px;
+            }
+
+            @include media-min(mob) {
+                font-size: 20px;
+            }
+        }
+    }
+}

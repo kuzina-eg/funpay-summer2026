@@ -1,0 +1,18 @@
+@use "@styles/lootery-summary2026/mixins" as *;
+
+.lazy {
+	opacity: 0;
+	transition: 0.6s opacity;
+
+	&[data-loaded="true"],
+	&.loaded {
+		opacity: 1;
+	}
+}
+
+.just-validate-error-label {
+    display: block;
+    margin-top: .25rem;
+    font-size: $text-size-sm;
+    color: $color-error;
+}

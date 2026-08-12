@@ -1,0 +1,71 @@
+---
+import Icon from '@components/modules/Icon.astro';
+import Button from '@components/modules/Button.astro';
+
+interface Props {
+    isActive?: boolean;
+    title?: string;
+    showAll?: string;
+    hideText?: string;
+    icon?: string;
+    isAccordion?: boolean;
+    class?: string;
+    [x: string]: any;
+}
+
+const {
+    isActive,
+	title,
+    showAll,
+    hideText = 'Скрыть',
+	icon,
+	isAccordion = true,
+	class: className,
+	...rest
+} = Astro.props;
+
+---
+
+<div
+	class:list={[
+		'accordion',
+		className,
+        isAccordion ? 'js-accordion' : 'is-no-accordion',
+        icon ? 'accordion_icon' : '',
+        isActive ? 'is-active is-visible' : '',
+	]}
+	{...rest}
+>
+    {
+        title ?
+            <div class="accordion__header">
+                <div class="accordion__title" set:html={title}></div>
+                {
+                    isAccordion ?
+                    <span class="accordion__header-icon"><span class="accordion__plus"></span></span>
+                    <button type="button" class:list={[
+                        'accordion__header-button',
+                        isAccordion ? 'js-accordion-button' : '',
+                    ]} aria-expanded={isActive ? true : false} aria-label={title}><span></span></button>
+                    : ''
+                }
+            </div>
+        : ''
+    }
+    <div class:list={[
+        'accordion__content',
+        isAccordion ? 'js-accordion-content' : '',
+    ]}>
+        <div class="accordion__inner"><slot /></div>
+    </div>
+    {
+        showAll ?
+            <Button style="link" class="accordion__show-all js-accordion-button" aria-expanded={isActive ? true : false}>
+                <span class="accordion__text-show" set:html={showAll}></span>
+                <span class="accordion__text-hide">{hideText}</span>
+            </Button>
+        : ''
+    }
+</div>
+
+

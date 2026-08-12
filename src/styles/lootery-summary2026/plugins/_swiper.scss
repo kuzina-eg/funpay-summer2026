@@ -1,0 +1,176 @@
+@use "@styles/lootery-summary2026/mixins" as *;
+
+/* ------------ Swiper ------------ */
+/*	https://swiperjs.com/swiper-api */
+/* -------------------------------- */
+
+@use 'swiper/css/bundle';
+
+.swiper {
+    --swiper-pagination-bullet-horizontal-gap: 2px;
+    --swiper-theme-color: var(--color-accent, #255FE4);
+    --swiper-pagination-bullet-inactive-color: var(--color-disabled, #E0E2E6);
+    --swiper-pagination-bullet-inactive-opacity: 1;
+    --swiper-navigation-size: 42px;
+
+    position: static;
+    width: 100%;
+
+    @include media(tab) {
+        overflow: visible;
+    }
+}
+
+.swiper-container {
+    position: relative;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+    width: auto;
+    height: auto;
+    position: absolute;
+	transition: $duration;
+	cursor: pointer;
+    color: $color-accent;
+
+	&::after {
+		display: none;
+	}
+
+	svg {
+        stroke-width: 2;
+        width: $icon-size;
+        height: $icon-size;
+	}
+
+    .ui-button {
+        cursor: pointer;
+    }
+
+	&.swiper-button-disabled {
+        opacity: 0;
+        pointer-events: none;
+    }
+
+	&.swiper-button-lock {
+        display: none;
+	}
+
+    &:before {
+        content: "";
+        display: block;
+        width: 200px;
+        height: 250px;
+        position: absolute;
+        top: 50%;
+        z-index: -1;
+        pointer-events: none;
+        transform: translateY(-50%);
+    }
+
+    @include media(tab) {
+        display: none;
+    }
+}
+
+.swiper-button-prev {
+    left: 0;
+
+    svg {
+        transform: rotate(180deg);
+        transition: all $duration;
+    }
+
+    &:before {
+        left: 0;
+        background: linear-gradient(263.63deg, rgba($base-background-rgb, 0) 5.38%, $base-background 90%);
+    }
+}
+
+.swiper-button-next {
+    right: 0;
+
+    svg {
+        transition: all $duration;
+    }
+
+    &:before {
+        right: 0;
+        background: linear-gradient(83.63deg, rgba($base-background-rgb, 0) 5.38%, $base-background 90%);
+    }
+}
+
+.swiper-control-top {
+    @include media-min(tab) {
+        overflow: hidden;
+    }
+
+    .swiper-button-prev,
+    .swiper-button-next {
+        top: 0;
+        margin-top: 0;
+        transform: none;
+
+        &:before {
+            top: 100%;
+            transform: translateY(0);
+            transition: $duration opacity;
+        }
+    }
+
+    .swiper-button-prev {
+        left: auto;
+        right: 52px;
+
+        &:before {
+            left: calc((100vW - 128px) * -1);
+
+            @include media-min(pc-l) {
+                left: -1312px
+            }
+        }
+    }
+
+    .swiper-button-next {
+        right: 0;
+    }
+
+    .swiper-button-disabled {
+        opacity: 1;
+
+        .ui-button {
+            background-color: rgba(129, 141, 166, 0.08);
+            color: $color-grey-light;
+        }
+
+        &:before {
+            opacity: 0;
+        }
+    }
+}
+
+.swiper-pagination-fraction,
+.swiper-pagination-custom,
+.swiper-horizontal > .swiper-pagination-bullets,
+.swiper-pagination-bullets.swiper-pagination-horizontal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.swiper-pagination-bullet {
+    transition: $duration  background-color ease;
+
+    @include media-min(tab) {
+        &:hover {
+            background-color: $color-accent;
+        }
+    }
+}
+
+.swiper-pagination-bullet-active {
+    width: 12px;
+    height: 12px;
+}

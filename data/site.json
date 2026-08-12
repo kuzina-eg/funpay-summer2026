@@ -1,0 +1,33 @@
+{
+    "name": "Funpay",
+    "logo": {
+        "width": 187,
+        "height": 31
+    },
+    "pages": [
+        {
+            "name": "Главная",
+            "link": "home.html",
+            "status": "",
+            "disabled": false
+        },
+        {
+            "name": "Пользователь залогинен",
+            "link": "home-login.html",
+            "status": "",
+            "disabled": false
+        },
+        {
+            "name": "Финал",
+            "link": "finish.html",
+            "status": "",
+            "disabled": false
+        },
+        {
+            "name": "Финал. Победитель",
+            "link": "finish-winner.html",
+            "status": "",
+            "disabled": false
+        }
+    ]
+}

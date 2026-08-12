@@ -1,0 +1,94 @@
+// Mixins
+@use "@styles/lootery-summary2026/mixins" as *;
+
+// Font sizes
+
+:root {
+    --text-size-xs: 10px;
+    --text-size-sm: .75rem; // 12px
+    --text-size: .875rem; // 14px
+    --text-size-md: 1rem; // 16px
+    --text-size-md-all: 16px;
+    --text-size-lg: 1.125rem; // 18px
+    --text-size-xl: 1.25rem; // 20px +
+
+    --title-size-xs: 1.142857rem;
+    --title-size-sm: 16px;
+    --title-size: 1.428571rem;
+    --title-size-md: 1.714286rem;
+    --title-size-lg: 2.2857rem;
+
+    @include media-min(mob) {
+        --title-size-xs: 1.25rem; // 20px
+        --title-size-sm: 1.5rem; // 24px
+        --title-size: 1.75rem; // 28px
+        --title-size-md: 2.25rem; // 36px
+        --title-size-lg: 2.75rem; // 44px
+    }
+}
+
+
+// Colors
+
+:root {
+    --color-base: #151515;
+    --color-base-rgb: 21,21,21;
+    --color-accent: #255FE4; //+
+    --color-accent-rgb: 37,95,228;
+    --color-accent-hover: #0E47CB;
+    --color-second: #E9EFFC;
+    --color-second-hover: #DBE4F9;
+    --color-white: #FFFFFF; //+
+    --color-white-rgb: 255,255,255; //+
+    --color-black: #07122E; //+
+    --color-grey-dark: #364157; //+
+    --color-grey: #666E81; //+
+    --color-grey-light: #959CAA; //+
+    --color-disabled: #E0E2E6;
+
+    --background-backdrop: rgba(0,0,0,.8);
+}
+
+
+// Base Settings
+
+:root {
+    --base-background: #E9EFFC;
+    --base-background-rgb: 245,246,251;
+    --base-font-family: 'Onest', sans-serif;
+    --base-font-weight: 500;
+    --base-line-height: 1.5;
+    --container-max-width: 1408px;
+    --content-width: 745px;
+    --gutters: 16px;
+    --space-sm: 10px; //+
+    --space: 20px; //+
+    --space-md: 24px;
+    --space-lg: 2rem;
+    --space-section: 6.25rem;
+    --duration: .3s;
+
+    @include media(mob-md) {
+        --space-section: 60px;
+    }
+
+    @include media(mob) {
+        --space-section: 40px;
+    }
+}
+
+
+// Sizes
+
+:root {
+    --icon-size: 24px;
+    --radius-xs: .5rem;
+    --radius-sm: .75rem;
+    --radius: 1rem;
+    --radius-md: 1.25rem;
+    --radius-lg: 1.5rem;
+
+    --button-height: 44px; //+
+    --button-height-md: 48px;
+    --button-height-lg: 60px;
+}

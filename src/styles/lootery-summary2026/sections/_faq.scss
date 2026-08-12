@@ -1,0 +1,26 @@
+@use "@styles/lootery-summary2026/mixins" as *;
+
+.lootery-faq {
+    max-width: $content-width;
+    margin-left: auto;
+    margin-right: auto;
+
+    &__title {
+        margin-bottom: 30px;
+
+        @include media-min(mob) {
+            margin-bottom: 2.5rem;
+        }
+    }
+
+    &__list {
+        display: flex;
+        gap: $space-sm;
+        flex-direction: column;
+    }
+
+    a {
+        color: $color-accent;
+        text-decoration: underline;
+    }
+}

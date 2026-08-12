@@ -1,0 +1,90 @@
+@mixin active {
+	&.is-active {
+		@content;
+	}
+}
+
+@mixin visible {
+	&.is-visible {
+		@content;
+	}
+}
+
+@mixin checked {
+	&.is-checked {
+		@content;
+	}
+}
+
+@mixin hidden {
+	&[hidden],
+	&.is-hidden {
+		@content;
+	}
+}
+
+@mixin disabled {
+	&:disabled,
+	&.is-disabled{
+		@content;
+	}
+}
+
+@mixin error {
+	&.is-error,
+	&.error {
+		@content;
+	}
+}
+
+@mixin font-face($url, $font-family, $font-weight, $font-style) {
+	@font-face {
+		src:
+			url($url + ".woff2") format("woff2");
+		font-family: $font-family;
+		font-weight: $font-weight;
+		font-style: $font-style;
+		font-display: swap;
+	}
+}
+
+@mixin retina {
+	@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+		@content;
+	}
+}
+
+@mixin hover {
+    @media (hover: hover) {
+        &:hover {
+            @content;
+        }
+    }
+}
+
+@mixin grid-columns($columns: 3) {
+	grid-template-columns: repeat($columns, minmax(0, 1fr));
+}
+
+@mixin scroll-bar {
+    &::-webkit-scrollbar {
+        width: 2px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: rgba(149, 156, 170, .15);
+        border-radius: 4px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: var(--color-grey-light, #959CAA);
+        border-radius: 3px;
+        //border-left: 2px solid var(--color-white, #ffffff);
+        //border-right: 2px solid var(--color-white, #ffffff);
+        cursor: pointer;
+    }
+
+    //&::-webkit-scrollbar-thumb:hover {
+    //    background: var(--color-grey-light, #959CAA);
+    //}
+}

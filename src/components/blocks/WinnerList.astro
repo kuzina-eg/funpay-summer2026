@@ -1,0 +1,18 @@
+---
+interface Props {
+    items?: Array<string>;
+    class?: string;
+    [x: string]: any;
+}
+
+const {
+    items = [],
+    class: className,
+    ...rest
+} = Astro.props;
+---
+<div class="lootery-modal__winners">
+    {items.map((item) => (
+        <div class="lootery-modal__winner"><span class="lootery-modal__winner-name">{item}</span></div>
+    ))}
+</div>

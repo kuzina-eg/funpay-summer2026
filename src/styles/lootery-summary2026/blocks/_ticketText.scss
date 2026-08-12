@@ -1,0 +1,10 @@
+@use "@styles/lootery-summary2026/mixins" as *;
+
+.ticket-text {
+    display: inline-flex;
+    vertical-align: bottom;
+    gap: 4px;
+    align-items: center;
+    color: $color-accent;
+    font-weight: 700;
+}

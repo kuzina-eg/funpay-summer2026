@@ -1,0 +1,384 @@
+@use "@styles/lootery-summary2026/mixins" as *;
+
+.item-prize {
+    padding: 15px 15px 10px;
+    border-radius: 12px;
+    background-color: rgba($color-white-rgb,.5);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+
+    &:before {
+        content: "";
+        display: block;
+        width: 254px;
+        height: 254px;
+        background-color: $color-accent;
+        opacity: 0;
+        filter: blur(80px);
+        border-radius: 500px;
+        position: absolute;
+        z-index: 1;
+        left: -87px;
+        bottom: -123px;
+        pointer-events: none;
+        transition: opacity $duration;
+    }
+
+    &:hover:before {
+        opacity: .5;
+    }
+
+    @include media-min(mob-md) {
+        padding: 20px 20px 6px;
+    }
+
+    @include media-min(tab) {
+        padding-bottom: 3px;
+    }
+
+    &__detail {
+        height: 47px;
+        margin-bottom: -5px;
+        //position: relative;
+        //z-index: 10;
+
+        @include media-min(mob-md) {
+            height: 50px;
+            margin-bottom: 0;
+        }
+
+        @include media-min(tab) {
+            margin-bottom: auto;
+        }
+    }
+
+    &__title {
+        margin-right: 10%;
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 1.2;
+        color: $color-grey-dark;
+
+        .text--sm {
+            display: block;
+            font-size: .79em;
+        }
+
+        @include media-min(mob-md) {
+            font-size: 16px;
+        }
+
+        @include media-min(tab) {
+            margin-right: 0;
+        }
+    }
+
+    &__link {
+        color: inherit;
+        text-decoration: none;
+
+        &:hover,
+        &:focus-visible {
+            color: $color-accent;
+        }
+
+        &:before {
+            content: "";
+            display: block;
+            position: absolute;
+            inset: 0;
+            z-index: 11;
+            border-radius: 12px;
+            outline: transparent 2px solid;
+            outline-offset: -2px;
+            transition: outline-color $duration;
+        }
+
+        &:hover:before,
+        &:focus-visible:before,
+        .item-prize:hover &:before{
+            outline-color: $color-accent;
+        }
+
+        &:focus-visible {
+            outline: none !important;
+        }
+    }
+
+    &__count {
+        display: flex;
+        width: fit-content;
+        align-items: center;
+        position: relative;
+        z-index: 10;
+        margin-top: 5px;
+        height: 15px;
+        padding: 0 8px;
+        background-color: $color-white;
+        border-radius: $radius;
+        font-weight: 600;
+        font-size: 10px;
+        line-height: 1;
+        text-align: center;
+        color: $color-grey-light;
+
+        @include media-min(mob-md) {
+            height: 20px;
+            margin-top: 10px;
+            font-size: 12px;
+        }
+
+        @include media-min(tab) {
+            padding: 0 10px;
+        }
+    }
+
+    &__photo {
+        margin-left: auto;
+        width: 95%;
+        margin-right: -10px;
+        margin-top: auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        z-index: 10;
+        top: 5px;
+
+        @include media-min(mob-md) {
+            padding-top: 7px;
+            width: 105%;
+            margin-right: -30px;
+            top: 0;
+        }
+
+        @include media-min(tab) {
+            //width: 110%;
+            width: 100%;
+            margin-right: -15px;
+        }
+    }
+
+    &__image {
+        aspect-ratio: 5 / 4;
+        object-fit: contain;
+    }
+
+    &:nth-child(1) &__photo {
+        z-index: unset;
+        position: static;
+
+        @include media(tab) {
+            width: 100%;
+            margin-right: 0
+        }
+    }
+
+    .pc-photos {
+        position: static;
+
+        .carousel__nav {
+            z-index: 15;
+            top: 62%;
+
+            @include media(mob-md) {
+                width: 15px;
+                height: 15px;
+            }
+        }
+
+        .carousel__nav--prev {
+            left: 10px;
+        }
+
+        .carousel__nav--next {
+            right: 10px;
+        }
+
+        &__image {
+            display: block;
+            width: 100%;
+            aspect-ratio: 5 / 4;
+            object-fit: contain;
+        }
+    }
+
+    &__arrow {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        z-index: 10;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 2.5rem;
+        height: 2.5rem;
+        border-radius: 0 16px 0 16px;
+        background-color: $color-accent;
+        transform: translate(-100%,100%);
+        transition: transform $duration, opacity $duration;
+
+        svg path {
+            stroke: $color-white;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+    }
+
+    &:hover &__arrow {
+        transform: translateY(0);
+    }
+
+    @include media-min(tab) {
+        &:nth-child(1) {
+            grid-area: first;
+        }
+
+        &:nth-child(4) {
+            grid-area: second;
+        }
+
+        &:nth-child(5) {
+            grid-area: third;
+        }
+
+        &:nth-child(6) {
+            grid-area: fourth;
+        }
+
+        &:nth-child(7) {
+            grid-area: fifth;
+        }
+
+        &:nth-child(8) {
+            grid-area: sixth;
+        }
+
+        &:nth-child(9) {
+            grid-area: seventh;
+        }
+
+        &:nth-child(10) {
+            grid-area: eighth;
+        }
+
+        &:nth-child(11) {
+            grid-area: ninth;
+        }
+
+        &:nth-child(12) {
+            grid-area: tenth;
+        }
+
+        &:nth-child(1) {
+            padding-bottom: 20px;
+
+            .item-prize {
+                &__title {
+                    font-size: 20px;
+                }
+
+                &__photo {
+                    margin: auto 0 0 0;
+                    padding: 30px 0 0;
+                }
+
+                &__image {
+                    width: 117%;
+                    margin-left: -5%;
+                    margin-right: -12%;
+                    max-width: none;
+                    height: auto;
+                }
+            }
+        }
+
+        &:nth-child(4),
+        &:nth-child(5),
+        &:nth-child(6),
+        &:nth-child(7),
+        &:nth-child(8),
+        &:nth-child(9) {
+            display: grid;
+            grid-template-columns: 1.1fr 1fr;
+            gap: 5px;
+            padding: 20px;
+
+            .item-prize {
+                &__title {
+                    font-size: 17px;
+                }
+
+                &__photo {
+                    margin: 0;
+                    padding: 0;
+                }
+
+                &__image {
+                    position: absolute;
+                    left: 50%;
+                    top: 50%;
+                    transform: translate(-50%, -50%);
+                    width: auto;
+                    max-width: none;
+                    height: 115%;
+                }
+            }
+        }
+
+        &:nth-child(4) {
+            .item-prize {
+                &__image {
+                    transform: translate(-57%, -50%);
+                }
+            }
+        }
+
+        &:nth-child(7),
+        &:nth-child(8),
+        &:nth-child(9) {
+            .item-prize {
+                &__image {
+                    transform: translate(-57%, -46%);
+                }
+            }
+        }
+
+        &:nth-child(10),
+        &:nth-child(11) {
+            .item-prize {
+                &__photo {
+                    width: 112%;
+                    margin-left: -5px;
+                }
+            }
+        }
+    }
+
+    @include media-min(pc) {
+        &:nth-child(4),
+        &:nth-child(5),
+        &:nth-child(6),
+        &:nth-child(7),
+        &:nth-child(8),
+        &:nth-child(9) {
+            .item-prize {
+                &__title {
+                    font-size: 20px;
+                }
+            }
+        }
+
+        &:nth-child(10),
+        &:nth-child(11) {
+            .item-prize {
+                &__title {
+                    font-size: 16px;
+                }
+            }
+        }
+    }
+}

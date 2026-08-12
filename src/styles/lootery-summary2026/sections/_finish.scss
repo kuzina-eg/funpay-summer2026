@@ -1,0 +1,297 @@
+@use "@styles/lootery-summary2026/mixins" as *;
+
+.lootery-finish {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    text-align: center;
+
+    @include media-min(mob) {
+        padding-top: 30px;
+        padding-bottom: 10px;
+    }
+
+    &__note {
+        display: flex;
+        width: fit-content;
+        margin-left: auto;
+        margin-right: auto;
+        align-items: center;
+        justify-content: center;
+        gap: .4em;
+        padding: 9px 19px;
+        background-color: rgba($color-white-rgb, .5);
+        margin-bottom: 11px;
+        border-radius: 42px;
+        font-weight: 600;
+        font-size: 12px;
+    }
+
+    &__title {
+        margin-bottom: 10px;
+        font-size: 24px;
+        font-weight: 700;
+        line-height: 1;
+
+        @include media-min(mob-md) {
+            margin-bottom: 20px;
+            font-size: 48px;
+        }
+
+        @include media-min(mob) {
+            font-size: 64px;
+        }
+    }
+
+    &__descr {
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 1.3;
+
+        @include media-min(mob-md) {
+            font-size: 20px;
+        }
+
+        @include media-min(mob) {
+            font-size: 22px;
+        }
+    }
+
+    &__button {
+        margin-top: 20px;
+
+        .ui-button {
+            min-width: 250px;
+        }
+    }
+
+    &__box {
+        margin-top: 50px;
+        position: relative;
+        max-width: 340px;
+        margin-left: auto;
+        margin-right: auto;
+
+        @include media-min(mob-md) {
+            max-width: 556px;
+            margin-top: 60px;
+        }
+
+        @include media-min(mob) {
+            max-width: $content-width;
+        }
+    }
+
+    &__bg {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        background: linear-gradient(270deg, #77DC42 0%, #FFD011 50%, #AC4CFF 100%);
+        opacity: .4;
+        filter: blur(100px);
+        pointer-events: none;
+
+        @include media-min(mob) {
+            width: 116%;
+            left: -8%;
+        }
+    }
+
+    &__photo {
+        position: absolute;
+        left: -36px;
+        right: -36px;
+        top: 0;
+        z-index: 10;
+        pointer-events: none;
+
+        @include media-min(mob-md) {
+            left: -45px;
+            right: -45px;
+            //top: -51px;
+        }
+
+        @include media-min(mob) {
+            left: -173px;
+            right: -173px;
+            //top: -56px;
+        }
+    }
+
+    &__box-status {
+        position: absolute;
+        left: -37px;
+        right: -20px;
+        bottom: -40px;
+        z-index: 10;
+        pointer-events: none;
+
+        @include media-min(mob-md) {
+            left: -45px;
+            right: -41px;
+        }
+
+        @include media-min(mob) {
+            left: -82px;
+            right: -40px;
+            bottom: -32px;
+        }
+    }
+
+    &__image {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+
+    &__box-content {
+        margin-left: 5.88%;
+        margin-right: 5.88%;
+        padding: 36px 30px 61px;
+        font-size: 16px;
+        background-color: $color-white;
+        border-radius: 16px;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        @include media-min(mob-md) {
+            margin-left: 6%;
+            margin-right: 6%;
+            padding: 47px 100px 46px;
+        }
+
+        @include media-min(mob) {
+            margin-left: 0;
+            margin-right: 0;
+            padding: 51px 160px 66px;
+        }
+    }
+
+    &--winner &__box-content {
+        padding-top: 67px;
+        padding-bottom: 108px;
+
+        @include media-min(mob-md) {
+            padding-top: 66px;
+            padding-bottom: 72px;
+        }
+
+        @include media-min(mob) {
+            padding-top: 55px;
+            padding-bottom: 83px;
+        }
+    }
+
+    &__box-emoji {
+        width: 50px;
+        height: 50px;
+        margin-bottom: 10px;
+        margin-left: auto;
+        margin-right: auto;
+
+        @include media-min(mob-md) {
+            width: 60px;
+            height: 60px;
+        }
+
+        @include media-min(mob) {
+            width: 80px;
+            height: 80px;
+        }
+    }
+
+    &__box-title {
+        margin-bottom: 13px;
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 1.2;
+
+        @include media-min(mob-md) {
+            font-size: 20px;
+        }
+
+        @include media-min(mob) {
+            font-size: 24px;
+        }
+
+        @include media-min(tab) {
+            margin-bottom: 18px;
+            font-size: 30px;
+            line-height: 1.1;
+        }
+    }
+
+    &__box-descr {
+        font-size: 12px;
+        line-height: 1.25;
+        color: $color-grey-dark;
+
+        &.--notwinner {
+            margin-left: 5px;
+            margin-right: 5px;
+        }
+
+        @include media-min(mob-md) {
+            font-size: 14px;
+
+            &.--notwinner {
+                margin-left: 8%;
+                margin-right: 8%;
+            }
+        }
+
+        @include media-min(mob) {
+            //font-size: 16px;
+
+            //&.--notwinner {
+            //    margin-left: 15%;
+            //    margin-right: 15%;
+            //}
+        }
+    }
+
+    &__box-logo {
+        margin-top: 30px;
+
+        img {
+            width: 7.875rem;
+
+            @include media(mob) {
+                width: 98px;
+            }
+        }
+
+        @include media-min(mob-md) {
+            margin-top: 20px;
+        }
+    }
+
+    &__action {
+        min-height: 37px;
+        padding: 0 15px;
+        grid-template-columns: 100%;
+        width: fit-content;
+        margin: 17px auto 0;
+        font-size: 12px;
+
+        @include media-min(mob-md) {
+            padding: 0 20px;
+            min-height: 42px;
+            margin-top: 24px;
+            font-size: 16px;
+        }
+
+        @include media-min(mob) {
+            min-height: 54px;
+            margin-top: 32px;
+            font-size: 24px;
+        }
+    }
+
+    &__action-title {
+        text-align: center;
+    }
+}

@@ -1,0 +1,132 @@
+@use "@styles/lootery-summary2026/mixins" as *;
+
+.item-winner {
+    display: grid;
+    gap: 10px;
+    grid-template-columns: 50px 1fr 20px;
+    align-items: center;
+    padding: 10px 20px 10px 10px;
+    background-color: rgba($color-white-rgb,.5);
+    border-radius: 12px;
+    position: relative;
+    transition: background-color $duration;
+
+    @include media-min(mob-md) {
+    }
+
+    &:hover {
+        background-color: $color-white;
+    }
+
+    &__crown {
+        position: absolute;
+        top: -10px;
+        left: 20px;
+
+        img {
+            display: block;
+        }
+    }
+
+    &__avatar {
+        width: 50px;
+        height: 50px;
+        border-radius: 50px;
+    }
+
+    &__image {
+        display: block;
+        width: 100%;
+        height: auto;
+        aspect-ratio: 1 / 1;
+        object-fit: cover;
+        border-radius: 50px;
+    }
+
+    &__detail {
+        display: grid;
+        gap: 7px;
+
+        @include media-min(mob-md) {
+            align-items: center;
+            gap: 1rem;
+            @include grid-columns(2);
+        }
+    }
+
+    &__title {
+        font-size: 14px;
+        line-height: 1.4;
+        color: $color-black;
+
+        @include media-min(mob) {
+            font-size: 16px;
+        }
+    }
+
+    &__link {
+        color: inherit;
+        text-decoration: none;
+
+        br {
+            display: none;
+        }
+
+        &:before {
+            content: "";
+            display: block;
+            position: absolute;
+            inset: 0;
+            border-radius: 12px;
+            outline: transparent 2px solid;
+            outline-offset: -2px;
+            transition: outline-color $duration;
+        }
+
+        &:hover:before,
+        &:focus-visible:before {
+            //outline-color: $color-accent;
+        }
+
+        &:hover,
+        &:focus-visible {
+            color: $color-accent;
+        }
+
+        &:focus-visible {
+            outline: none;
+        }
+    }
+
+    &__winner-info {
+        font-size: 12px;
+        line-height: 1.6;
+        color: $color-grey;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+
+        @include media-min(mob) {
+            font-size: 14px;
+        }
+    }
+
+    &__more {
+        display: flex;
+        color: $color-grey-light;
+        transition: color $duration;
+
+        svg {
+            path {
+                stroke: currentColor;
+                stroke-width: 2;
+                stroke-linecap: round;
+                stroke-linejoin: round;
+            }
+        }
+    }
+
+    &:hover &__more {
+        color: $color-accent;
+    }
+}

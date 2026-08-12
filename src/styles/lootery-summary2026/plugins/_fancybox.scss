@@ -1,0 +1,447 @@
+@use "@styles/lootery-summary2026/mixins" as *;
+
+/* ------------ Fancybox ------------ */
+/*	https://fancyapps.com/fancybox/ */
+/* -------------------------------- */
+
+@use "@fancyapps/ui/dist/fancybox/fancybox.css";
+
+.fancybox__container {
+    --fancybox-bg: rgba(0, 0, 0, .8);
+
+    @include media-min(mob-md) {
+        --fancybox-bg: rgba(7, 18, 46, .5);
+    }
+}
+
+.fancybox__content > .f-button.is-close-btn {
+    --f-button-width: 24px;
+    --f-button-height: 24px;
+    --f-button-svg-width: 20px;
+    --f-button-svg-height: 20px;
+    --f-button-color: var(--color-grey-dark, #364157);
+    --f-button-hover-color: var(--color-accent, #255FE4);
+
+    top: 16px;
+    right: 16px;
+    opacity: 1;
+}
+
+.f-button.is-close-btn {
+    --f-button-svg-stroke-width: 2.5px;
+}
+
+.fancybox__slide {
+    padding: 10px;
+}
+
+.fancybox__container:not(.is-compact) .fancybox__slide.has-close-btn {
+    padding-top: 10px;
+
+    @include media-min(mob) {
+        padding-top: 80px;
+        padding-bottom: 80px;
+    }
+}
+
+.fancybox__nav {
+    --f-button-width: 40px;
+    --f-button-height: 40px;
+    --f-button-border-radius: 16px 0 16px 0;
+    --f-button-bg: var(--color-accent, #255FE4);
+    --f-button-hover-bg: var(--color-accent-hover, #0E47CB);
+    --f-button-active-bg: var(--color-accent-hover, #0E47CB);
+    --f-button-prev-pos: calc(50% - 307px);
+    --f-button-next-pos: calc(50% - 307px);
+
+    .f-button {
+        background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M3.125 10H16.875' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M11.25 4.375L16.875 10L11.25 15.625' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
+        background-position: 50% 50%;
+        background-size: 20px 20px;
+        background-repeat: no-repeat;
+
+        &:before {
+            display: none;
+        }
+
+        &:disabled {
+            opacity: .5;
+        }
+    }
+
+    .f-button svg {
+        display: none;
+    }
+
+    @include media(mob) {
+        display: none;
+    }
+}
+.fancybox__container .fancybox__nav .f-button.is-prev {
+    transform: scaleX(-1) translateY(-50%);
+}
+
+.fancybox--media .fancybox__nav {
+    --f-button-prev-pos: 1rem;
+    --f-button-next-pos: 1rem;
+}
+
+.fancybox--media .fancybox__content,
+.fancybox--media .fancybox__content img,
+.fancybox--media .fancybox__content video {
+    border-radius: 20px;
+}
+
+.lootery-modal {
+    --fancybox-content-bg: #ffffff;
+
+    border-radius: 12px;
+    padding: 20px 10px 26px;
+    text-align: center;
+    width: 555px;
+    max-width: 100%;
+    box-shadow: 0 0 60px rgba(0,0,0,.15);
+    font-family: $base-font-family;
+    font-weight: $base-font-weight;
+    font-size: $text-size;
+    line-height: $base-line-height;
+    color: $color-base;
+
+    @include media-min(mob-md) {
+        padding: 20px 30px 20px;
+    }
+
+    @include media-min(mob) {
+        outline: $color-accent 2px solid;
+        outline-offset: 8px;
+    }
+
+    &--previous {
+        display: grid;
+        grid-template-columns: 100%;
+        gap: 26px;
+    }
+
+    a:hover,
+    a:focus-visible,
+    a:focus {
+        text-decoration: none;
+    }
+
+    a:focus-visible,
+    button:focus-visible {
+        outline: $color-accent 2px solid;
+        outline-offset: 2px;
+        box-shadow: none;
+    }
+
+    img {
+        max-width: 100%;
+        height: auto;
+        vertical-align: middle;
+    }
+
+    &__photo {
+        margin-bottom: 10px;
+        margin-left: -10px;
+        margin-right: -10px;
+
+        @include media-min(mob) {
+            margin: -93px 35px 10px;
+            position: relative;
+        }
+    }
+
+    &__title {
+        margin-top: 0;
+        margin-bottom: 5px;
+        font-size: 20px;
+        color: $color-black;
+        line-height: 1.2;
+
+        br {
+            display: none;
+        }
+
+        @include media-min(mob-md) {
+            margin-bottom: 0;
+            font-size: 25px;
+        }
+
+        @include media-min(mob) {
+            font-size: 32px;
+        }
+    }
+
+    &__photos {
+        display: grid;
+        gap: 15px 9px;
+        margin-left: -10px;
+        margin-right: -10px;
+
+        @include grid-columns(2);
+    }
+
+    &__photo-link {
+        display: flex;
+    }
+
+    &__photo-image {
+        display: block;
+        width: 100%;
+        height: auto;
+        aspect-ratio: 443 / 295;
+        object-fit: cover;
+    }
+
+    &__param {
+        min-height: 1.6em;
+        margin-top: 2px;
+        margin-bottom: 5px;
+        font-size: 12px;
+        line-height: 1.6;
+        color: $color-black;
+
+        @include media-min(mob-md) {
+            margin-top: 6px;
+            margin-bottom: 18px;
+            //font-size: 15px;
+        }
+    }
+
+    &__count {
+        margin-bottom: 8px;
+        font-weight: 700;
+        font-size: 15px;
+        line-height: 1.2;
+        text-align: center;
+        color: $color-grey;
+
+        @include media-min(mob-md) {
+            margin-bottom: 19px;
+            font-size: 20px;
+        }
+    }
+
+    &__param + &__count {
+        @include media-min(mob-md) {
+            margin-top: -18px;
+            margin-bottom: -5px;
+        }
+    }
+
+    &__descr {
+        margin-top: 5px;
+        min-height: calc(4 * 1.2em);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+        line-height: 1.2;
+        color: $color-grey;
+
+        @include media-min(mob-md) {
+            margin-left: 8%;
+            margin-right: 8%;
+            margin-top: 3px;
+            font-size: 15px;
+        }
+    }
+
+    &--previous &__descr {
+        @include media-min(mob-md) {
+            margin-top: 0;
+            min-height: calc(6 * 1.2em);
+            margin-left: 6%;
+            margin-right: 6%;
+            text-align: justify;
+        }
+    }
+
+    &__note {
+        margin-top: 6px;
+        min-height: calc(1.4 * 2em);
+        font-size: 11px;
+        line-height: 1.4;
+        color: $color-grey-light;
+
+        @include media-min(mob-md) {
+            max-width: 320px;
+            margin-top: 11px;
+            margin-left: auto;
+            margin-right: auto;
+            font-size: 12px;
+        }
+    }
+
+    &__logo {
+        display: flex;
+        justify-content: center;
+    }
+
+    &__action {
+        margin-top: 9px;
+        background: linear-gradient(270deg, #EACEFF 0%, #B4F1FF 100%);
+        border-radius: 16px;
+        min-height: 70px;
+        display: grid;
+        grid-template-columns: 80px 184px;
+        justify-content: center;
+        gap: 18px;
+        align-items: center;
+        padding: 15px 15px 15px 20px;
+        text-align: left;
+
+        &-logo {}
+
+        &-text {
+            font-weight: 600;
+            font-size: 12px;
+            line-height: 1.5;
+        }
+
+        .lootery-my-tickets__box-title {
+            grid-column: span 2;
+            width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        &-result {
+            grid-column: span 2;
+            font-weight: 600;
+            font-size: 14px;
+            line-height: 1.5;
+            text-align: center;
+        }
+
+        @include media-min(mob-md) {
+            gap: 28px;
+            grid-template-columns: 90px 258px;
+            margin-top: 11px;
+
+            &-text {
+                font-size: 14px;
+            }
+        }
+
+        @include media-min(mob) {
+            grid-template-columns: 100px 300px;
+            min-height: 80px;
+
+            &-text {
+                font-size: 16px;
+            }
+        }
+    }
+
+    &__button {
+        margin-top: 20px;
+
+        .ui-button {
+            min-width: 220px;
+        }
+    }
+
+    &__pagination {
+        display: flex;
+        gap: 3px;
+        margin-top: 20px;
+
+        @include media-min(mob-md) {
+            margin-top: 30px;
+        }
+
+        @include media-min(mob) {
+            margin-top: 20px;
+        }
+    }
+
+    &__page {
+        height: 2px;
+        background: $color-grey-light;
+        opacity: .3;
+        width: 100%;
+        border-radius: 2px;
+
+        &.is-active {
+            background-color: $color-accent;
+            opacity: 1;
+        }
+    }
+
+    &--result {
+        padding-bottom: 10px;
+
+        .lootery-modal__action {
+            min-height: 50px;
+            margin-top: 20px;
+        }
+
+        @include media-min(mob-md) {
+            padding-bottom: 30px;
+
+            .lootery-modal__action {
+                margin-top: 35px;
+            }
+        }
+
+        @include media-min(mob) {
+            max-height: 100%;
+            min-height: 480px;
+
+            .lootery-modal__action {
+                margin-top: 38px;
+            }
+        }
+    }
+
+    &__winners {
+        margin-top: 10px;
+        display: grid;
+        @include grid-columns(2);
+        gap: 5px 6px;
+
+        @include media-min(mob) {
+            max-height: 100%;
+            overflow: auto;
+            margin-right: -10px;
+            padding-right: 10px;
+            @include scroll-bar;
+        }
+    }
+
+    &__winner {
+        background-color: rgba(149, 156, 170, .15);
+        border-radius: 12px;
+        padding: 0 12px;
+        min-height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        text-align: center;
+        font-size: 12px;
+        line-height: 160%;
+        color: $color-black;
+
+        &:only-child {
+            grid-column: span 2;
+        }
+
+        @include media-min(mob-md) {
+            font-size: 14px;
+        }
+
+        @include media-min(mob) {
+            font-size: 16px;
+        }
+    }
+
+    &__winner-name {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+}

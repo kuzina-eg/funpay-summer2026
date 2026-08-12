@@ -1,0 +1,276 @@
+---
+import Layout from '@layouts/Layout.astro';
+import Picture from '@components/modules/Picture.astro';
+
+import Promo from '@components/sections/Promo.astro';
+import Prizes from '@components/sections/Prizes.astro';
+import DonatedPcs from '@components/sections/DonatedPcs.astro';
+import MyTickets from '@components/sections/MyTickets.astro';
+import Instructions from '@components/sections/Instructions.astro';
+import Faq from '@components/sections/Faq.astro';
+
+const prizes = [
+    {
+        title: 'ПК с RTX 5090 <span class="text--sm">и вашим дизайном</span>',
+        count: '1 шт.',
+        image: 'pc',
+        param: 'RTX 5090 + 9950X3D2',
+        text: 'Геймерский ПК&nbsp;вашей мечты. Топовая комплектация и&nbsp;дизайн по&nbsp;личным предпочтениям. Очевидно, этот комп будет в&nbsp;стиле Роблокса. По&nbsp;традиции прокачка рабочего места прилагается.',
+        note: '*Внешний вид приза будет отличаться от&nbsp;его изображения в&nbsp;рекламных материалах.',
+    },
+    {
+        title: 'ПК в стиле PoE: <div>лето 2025</div>',
+        type: 'invisible',
+        image: 'pc-poe-2025',
+        text: 'Раньше победителю первой Лутереи приходилось намеренно снижать качество текстур в&nbsp;Path of&nbsp;Exile, чтобы старый комп тянул игру. Мы&nbsp;подарили ему&nbsp;ПК в&nbsp;стиле PoE с&nbsp;топовым железом и&nbsp;уникальным дизайном. Теперь он&nbsp;с&nbsp;комфортом играет в&nbsp;4К&nbsp;и&nbsp;240+&nbsp;fps, так как бонусом мы&nbsp;подарили ему стол, периферию и&nbsp;4K&nbsp;OLED-монитор.',
+        photos: [
+            { image: '11' },
+            { image: '12' },
+            { image: '13' },
+            { image: '14' },
+        ],
+    },
+    {
+        title: 'ПК в стиле WoW: <div>зима 2026</div>',
+        type: 'invisible',
+        image: 'pc-wow-2026',
+        text: 'Победительница новогодней Лутереи оказалась продавцом и&nbsp;фанатом World of&nbsp;Warcraft, а&nbsp;ее&nbsp;любимый персонаж&nbsp;&mdash; Изера. Поэтому мы&nbsp;собрали&nbsp;ПК в&nbsp;лютой комплектации и&nbsp;добавили 3D&nbsp;фигурки дракона и&nbsp;ночной эльфийки. Обновить рабочее место тоже не&nbsp;забыли&nbsp;&mdash; в&nbsp;этот раз еще и&nbsp;кресло Herman Miller подарили.',
+        photos: [
+            { image: '15' },
+            { image: '16' },
+            { image: '17' },
+            { image: '18' },
+        ],
+    },
+    {
+        title: 'Ноутбук<br> ASUS',
+        count: '5 шт.',
+        image: 'asus',
+        param: 'RTX 5060 + Ryzen 7, 32 GB',
+        text: '&laquo;Рабочая лошадка&raquo; с&nbsp;большим экраном. В&nbsp;одном окне стынет домашка, в&nbsp;другом прокачивается любимый пет.',
+        note: '',
+    },
+    {
+        title: 'iPad Pro 13"',
+        count: '3 шт.',
+        image: 'ipad',
+        param: '',
+        text: 'Ваша гигантская Стрекоза среди планшетов. Пашет&nbsp;на&nbsp;М5, памяти 1ТБ, так что можете ни&nbsp;в&nbsp;чем себе&nbsp;не&nbsp;отказывать.',
+        note: '',
+    },
+    {
+        title: 'OnePlus 15',
+        count: '10 шт.',
+        image: 'oneplus',
+        param: '',
+        text: 'Смартфон, который потянет все 6&nbsp;уроков игры в&nbsp;Роблокс на&nbsp;задней парте. Наш личный фаворит.',
+        note: '*Внешний вид приза может отличаться от&nbsp;его изображения в&nbsp;рекламных материалах.',
+    },
+    {
+        title: '22 500 робуксов',
+        count: '30 паков',
+        image: 'robux-xl',
+        param: '',
+        text: 'В&nbsp;игру вступает настоящий шейх. У&nbsp;него есть пиратская нога и&nbsp;светяшки.',
+        note: '',
+    },
+    {
+        title: '13 000 робуксов',
+        count: '50 паков',
+        image: 'robux-lg',
+        param: '',
+        text: 'Пошли движения на&nbsp;богатом. Затаритесь лимитками, чтобы раздавать стиль.',
+        note: '',
+    },
+    {
+        title: '6 000 робуксов',
+        count: '100 паков',
+        image: 'robux',
+        param: '',
+        text: 'Захотелось обновить гардероб? Любой лук вам теперь по&nbsp;карману.',
+        note: '',
+    },
+    {
+        title: '2 000 робуксов',
+        count: '150 паков',
+        image: 'robux-sm',
+        param: '',
+        text: 'Пришло время сделать гига-питомцев. Хватит играться с&nbsp;мелочью, пора выйти в&nbsp;большую лигу.',
+        note: '',
+    },
+    {
+        title: '1 200 робуксов',
+        count: '200 паков',
+        image: 'robux-xs',
+        param: '',
+        text: 'Базовый минимум, чтобы вырастить сад. Оглянуться не&nbsp;успеете, а&nbsp;ваши помидорки уже созрели.',
+        note: '',
+    },
+]
+
+const myTickets = [
+    {
+        orderNumber: '#4332-4852',
+        tickets: '<span class="text-nowrap">№648-221</span>, <span class="text-nowrap">№263-399</span>, <span class="text-nowrap">№359-452</span>',
+    },
+    {
+        orderNumber: '#4332-1843',
+        tickets: '<span class="text-nowrap">№256-654</span>, <span class="text-nowrap">№648-154</span>, <span class="text-nowrap">№478-007</span>, <span class="text-nowrap">№359-148</span>, <span class="text-nowrap">№457-059</span>',
+    },
+    {
+        orderNumber: '#4332-4852',
+        tickets: '<span class="text-nowrap">№648-221</span>, <span class="text-nowrap">№263-399</span>, <span class="text-nowrap">№359-452</span>',
+    },
+    {
+        orderNumber: '#4332-4852',
+        tickets: '<span class="text-nowrap">№648-221</span>, <span class="text-nowrap">№263-399</span>, <span class="text-nowrap">№359-452</span>',
+    },
+    {
+        orderNumber: '#4332-4852',
+        tickets: '<span class="text-nowrap">№648-221</span>, <span class="text-nowrap">№263-399</span>, <span class="text-nowrap">№359-452</span>',
+    },
+    {
+        orderNumber: '#4332-4852',
+        tickets: '<span class="text-nowrap">№648-221</span>, <span class="text-nowrap">№263-399</span>, <span class="text-nowrap">№359-452</span>',
+    },
+    {
+        orderNumber: '#4332-4852',
+        tickets: '<span class="text-nowrap">№648-221</span>, <span class="text-nowrap">№263-399</span>, <span class="text-nowrap">№359-452</span>',
+    },
+    {
+        orderNumber: '#4332-1843',
+        tickets: '<span class="text-nowrap">№256-654</span>, <span class="text-nowrap">№648-154</span>, <span class="text-nowrap">№478-007</span>, <span class="text-nowrap">№359-148</span>, <span class="text-nowrap">№457-059</span>',
+    },
+    {
+        orderNumber: '#4332-4852',
+        tickets: '<span class="text-nowrap">№648-221</span>, <span class="text-nowrap">№263-399</span>, <span class="text-nowrap">№359-452</span>',
+    },
+    {
+        orderNumber: '#4332-4852',
+        tickets: '<span class="text-nowrap">№648-221</span>, <span class="text-nowrap">№263-399</span>, <span class="text-nowrap">№359-452</span>',
+    },
+    {
+        orderNumber: '#4332-4852',
+        tickets: '<span class="text-nowrap">№648-221</span>, <span class="text-nowrap">№263-399</span>, <span class="text-nowrap">№359-452</span>',
+    },
+    {
+        orderNumber: '#4332-4852',
+        tickets: '<span class="text-nowrap">№648-221</span>, <span class="text-nowrap">№263-399</span>, <span class="text-nowrap">№359-452</span>',
+    },
+]
+
+const instructions = [
+    {
+        num: '1',
+        title: 'Покупайте<br> или продавайте на FunPay в&nbsp;разделе Роблокс',
+        text: 'Присоединитесь к&nbsp;розыгрышу, нажав кнопку &laquo;Участвовать&raquo;. Купите или продайте любую услугу или товар на&nbsp;сумму от&nbsp;100&nbsp;₽ в&nbsp;разделе Роблокс и&nbsp;получите первый билет. Всего можно собрать до&nbsp;100&nbsp;билетов.',
+        buttonText: 'Всё, я за робуксами',
+    },
+    {
+        num: '2',
+        title: 'Копите<br> билеты',
+        text: 'Каждый билет может оказаться призовым. Так&nbsp;что&nbsp;с&nbsp;РобуксФеста можно получить не&nbsp;один, а&nbsp;сразу несколько классных подарков.',
+        buttonText: 'Нужно больше билетов!',
+    },
+    {
+        num: '3',
+        title: 'Дождитесь<br> итогов',
+        text: '1&nbsp;августа мы&nbsp;загрузим билеты и&nbsp;разыграем призы&nbsp;в&nbsp;прямом эфире на&nbsp;Twitch. Во&nbsp;время трансляции найти их&nbsp;можно на&nbsp;странице по&nbsp;кнопке &laquo;Посмотреть мои билеты&raquo;. Не&nbsp;пропустите эфир!',
+        buttonText: 'Подписываюсь на Twitch',
+    },
+]
+
+const faq = [
+    {
+        title: 'Где посмотреть полные правила розыгрыша?',
+        text: 'Полные правила розыгрыша можно <a href="#">прочитать здесь</a>',
+    },
+    {
+        title: 'Мне не&nbsp;начислили билеты. Что делать?',
+        text: 'Проверьте, нажали&nbsp;ли вы&nbsp;кнопку &laquo;Участвовать&raquo;. А&nbsp;также статус ваших покупок и&nbsp;продаж&nbsp;&mdash; были&nbsp;ли они завершены в&nbsp;период действия акции. Если сроки и&nbsp;условия соблюдены, а&nbsp;билеты всё-таки не&nbsp;пришли, обратитесь в&nbsp;поддержку. Вам помогут разобраться в&nbsp;ситуации.',
+    },
+    {
+        title: 'Я&nbsp;торгую через &laquo;Сделки&raquo;. Учитываются&nbsp;ли мои продажи?',
+        text: 'Да, продажи, совершенные через механизм &laquo;Сделки&raquo; учитываются. Курс начисления билетов&nbsp;&mdash; тот&nbsp;же.',
+    },
+    {
+        title: 'Я&nbsp;торгую в&nbsp;другой валюте, не&nbsp;в&nbsp;рублях. Мои операции учитываются?',
+        text: 'Да, учитываются и&nbsp;ваши покупки, и&nbsp;продажи. Вы&nbsp;получите билеты по&nbsp;внутреннему курсу FunPay.',
+    },
+    {
+        title: 'Я&nbsp;торговал на&nbsp;FunPay, но&nbsp;не&nbsp;знал об&nbsp;акции. Билеты придут?',
+        text: 'Да. В&nbsp;розыгрыше учитываются все покупки и&nbsp;продажи, совершенные с&nbsp;1&nbsp;по&nbsp;31&nbsp;июля. Пожалуйста, нажмите &laquo;Участвовать&raquo; на&nbsp;главной странице РобуксФеста, и&nbsp;мы&nbsp;начислим билеты.',
+    },
+    {
+        title: 'Я&nbsp;не&nbsp;в&nbsp;России. Могу я&nbsp;участвовать в&nbsp;розыгрыше?',
+        text: 'Да. Мы&nbsp;постараемся доставить приз к&nbsp;вашему порогу, даже если вы&nbsp;в&nbsp;Западной Роблоксии.',
+    },
+    {
+        title: 'Я&nbsp;выиграл. Кому написать, чтобы получить приз?',
+        text: 'Поздравляем. Если вы&nbsp;выиграли, с&nbsp;вами свяжется в&nbsp;личных сообщениях на&nbsp;FunPay сотрудник с&nbsp;плашкой &laquo;Поддержка&raquo;, чтобы обсудить доставку приза. Самостоятельно никому писать не&nbsp;нужно.',
+    },
+    {
+        title: 'Мой заказ отменили. Билеты за&nbsp;него останутся у&nbsp;меня?',
+        text: 'Нет, билеты, полученные за&nbsp;обнуленный заказ, отзовут. Они не&nbsp;будут участвовать в&nbsp;розыгрыше.',
+    },
+]
+
+---
+<Layout title="Лутерея">
+
+    <Promo
+        statisticTextStart="Всего"
+        statisticTextLink="билетов"
+        statisticTextLast="в розыгрыше:"
+        statisticValue="135&nbsp;658&nbsp;224"
+        title="РОБУКС ФЕСТ"
+        text="Покупайте и продавайте в разделе Роблокс с 1 по 31 июля и участвуйте в розыгрыше призов"
+        buttonText="Участвовать"
+        buttonTextLogin="Мои билеты"
+        countdownTitle="До конца осталось:"
+        countdownDays="дней"
+        countdownHours="часов"
+        countdownMinutes="минут"
+        isLogin={true}
+    ></Promo>
+
+
+    <div class="container">
+        <Prizes
+            items={prizes}
+            modalText="Хотите бустануть свои шансы?<br> Покупайте на FunPay"
+            buttonText="За покупками"
+        ></Prizes>
+
+        <DonatedPcs
+            title="Уже подаренные ПК"
+        ></DonatedPcs>
+
+        <MyTickets
+            title="Мои билеты"
+            myTicketsText1="Каждые"
+            myTicketsText2="100 рублей"
+            myTicketsText3="в разделе Роблокс на FunPay приносят"
+            myTicketsText4="1 билет."
+            note="Чем больше билетов собрано, тем выше шанс залутать ценные призы."
+            myTicketsBoxTitle1="У вас"
+            myTicketsBoxTitle2="37 билетиков"
+            myTicketsBoxText="<p>Всего участников: <span class='ticket-participants'>235&nbsp;6589</span></p><p>Среднее число билетов на участника: <span class='ticket-average'>15</span></p>"
+            buttonText="Посмотреть мои билеты"
+            items={myTickets}
+            tableParamName="Заказ"
+            tableValueName="Билеты"
+        ></MyTickets>
+
+        <Instructions
+            title="Как участвовать?"
+            items={instructions}
+            note="Важно: в&nbsp;розыгрыше учитываются только продажи и&nbsp;покупки, совершённые с&nbsp;1&nbsp;по&nbsp;31&nbsp;июля в&nbsp;разделе Роблокс."
+        ></Instructions>
+
+        <Faq
+            title="Остались вопросы?"
+            items={faq}
+        ></Faq>
+    </div>
+</Layout>

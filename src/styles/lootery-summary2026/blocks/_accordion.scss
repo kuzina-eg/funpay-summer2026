@@ -1,0 +1,184 @@
+@use "@styles/lootery-summary2026/mixins" as *;
+
+.accordion {
+    background-color: rgba($color-white-rgb,.5);
+    border-radius: $radius;
+    transition: $duration background-color;
+
+    &__header {
+        position: relative;
+        width: 100%;
+        display: grid;
+        //align-items: center;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: $space;
+        padding: 15px;
+        border-radius: $radius;
+        color: $color-grey;
+        transition: $duration color;
+
+        &:hover {
+            color: $color-accent;
+        }
+
+        @include media-min(mob-md) {
+            padding: 16px;
+        }
+
+        @include media-min(mob) {
+            gap: 8px;
+            padding: 21px 20px;
+        }
+    }
+
+    &__title {
+        font-size: $text-size-md;
+        line-height: 1.4285;
+        color: inherit;
+
+        @include media-min(mob-md) {
+            font-size: 16px;
+        }
+
+        @include media-min(mob) {
+            font-size: 20px;
+        }
+    }
+
+    &__header-icon {
+        display: flex;
+        width: 1.5rem;
+        height: 1.5rem;
+        align-items: center;
+        justify-content: center;
+        color: $color-grey-light;
+        transition: color $duration;
+
+        @include media-min(mob-md) {
+            width: 24px;
+            height: 24px;
+            //margin-top: 3px;
+            //margin-bottom: 3px;
+        }
+
+        @include media-min(mob-md) {
+            margin-top: 2px;
+            margin-bottom: 2px;
+        }
+    }
+
+    &__header:hover &__header-icon {
+        color: $color-accent;
+    }
+
+    &__header:hover &__plus {
+        opacity: 1;
+    }
+
+    &__plus {
+        display: block;
+        width: 14px;
+        height: 2px;
+        border-radius: 2px;
+        background-color: currentColor;
+        position: relative;
+        opacity: .5;
+        transition: opacity $duration;
+
+        &:before {
+            content: "";
+            display: block;
+            width: 100%;
+            height: 100%;
+            border-radius: 2px;
+            background-color: currentColor;
+            transform: rotate(90deg);
+            transition: opacity $duration;
+        }
+
+        @include media-min(mob-md) {
+            width: 16px;
+        }
+    }
+
+    &__header-button {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        cursor: pointer;
+        user-select: none;
+        border-radius: $radius;
+
+        &:focus-visible {
+            outline-color: $color-accent;
+            outline-offset: -6px !important;
+        }
+    }
+
+    &__inner {
+        padding: 0 15px 15px;
+        color: $color-grey-light;
+        font-size: 12px;
+        line-height: 1.6;
+
+        @include media-min(mob-md) {
+            padding: 0 16px 16px;
+            font-size: 14px;
+        }
+
+        @include media-min(mob) {
+            padding: 0 20px 20px;
+        }
+    }
+
+    &__content {
+        max-height: 0;
+        overflow: hidden;
+        visibility: hidden;
+        opacity: 0;
+        transition: max-height $duration, visibility $duration, opacity $duration;
+    }
+
+    &:hover,
+    &.is-active {
+        background-color: $color-white;
+    }
+
+    &.is-active {
+        .accordion {
+            &__content {
+                visibility: visible;
+                opacity: 1;
+            }
+
+            &__header {
+                color: $color-black;
+
+                &:hover {
+                    color: $color-accent;
+                }
+            }
+
+            &__header-icon {
+                color: $color-accent;
+            }
+
+            &__plus {
+                opacity: 1;
+
+                &:before {
+                    opacity: 0;
+                }
+            }
+        }
+    }
+
+    &.is-visible {
+        & > .accordion__content {
+            overflow: visible;
+            max-height: none;
+        }
+    }
+}

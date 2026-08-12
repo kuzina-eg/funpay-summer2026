@@ -1,0 +1,94 @@
+@use "@styles/lootery-summary2026/mixins" as *;
+
+html {
+    font-size: 87.5%;
+    scroll-behavior: smooth;
+
+    @include media-min(mob) {
+        font-size: 100%;
+    }
+}
+
+.lootery {
+    padding-top: $space;
+    padding-bottom: $space;
+    background-color: $base-background;
+    border-top: #e4e4e4 1px solid;
+    border-bottom: #e4e4e4 1px solid;
+    margin-top: -1px;
+    margin-bottom: -1px;
+    overflow: hidden;
+    font-family: $base-font-family;
+    font-weight: $base-font-weight;
+    font-size: $text-size;
+    line-height: $base-line-height;
+    color: $color-base;
+
+    p {
+        margin: 0 0 1.5em;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    a {
+        transition: $duration ease;
+
+        &:hover,
+        &:focus {
+            text-decoration: none;
+        }
+    }
+
+    button:not(.ui-button) {
+        appearance: none;
+        border: none;
+        padding: 0;
+        box-shadow: none;
+        font-family: inherit;
+        font-size: inherit;
+        color: $color-base;
+        background-color: transparent;
+        cursor: pointer;
+        user-select: none;
+    }
+
+    img {
+        max-width: 100%;
+        height: auto;
+        vertical-align: middle;
+    }
+
+    a, button {
+        &:focus-visible {
+            outline: 2px solid $color-accent;
+            outline-offset: 3px;
+        }
+    }
+
+    ::selection {
+        background: $color-accent;
+        color: $color-white;
+    }
+}
+
+.lootery-section {
+    padding-top: calc($space-section * .5);
+    padding-bottom: calc($space-section * .5);
+
+    &__title {
+        text-align: center;
+        font-size: 24px;
+        line-height: 1;
+        font-weight: 700;
+
+        @include media-min(mob-md) {
+            font-size: 36px;
+        }
+
+        @include media-min(mob) {
+            font-size: 4rem;
+        }
+    }
+}

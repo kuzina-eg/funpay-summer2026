@@ -1,0 +1,174 @@
+@use "@styles/lootery-summary2026/mixins" as *;
+
+.lootery-promo {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    text-align: center;
+
+    &__note {
+        display: flex;
+        width: fit-content;
+        margin-left: auto;
+        margin-right: auto;
+        align-items: center;
+        justify-content: center;
+        gap: .4em;
+        padding: 9px 19px;
+        background-color: rgba($color-white-rgb, .5);
+        margin-bottom: 11px;
+        border-radius: 42px;
+        position: relative;
+        z-index: 5;
+        font-weight: 600;
+        font-size: 12px;
+
+        strong {
+            font-weight: 700;
+        }
+
+        .ticket-text svg {
+            width: 17px;
+            height: 17px;
+        }
+
+        @include media-min(mob-md) {
+            padding: 7px 19px;
+            font-size: 14px;
+
+            .ticket-text svg {
+                width: 20px;
+                height: 20px;
+            }
+        }
+
+        @include media-min(mob) {
+            padding: 10px 19px;
+            margin-bottom: 22px;
+            font-size: 16px;
+        }
+    }
+
+    &__header {
+        margin-top: -66px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        @include media(tab) {
+            margin-top: -30px;
+        }
+
+        @include media(mob) {
+            margin-top: -10px;
+            margin-left: -7%;
+            margin-right: -7%;
+        }
+    }
+
+    &__title {
+        margin-top: 0;
+        margin-bottom: 15px;
+        font-weight: 700;
+        font-size: 52px;
+        line-height: 1;
+
+        @include media-min(mob-md) {
+            margin-bottom: 30px;
+            font-size: 96px;
+        }
+
+        @include media-min(mob) {
+            font-size: 128px;
+        }
+    }
+
+    &__descr {
+        margin-left: 3%;
+        margin-right: 3%;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 1.3;
+        color: $color-grey-dark;
+
+        @include media-min(mob-md) {
+            font-size: 20px;
+        }
+
+        @include media-min(mob) {
+            max-width: 624px;
+            margin-left: auto;
+            margin-right: auto;
+            font-size: 22px;
+        }
+    }
+
+    &__button {
+        margin-top: 30px;
+        position: relative;
+        z-index: 10;
+
+        .ui-button {
+            min-width: 16.25rem;
+        }
+    }
+
+    &__photo {
+        position: relative;
+        z-index: 10;
+        margin-top: -14px;
+        margin-bottom: -2px;
+        pointer-events: none;
+
+        @include media-min(mob-md) {
+            margin-top: -32px;
+            margin-bottom: -19px;
+        }
+
+        @include media-min(mob) {
+            margin-left: -20%;
+            margin-right: -20%;
+            margin-bottom: 38px;
+        }
+
+        @include media(mob) {
+            aspect-ratio: 560 / 460;
+        }
+    }
+
+    &__bg {
+        position: absolute;
+        top: 17%;
+        left: 0;
+        bottom: 11%;
+        right: 0;
+        z-index: -1;
+        background: linear-gradient(270deg, #77DC42 0%, #FFD011 50%, #AC4CFF 100%);
+        opacity: 0.5;
+        filter: blur(50px);
+        border-radius: 227px;
+
+        @include media-min(mob-md) {
+            left: 7.5%;
+            right: 7.5%;
+        }
+
+        @include media-min(mob) {
+            opacity: 0.3;
+            filter: blur(187px);
+            width: 1049px;
+            height: 497px;
+            top: 50%;
+            right: auto;
+            bottom: auto;
+            left: 50%;
+            transform: translate(-50%,-50%);
+        }
+    }
+
+    &__image {
+        position: relative;
+        z-index: 10;
+        //pointer-events: none;
+    }
+}
+

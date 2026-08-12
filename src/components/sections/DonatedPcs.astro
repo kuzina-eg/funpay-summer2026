@@ -1,0 +1,59 @@
+---
+import Picture from '@components/modules/Picture.astro';
+import Carousel from '@components/modules/Carousel.astro';
+
+interface Props {
+    title?: string;
+    class?: string;
+    [x: string]: any;
+}
+
+const {
+    title = 'Уже подаренные ПК',
+    class: className,
+    ...rest
+} = Astro.props;
+
+const directory = 'img/lootery-summary2026/gallery/';
+const photos = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10'];
+---
+<section class:list={['donated-pcs', 'lootery-section', className]} {...rest}>
+    <h2 class="donated-pcs__title lootery-section__title" set:html={title}></h2>
+
+    <Carousel class="donated-pcs__carousel">
+        <div class="carousel__slide">
+            <a
+                href={`${directory}2.mp4`}
+                class="donated-pcs__item donated-pcs__item--video"
+                data-fancybox="donated-pcs"
+            >
+                <Picture
+                    class="donated-pcs__image"
+                    name="video"
+                    directory={directory}
+                    type="jpg"
+                    imageWidth="400"
+                    imageHeight="300"
+                ></Picture>
+            </a>
+        </div>
+        {photos.map((photo) => (
+            <div class="carousel__slide">
+                <a
+                    href={`${directory}${photo}.webp`}
+                    class="donated-pcs__item"
+                    data-fancybox="donated-pcs"
+                >
+                    <Picture
+                        class="donated-pcs__image"
+                        name={photo}
+                        directory={directory}
+                        type="jpg"
+                        imageWidth="400"
+                        imageHeight="300"
+                    ></Picture>
+                </a>
+            </div>
+        ))}
+    </Carousel>
+</section>

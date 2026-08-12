@@ -1,0 +1,47 @@
+@use "sass:map";
+@use "src/styles/lootery-summary2026/varsGrid" as *;
+
+@function breakpoint-max($name, $breakpoints: $grid-breakpoints) {
+    $max: map.get($breakpoints, $name);
+    @if $max and $max > 0 {
+        @return $max - 0.02;
+    }
+    @return null;
+}
+
+@function breakpoint-min($name, $breakpoints: $grid-breakpoints) {
+    $min: map.get($breakpoints, $name);
+    @if $min != 0 {
+        @return $min;
+    }
+    @return null;
+}
+
+@mixin media($name, $breakpoints: $grid-breakpoints) {
+    $max: breakpoint-max($name, $breakpoints);
+    @if $max {
+        @media (max-width: $max) {
+            @content;
+        }
+    }
+}
+
+@mixin media-min($name, $breakpoints: $grid-breakpoints) {
+    $min: breakpoint-min($name, $breakpoints);
+    @if $min {
+        @media (min-width: $min) {
+            @content;
+        }
+    }
+}
+
+@mixin media-between($lower, $upper, $breakpoints: $grid-breakpoints) {
+    $min: breakpoint-min($lower, $breakpoints);
+    $max: breakpoint-max($upper, $breakpoints);
+
+    @if $min != null and $max != null {
+        @media (min-width: $min) and (max-width: $max) {
+            @content;
+        }
+    }
+}

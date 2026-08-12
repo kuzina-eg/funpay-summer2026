@@ -1,0 +1,40 @@
+---
+interface Props {
+    name?: string;
+    size?: 'sm' | 'md' | 'lg';
+    isStroke?: boolean;
+    class?: string;
+    [x: string]: any;
+}
+
+const {
+    name,
+    size,
+    isStroke = false,
+    class: className,
+    ...rest
+} = Astro.props;
+
+let elementClass = 'ui-icon';
+
+const sizes = {
+    sm: `${elementClass}--sm`,
+    md: `${elementClass}--md`,
+    lg: `${elementClass}--lg`,
+};
+
+const classList =[
+    elementClass,
+    `${elementClass}-${name}`,
+    sizes[size],
+    className,
+    isStroke ? `${elementClass}--stroke` : null
+]
+
+---
+<svg
+    class:list={classList}
+    {...rest}
+>
+    <use xlink:href={'img/icons.svg#' + name}/>
+</svg>

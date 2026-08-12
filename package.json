@@ -1,0 +1,35 @@
+{
+  "name": "funpay-lootery",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "Funpay Promo template",
+  "author": "Kuzina Ekaterina",
+  "private": true,
+  "overrides": {
+    "fsevents": "^2.3.3"
+  },
+  "scripts": {
+    "dev": "gulp svg && astro dev",
+    "start": "gulp svg && astro dev",
+    "build": "gulp svg && astro build && gulp beautify",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@fancyapps/ui": "^5.0.36",
+    "autoprefixer": "^10.4.19",
+    "normalize.css": "^8.0.1"
+  },
+  "devDependencies": {
+    "astro": "^5.1.7",
+    "del": "^7.1.0",
+    "gulp": "^4.0.2",
+    "gulp-beautify": "^3.0.0",
+    "gulp-cheerio": "^1.0.0",
+    "gulp-rename": "^2.0.0",
+    "gulp-replace": "^1.1.4",
+    "gulp-svg-sprite": "^2.0.2",
+    "sass": "^1.85.1",
+    "terser": "^5.31.3"
+  }
+}

@@ -1,0 +1,255 @@
+---
+import Layout from '@layouts/Layout.astro';
+import Picture from '@components/modules/Picture.astro';
+
+import Promo from '@components/sections/Promo.astro';
+import Prizes from '@components/sections/Prizes.astro';
+import MyTickets from '@components/sections/MyTickets.astro';
+import Instructions from '@components/sections/Instructions.astro';
+import Faq from '@components/sections/Faq.astro';
+
+const prizes = [
+    {
+        title: 'God-tier PC',
+        count: '1 pcs.',
+        image: 'pc',
+        param: 'RTX 5090 + 9800X3D',
+        text: 'Sydney Sweeney of&nbsp;gaming rigs.<br> 10/10 looks&nbsp;&mdash; even sweeter under the hood. A&nbsp;config featuring the latest GPU and custom design inspired by&nbsp;your favorite anime (or&nbsp;whatever you desire).',
+        note: '*Appearance may differ from promo images.',
+    },
+    {
+        title: 'Playstation 5 Pro',
+        count: '3 pcs.',
+        image: 'playstation',
+        param: '',
+        text: 'Beast of&nbsp;a&nbsp;console from Sony with a&nbsp;size-five SSD. Can fit all the exclusives&nbsp;&mdash; and then more. Though honestly, is&nbsp;there anywhere they wouldn&rsquo;t fit?',
+        note: '',
+    },
+    {
+        title: 'LG display',
+        count: '3 pcs.',
+        image: 'lg',
+        param: '',
+        text: 'That cousin of&nbsp;yours that graduated Harward in&nbsp;five. OLED, 480&nbsp;Hz, ultra-low response time. You&rsquo;ll be&nbsp;landing flicks like ZywOo or&nbsp;m0NESY.',
+        note: '',
+    },
+    {
+        title: 'iPhone 17 PRO MAX',
+        count: '5 pcs.',
+        image: 'iphone',
+        param: '',
+        text: 'Big, matte and smooth. Nice cooling when you can&rsquo;t keep your cool. Durable enough to&nbsp;survive a&nbsp;tilt after a&nbsp;scuffed game.',
+        note: '*Appearance may differ from promo images.',
+    },
+    {
+        title: 'OnePlus 15',
+        count: '5 pcs.',
+        image: 'oneplus',
+        param: '',
+        text: 'The one smartphone to&nbsp;survive every Genshin update. A&nbsp;top-tier CPU, a&nbsp;165&nbsp;Hz display and a&nbsp;massive battery that&rsquo;ll last you even if&nbsp;you get stuck in&nbsp;after-hours.',
+        note: '*Appearance may differ from promo images.',
+    },
+    {
+        title: 'Steam Deck OLED',
+        count: '10 pcs.',
+        image: 'steam',
+        param: '',
+        text: 'Your trusty buddy on&nbsp;every questionable family trip. Lock yourself in&nbsp;a&nbsp;bathroom, launch Arc Raiders and rat until they blow the door out.',
+        note: '',
+    },
+    {
+        title: 'Branded FunPay glass',
+        count: '50 pcs.',
+        image: 'cup',
+        param: '',
+        text: 'Holy Grail for protein enjoyers, almond matcha and good ol&rsquo; carbonated H2O. If&nbsp;you&rsquo;re not a&nbsp;performative male, just put some soda in&nbsp;it.',
+        note: '*Appearance may differ from promo images.',
+    },
+    {
+        title: 'Branded FunPay hoodie',
+        count: '50 pcs.',
+        image: 'hoodie',
+        param: '',
+        text: 'Light armor.&nbsp;+10% ice resist, +15&nbsp;style and a&nbsp;random chance of&nbsp;successful barter. Can be&nbsp;enchanted by&nbsp;Michael for protection against &laquo;AWOOOOO&raquo;.',
+        note: '*Appearance may differ from promo images.',
+    },
+    {
+        title: 'Games worth 10&nbsp;000&nbsp;RUB',
+        count: '100 pcs.',
+        image: 'games10',
+        param: '',
+        text: 'Enough Silksong&rsquo;s spider strings to&nbsp;supply you, your brother and half your class&rsquo;s families.',
+        note: '',
+    },
+    {
+        title: 'Games worth 5&nbsp;000&nbsp;RUB',
+        count: '100 pcs.',
+        image: 'games5',
+        param: '',
+        text: 'Can get you Battlefield&nbsp;6, Dispatch, or&nbsp;whatever game gets swept by&nbsp;Expedition 33&nbsp;at the Game Awards.',
+        note: '',
+    },
+]
+
+const myTickets = [
+    {
+        orderNumber: '#4332-4852',
+        tickets: '<span class="text-nowrap">№648-221</span>, <span class="text-nowrap">№263-399</span>, <span class="text-nowrap">№359-452</span>',
+    },
+    {
+        orderNumber: '#4332-1843',
+        tickets: '<span class="text-nowrap">№256-654</span>, <span class="text-nowrap">№648-154</span>, <span class="text-nowrap">№478-007</span>, <span class="text-nowrap">№359-148</span>, <span class="text-nowrap">№457-059</span>',
+    },
+    {
+        orderNumber: '#4332-4852',
+        tickets: '<span class="text-nowrap">№648-221</span>, <span class="text-nowrap">№263-399</span>, <span class="text-nowrap">№359-452</span>',
+    },
+    {
+        orderNumber: '#4332-4852',
+        tickets: '<span class="text-nowrap">№648-221</span>, <span class="text-nowrap">№263-399</span>, <span class="text-nowrap">№359-452</span>',
+    },
+    {
+        orderNumber: '#4332-4852',
+        tickets: '<span class="text-nowrap">№648-221</span>, <span class="text-nowrap">№263-399</span>, <span class="text-nowrap">№359-452</span>',
+    },
+    {
+        orderNumber: '#4332-4852',
+        tickets: '<span class="text-nowrap">№648-221</span>, <span class="text-nowrap">№263-399</span>, <span class="text-nowrap">№359-452</span>',
+    },
+    {
+        orderNumber: '#4332-4852',
+        tickets: '<span class="text-nowrap">№648-221</span>, <span class="text-nowrap">№263-399</span>, <span class="text-nowrap">№359-452</span>',
+    },
+    {
+        orderNumber: '#4332-1843',
+        tickets: '<span class="text-nowrap">№256-654</span>, <span class="text-nowrap">№648-154</span>, <span class="text-nowrap">№478-007</span>, <span class="text-nowrap">№359-148</span>, <span class="text-nowrap">№457-059</span>',
+    },
+    {
+        orderNumber: '#4332-4852',
+        tickets: '<span class="text-nowrap">№648-221</span>, <span class="text-nowrap">№263-399</span>, <span class="text-nowrap">№359-452</span>',
+    },
+    {
+        orderNumber: '#4332-4852',
+        tickets: '<span class="text-nowrap">№648-221</span>, <span class="text-nowrap">№263-399</span>, <span class="text-nowrap">№359-452</span>',
+    },
+    {
+        orderNumber: '#4332-4852',
+        tickets: '<span class="text-nowrap">№648-221</span>, <span class="text-nowrap">№263-399</span>, <span class="text-nowrap">№359-452</span>',
+    },
+    {
+        orderNumber: '#4332-4852',
+        tickets: '<span class="text-nowrap">№648-221</span>, <span class="text-nowrap">№263-399</span>, <span class="text-nowrap">№359-452</span>',
+    },
+]
+
+const instructions = [
+    {
+        num: '1',
+        title: 'Buy or sell<br> on FunPay',
+        text: 'Join the raffle by&nbsp;clicking &laquo;Join&raquo;.<br> Buy or&nbsp;sell any service/product worth 100RUB and more to&nbsp;get your first ticket.<br> You can earn up&nbsp;to&nbsp;100&nbsp;tickets.',
+        buttonText: 'Got it! I’m off shopping',
+    },
+    {
+        num: '2',
+        title: 'Earn<br> tickets',
+        text: 'Any Lootery ticket has a&nbsp;chance to&nbsp;win. So&nbsp;you might get not one, but several great prizes.',
+        buttonText: 'Need more tickets!',
+    },
+    {
+        num: '3',
+        title: 'Wait for<br> the Lootery results',
+        text: 'On&nbsp;January&nbsp;16, we&rsquo;ll run the draw and reveal the winning tickets live on&nbsp;Twitch.<br> During the stream, you can find your tickets by&nbsp;clicking &laquo;Check my&nbsp;tickets&raquo;.<br> Save the date!',
+        buttonText: 'Subscribe to Twitch',
+    },
+]
+
+const faq = [
+    {
+        title: 'Where can&nbsp;I find complete raffle rules and conditions?',
+        text: 'Full rules and conditions are <a href="#">right here</a>',
+    },
+    {
+        title: 'I&nbsp;haven&rsquo;t received any tickets after a&nbsp;purchase/sale. What do&nbsp;I&nbsp;do?',
+        text: 'Check if&nbsp;you&rsquo;ve clicked the &laquo;Join&raquo; button.<br> Check your purchase/sale status. Were they made during the raffle period?<br> If&nbsp;yes, contact our support. The team will help you get the missing tickets.',
+    },
+    {
+        title: 'I&nbsp;trade via &laquo;Trades&raquo;. Does it&nbsp;count?',
+        text: 'Yes, sales made via &laquo;Trades&raquo; are eligible for raffle. The ticket earning rate is&nbsp;the same.',
+    },
+    {
+        title: 'I&nbsp;trade in&nbsp;a&nbsp;different currency. Do&nbsp;my&nbsp;transactions count?',
+        text: 'Yes, both sales and purchases made in&nbsp;currencies other than RUB also count. You&rsquo;ll receive the tickets according to&nbsp;FunPay&rsquo;s internal rate.',
+    },
+    {
+        title: 'I&nbsp;was trading on&nbsp;FunPay but didn&rsquo;t know about the raffle. Will I&nbsp;receive some tickets?',
+        text: 'Yes, sales/purchases made between December 15&nbsp;and January 15&nbsp;are eligible for the raffle. Please, click &laquo;Join&raquo; on&nbsp;the Lootery&rsquo;s main page&nbsp;&mdash; we&rsquo;ll send you the tickets.',
+    },
+    {
+        title: 'I&nbsp;participate outside Russia. Can I&nbsp;participate?',
+        text: 'Yes. We&rsquo;ll do&nbsp;our best to&nbsp;deliver your prize, even if&nbsp;you live in&nbsp;West Robloxia.',
+    },
+    {
+        title: 'I&rsquo;ve won! How do&nbsp;I claim my&nbsp;prize?',
+        text: 'Congrats! We&rsquo;ll contact you via direct messages on&nbsp;FunPay and discuss the delivery details. No&nbsp;need to&nbsp;reach&nbsp;us yourself.',
+    },
+    {
+        title: 'My&nbsp;order was cancelled. Do&nbsp;I&nbsp;keep the tickets for&nbsp;it?',
+        text: 'No, tickets earned from a&nbsp;canceled order will be&nbsp;revoked and won&rsquo;t be&nbsp;eligible for the raffle.',
+    },
+]
+
+---
+<Layout title="Lootery">
+
+    <Promo
+        statisticTextStart="Total"
+        statisticTextLink="tickets"
+        statisticTextLast="in the draw:"
+        statisticValue="135&nbsp;658&nbsp;224"
+        title="<span class='u-text-accent'>Loot</span>ery"
+        text="Trade on&nbsp;FunPay between<br> December 15&nbsp;to&nbsp;January 15<br> and join the raffle for handy loot"
+        buttonText="Join"
+        buttonTextLogin="My tickets"
+        countdownTitle="Expires in:"
+        countdownDays="days"
+        countdownHours="hours"
+        countdownMinutes="minutes"
+        isLogin={true}
+    ></Promo>
+
+
+    <div class="container">
+        <Prizes
+            items={prizes}
+            modalText="Want to&nbsp;boost your chances?<br> Trade on&nbsp;FunPay"
+            buttonText="I’m off trading!"
+        ></Prizes>
+
+        <MyTickets
+            title="My tickets"
+            myTicketsText1="Every"
+            myTicketsText2="100 RUB"
+            myTicketsText3="on FunPay earns"
+            myTicketsText4="1 ticket."
+            note="More tickets&nbsp;&mdash; more chances to&nbsp;loot valuable prize"
+            myTicketsBoxTitle1="You have"
+            myTicketsBoxTitle2="37 tickets"
+            myTicketsBoxText="<p>Participants: <span class='ticket-participants'>235&nbsp;6589</span></p><p>Average tickets per participant: <span class='ticket-average'>15</span></p>"
+            buttonText="Check my tickets"
+            items={myTickets}
+            tableParamName="Order"
+            tableValueName="Tickets"
+        ></MyTickets>
+
+        <Instructions
+            title="How to join?"
+            items={instructions}
+            note="Note: sales and purchases are eligible only if&nbsp;made between December 15&nbsp;and January&nbsp;15. Trade on&nbsp;FunPay and loot away!"
+        ></Instructions>
+
+        <Faq
+            title="Got some questions left?"
+            items={faq}
+        ></Faq>
+    </div>
+</Layout>

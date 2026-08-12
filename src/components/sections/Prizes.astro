@@ -1,0 +1,166 @@
+---
+import Button from '@components/modules/Button.astro';
+import Picture from '@components/modules/Picture.astro';
+import Carousel from '@components/modules/Carousel.astro';
+
+interface Props {
+    items?: Array<string>;
+    modalText?: string;
+    buttonText?: string;
+    class?: string;
+    [x: string]: any;
+}
+
+const {
+    items = [],
+    modalText,
+    buttonText,
+    class: className,
+    ...rest
+} = Astro.props;
+
+
+    ---
+<div class="prizes lootery-section">
+    {items.map((item, index) => (
+        <div
+            class="item-prize"
+            style={item.type === 'invisible' ? 'display: none' : null}
+        >
+            <div class="item-prize__detail">
+                <div class="item-prize__title"><a href=`#${item.image}` class="item-prize__link" data-fancybox="prizes" set:html={item.title}></a></div>
+                <div class="item-prize__count" set:html={item.count}></div>
+            </div>
+            <div class="item-prize__photo">
+                {index === 0 ? (
+                    <Carousel class="pc-photos" data-carousel-loop>
+                        {['pc', 'pc-poe-2025', 'pc-wow-2026'].map((photo) => (
+                            <div class="carousel__slide">
+                                <Picture
+                                    class="pc-photos__image"
+                                    name={photo}
+                                    directory="img/lootery-summary2026/prizes/"
+                                    type="png"
+                                    imageWidth="500"
+                                    imageHeight="400"
+                                ></Picture>
+                            </div>
+                        ))}
+                    </Carousel>
+                ) : (
+                    <Picture
+                        class="item-prize__image"
+                        name={item.image}
+                        directory="img/lootery-summary2026/prizes/"
+                        type="png"
+                        imageWidth="500"
+                        imageHeight="400"
+                    ></Picture>
+                )}
+            </div>
+            <div class="item-prize__arrow">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M3.125 10H16.875"/>
+                    <path d="M11.25 4.375L16.875 10L11.25 15.625"/>
+                </svg>
+            </div>
+        </div>
+    ))}
+
+    <div class="prizes__plug">
+        <Picture
+            class="prizes__plug-image"
+            name="plug"
+            directory="img/lootery-summary2026/prizes/"
+            type="png"
+            imageWidth="241"
+            imageHeight="241"
+        ></Picture>
+    </div>
+
+    {items.map((item, index) => (
+        <div
+            class:list={[
+                "lootery-modal",
+                { "lootery-modal--previous": item.type === 'invisible' }
+            ]}
+            id={item.image}
+            style="display: none;"
+        >
+            {item.type === 'invisible' ?
+                null
+                :
+                <div class="lootery-modal__photo">
+                    <Picture
+                        class="lootery-modal__image"
+                        name={item.image}
+                        directory="img/lootery-summary2026/prizes/"
+                        type="png"
+                        imageWidth="500"
+                        imageHeight="400"
+                    ></Picture>
+                </div>
+            }
+            <h3 class="lootery-modal__title" set:html={item.title}></h3>
+            {item.type === 'invisible' ?
+                <Carousel class="modal-photos">
+                    {item.photos.map((photo) => (
+                        <div class="carousel__slide">
+                            <a href={`img/lootery-summary2026/gallery/${photo.image}.webp`} class="modal-photos__link" data-fancybox={`gallery-${item.image}`}>
+                                <Picture
+                                    class="modal-photos__image"
+                                    name={photo.image}
+                                    directory="img/lootery-summary2026/gallery/"
+                                    type="jpg"
+                                    imageWidth="500"
+                                    imageHeight="400"
+                                ></Picture>
+                            </a>
+                        </div>
+                    ))}
+                </Carousel>
+                :
+                ''
+            }
+            { item.param ?
+                <div class="lootery-modal__param" set:html={item.param}></div>
+                :
+                ''
+            }
+            { item.count && index != 0 ?
+                <div class="lootery-modal__count" set:html={item.count}></div>
+                :
+                ''
+            }
+            <div class="lootery-modal__descr" set:html={item.text}></div>
+            {item.type === 'invisible' ?
+                <div class="lootery-modal__logo">
+                    <img src="img/lootery-summary2026/logo.png" width="100" height="39" alt="">
+                </div>
+                :
+                <div class="lootery-modal__note" set:html={item.note}></div>
+                <div class="lootery-modal__action">
+                    <div class="lootery-modal__action-logo">
+                        <img src="img/lootery-summary2026/logo.png" width="100" height="39" alt="">
+                    </div>
+                    <div class="lootery-modal__action-text" set:html={modalText}></div>
+                </div>
+                <div class="lootery-modal__button">
+                    <Button type="link" href="#" center="true" size="lg" set:html={buttonText}></Button>
+                </div>
+                <div class="lootery-modal__pagination">
+                    {items
+                        .filter((page) => page.type !== 'invisible')
+                        .map((page) => (
+                            <div
+                                class:list={[
+                                    'lootery-modal__page',
+                                    page.image === item.image ? 'is-active' : ''
+                                ]}
+                            ></div>
+                        ))}
+                </div>
+            }
+        </div>
+    ))}
+</div>

@@ -1,0 +1,136 @@
+@use "@styles/lootery-summary2026/mixins" as *;
+
+.l-row {
+    display: grid;
+    grid-template-columns: 100%;
+    gap: $space;
+}
+
+.l-flex {
+    display: flex;
+}
+
+.l-flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.l-flex-wrap {
+    flex-wrap: wrap;
+}
+
+.l-grid {
+    display: grid;
+    grid-template-columns: 100%;
+    gap: $space;
+
+    &-cols-2 {
+        @include grid-columns(2);
+    }
+
+    &-cols-3 {
+        @include grid-columns(3);
+    }
+
+    &-cols-4 {
+        @include grid-columns(4);
+    }
+
+    &-cols-5 {
+        @include grid-columns(5);
+    }
+
+    &-cols-6 {
+        @include grid-columns(6);
+    }
+}
+
+.l-column {
+    &-2 {
+        grid-column: span 2;
+    }
+
+    &-3 {
+        grid-column: span 3;
+    }
+
+    &-4 {
+        grid-column: span 4;
+    }
+
+    &-5 {
+        grid-column: span 5;
+    }
+
+    &-fill {
+        grid-column: -1 / 1;
+    }
+}
+
+.l-gap-sm {
+    gap: $space-sm;
+}
+
+.l-gap-10 {
+    gap: .625rem;
+}
+
+.l-gap-12 {
+    gap: 12px;
+}
+
+.l-gap {
+    gap: $space;
+}
+
+.l-gap-20 {
+    gap: 1.25rem;
+}
+
+.l-gap-md {
+    gap: 1.5rem;
+}
+
+.l-gap-lg {
+    gap: $space-lg;
+}
+
+.l-gap-30 {
+    gap: 1.875rem;
+}
+
+.l-gap-40 {
+    gap: 2.5rem;
+}
+
+.l-gap-section {
+    gap: $space-section;
+}
+
+.l-justify-between {
+    justify-content: space-between;
+}
+
+.l-justify-center {
+    justify-content: center;
+}
+
+.l-justify-start {
+    justify-content: flex-start;
+}
+
+.l-justify-end {
+    justify-content: flex-end;
+}
+
+.l-align-center {
+    align-items: center;
+}
+
+.l-align-start {
+    align-items: flex-start;
+}
+
+.l-align-end {
+    align-items: flex-end;
+}

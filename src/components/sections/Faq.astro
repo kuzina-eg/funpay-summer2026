@@ -1,0 +1,32 @@
+---
+import Accordion from '@components/blocks/Accordion.astro';
+
+interface Props {
+    items?: Array<string>;
+    title?: string;
+    class?: string;
+    [x: string]: any;
+}
+
+const {
+    items = [],
+    title = 'Частые вопросы',
+    class: className,
+    ...rest
+} = Astro.props;
+
+---
+
+<section class="lootery-faq lootery-section">
+    <h2 class="lootery-faq__title lootery-section__title">{title}</h2>
+    <div class="lootery-faq__list js-accordions">
+        {items.map((item) => (
+            <Accordion
+                class="lootery-faq__item"
+                title={item.title}
+            >
+                <div class="lootery-faq__accordion-text" set:html={item.text}></div>
+            </Accordion>
+        ))}
+    </div>
+</section>

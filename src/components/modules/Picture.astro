@@ -1,0 +1,52 @@
+---
+interface Props {
+    name?: string;
+    directory?: string;
+    imageWidth?: number;
+    imageHeight?: number;
+    type?: string;
+    forMobile?: boolean;
+    sourceMobile?: string;
+    alt?: string;
+}
+
+const {
+    name,
+    directory,
+    imageWidth = 48,
+    imageHeight = 48,
+    type,
+    forMobile = true,
+    sourceMobile = '',
+    alt='',
+    class: className,
+    ...rest
+} = Astro.props;
+---
+<picture>
+    {
+        forMobile ?
+            sourceMobile ?
+                <Fragment set:html={sourceMobile}></Fragment>
+            :
+                <source
+                    type="image/webp"
+                    srcset=`${directory}${name}@2x.webp 2x`
+                    media="(max-width: 480px)"
+                >
+        : ''
+    }
+    <source
+        type="image/webp"
+        srcset=`${directory}${name}@1x.webp 1x, ${directory}${name}@2x.webp 2x`
+    >
+    <img
+        class={className}
+        src=`${directory}${name}@1x.${type}`
+        srcset=`${directory}${name}@2x.${type} 2x`
+        alt={alt}
+        width={imageWidth}
+        height={imageHeight}
+        loading="lazy"
+    >
+</picture>

@@ -1,0 +1,110 @@
+---
+import Icon from '@components/modules/Icon.astro';
+
+interface Props {
+    type?: 'button' | 'submit' | 'link' | 'span';
+    size?: 'sm' | 'lg';
+    style?: 'second' | 'third' | 'light' | 'link' | 'outline';
+    fill?: boolean;
+    center?: boolean;
+    href?: string;
+    ariaLabel?: string;
+    icon?: string;
+    iconSvg?: string;
+    iconAmount?: string;
+    iconClass?: string;
+    amount?: string;
+    disabled?: boolean;
+    isText?: boolean;
+    textClass?: string;
+    class?: string;
+    [x: string]: any;
+}
+
+const {
+    type = 'button',
+    size,
+    style,
+    fill = false,
+    center = false,
+    href = '',
+    ariaLabel,
+    icon,
+    iconSvg,
+    iconAmount,
+    iconClass,
+    amount,
+    disabled,
+    direction,
+    isText = true,
+    textClass,
+    class: className,
+    ...rest
+} = Astro.props;
+
+const ButtonEl = type === 'link' ? 'a' : type == 'span' ? 'span' : 'button';
+let buttonClass = 'ui-button';
+
+const styles = {
+    second: `${buttonClass}--second`,
+    third: `${buttonClass}--third`,
+    light: `${buttonClass}--light`,
+    link: `${buttonClass}--link`,
+    outline: `${buttonClass}--outline`,
+};
+
+const sizes = {
+    xs: `${buttonClass}--xs`,
+    sm: `${buttonClass}--sm`,
+    md: `${buttonClass}--md`,
+    lg: `${buttonClass}--lg`,
+};
+
+const classList =[
+    buttonClass,
+    styles[style],
+    sizes[size],
+    fill ? `${buttonClass}--fill`: '',
+    center ? `${buttonClass}--center`: '',
+    className,
+    disabled && type === 'link' ? 'is-disabled' : '',
+]
+---
+<ButtonEl
+    type={(type !== 'link' && type !== 'span') ? type : null}
+    href={type === 'link' ? href : null}
+    class:list={classList}
+    aria-label={ariaLabel}
+    disabled={((type === 'submit' || type === 'button') && disabled) ? 'disabled' : null}
+    tabindex={type === 'link' && disabled ? -1 : null}
+    {...rest}
+>
+    {
+        icon ?
+        <span class={`${buttonClass}__icon`}>
+            <Icon name={icon} class={iconClass}></Icon>
+            { iconAmount ? <span class={`${buttonClass}__icon-amount`}>{iconAmount}</span> : '' }
+        </span>
+        : ''
+    }
+    {
+        iconSvg ?
+        <span class={`${buttonClass}__svg`} set:html={iconSvg}></span>
+        : ''
+    }
+    {
+        isText ?
+
+        <span class:list={[
+            `${buttonClass}__text`,
+            textClass
+        ]}>
+            <slot />
+        </span> : ''
+    }
+    {
+        amount ?
+        <span class={`${buttonClass}__amount amount`}>{amount}</span>
+        : ''
+    }
+</ButtonEl>

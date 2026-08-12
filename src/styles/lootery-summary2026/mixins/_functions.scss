@@ -1,0 +1,15 @@
+@function tovw($value, $viewport){
+    @return (calc($value/$viewport) * 1vw);
+}
+
+@function d-adaptive($value, $viewport: 19.2){
+    @return tovw($value, $viewport);
+}
+
+@function tab-adaptive($value, $viewport: 76.8){
+    @return tovw($value, $viewport);
+}
+
+@function m-adaptive($value, $viewport: 3.75){
+    @return tovw($value, $viewport);
+}

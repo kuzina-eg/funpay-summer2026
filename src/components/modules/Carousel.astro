@@ -1,0 +1,45 @@
+---
+interface Props {
+    class?: string;
+    nav?: boolean;
+    [x: string]: any;
+}
+
+const {
+    class: className,
+    nav = true,
+    ...rest
+} = Astro.props;
+---
+<div class:list={['carousel', className]} data-carousel {...rest}>
+    <div class="carousel__wrapper" data-carousel-track>
+        <slot />
+    </div>
+
+    {nav && (
+        <Fragment>
+            <button
+                class="carousel__nav carousel__nav--prev"
+                type="button"
+                aria-label="Назад"
+                data-carousel-prev
+            >
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M16.875 10H3.125"/>
+                    <path d="M8.75 4.375L3.125 10L8.75 15.625"/>
+                </svg>
+            </button>
+            <button
+                class="carousel__nav carousel__nav--next"
+                type="button"
+                aria-label="Вперёд"
+                data-carousel-next
+            >
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M3.125 10H16.875"/>
+                    <path d="M11.25 4.375L16.875 10L11.25 15.625"/>
+                </svg>
+            </button>
+        </Fragment>
+    )}
+</div>

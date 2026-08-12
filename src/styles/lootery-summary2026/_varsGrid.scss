@@ -1,0 +1,19 @@
+// Breakpoints
+$grid-breakpoints: (
+    mob-xxs: 371px,
+    mob-xs: 420px,
+    mob-sm: 480px,
+    mob-md: 576px,
+    mob: 768px,
+    tab: 992px,
+    tab-l: 1025px,
+    pc: 1200px,
+    netbook: 1367px,
+    pc-l: 1440px,
+    pc-md: 1600px,
+    pc-xl: 1680px,
+    pc-xxl: 1920px,
+);
+
+$breakpoint-adaptive: tab;
+

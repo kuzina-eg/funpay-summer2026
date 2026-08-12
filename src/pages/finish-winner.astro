@@ -1,0 +1,161 @@
+---
+import Layout from '@layouts/Layout.astro';
+import Picture from '@components/modules/Picture.astro';
+
+import FinishPromo from '@components/sections/FinishPromo.astro';
+import Winners from '@components/sections/Winners.astro';
+
+const prizes = [
+    {
+        title: 'Царь-пекарня',
+        count: '1 шт.',
+        image: 'pc',
+        avatar: '01',
+        user: 'Lootkiller',
+        ticket: '№7362-9053',
+        winners: ['KiskaMoriska'],
+        isDetail: true,
+    },
+    {
+        title: 'Ноутбук<br> ASUS',
+        count: '5 шт.',
+        image: 'asus',
+        avatar: '02',
+        winners: ['Architekto_bz','trallalelo','shaska-pulemet','trallalelo','shaska-pulemet'],
+    },
+    {
+        title: 'iPad Pro 13"',
+        count: '3 шт.',
+        image: 'ipad',
+        avatar: '03',
+        winners: ['Architekto_bz','trallalelo','shaska-pulemet'],
+    },
+    {
+        title: 'OnePlus 15',
+        count: '10 шт.',
+        image: 'oneplus',
+        avatar: '',
+        winners: ['Architekto_bz','trallalelo','shaska-pulemet','shaska-pulemet','annapipka'],
+    },
+    {
+        title: '22 500 робуксов',
+        count: '30 паков',
+        image: 'robux-xl',
+        avatar: '04',
+        winners: ['Architekto_bz','trallalelo','shaska-pulemet','shaska-pulemet','annapipka','shaska-pulemet','annapipka','shaska-pulemet','annapipka','shaska-pulemet'],
+    },
+    {
+        title: '13 000 робуксов',
+        count: '50 паков',
+        image: 'robux-lg',
+        avatar: '',
+        winners: ['Architekto_bz','trallalelo','shaska-pulemet'],
+    },
+    {
+        title: '6 000 робуксов',
+        count: '100 паков',
+        image: 'robux',
+        avatar: '',
+        winners: ['Architekto_bz','trallalelo','shaska-pulemet','annapipka','rock&ball'],
+    },
+    {
+        title: '2 000 робуксов',
+        count: '150 паков',
+        image: 'robux-sm',
+        avatar: '',
+        winners: ['Architekto_bz','trallalelo','shaska-pulemet','annapipka','rock&ball','Architekto_bz','trallalelo','shaska-pulemet','annapipka','rock&ball','Architekto_bz','trallalelo','shaska-pulemet','annapipka','rock&ball','Architekto_bz','trallalelo','shaska-pulemet','annapipka','rock&ball'],
+    },
+    {
+        title: '1 200 робуксов',
+        count: '200 паков',
+        image: 'robux-xs',
+        avatar: '',
+        winners: ['Architekto_bz','trallalelo','shaska-pulemet','annapipka','rock&ball','Architekto_bz','trallalelo','shaska-pulemet','annapipka','rock&ball','Architekto_bz','trallalelo','shaska-pulemet','annapipka','rock&ball','Architekto_bz','trallalelo','shaska-pulemet','annapipka','rock&ball'],
+    },
+]
+
+const myTickets = [
+    {
+        orderNumber: '#4332-4852',
+        tickets: '<span class="text-nowrap">№648-221</span>, <span class="text-nowrap">№263-399</span>, <span class="text-nowrap">№359-452</span>',
+    },
+    {
+        orderNumber: '#4332-1843',
+        tickets: '<span class="text-nowrap">№256-654</span>, <span class="text-nowrap">№648-154</span>, <span class="text-nowrap">№478-007</span>, <span class="text-nowrap">№359-148</span>, <span class="text-nowrap">№457-059</span>',
+    },
+    {
+        orderNumber: '#4332-4852',
+        tickets: '<span class="text-nowrap">№648-221</span>, <span class="text-nowrap">№263-399</span>, <span class="text-nowrap">№359-452</span>',
+    },
+    {
+        orderNumber: '#4332-4852',
+        tickets: '<span class="text-nowrap">№648-221</span>, <span class="text-nowrap">№263-399</span>, <span class="text-nowrap">№359-452</span>',
+    },
+    {
+        orderNumber: '#4332-4852',
+        tickets: '<span class="text-nowrap">№648-221</span>, <span class="text-nowrap">№263-399</span>, <span class="text-nowrap">№359-452</span>',
+    },
+    {
+        orderNumber: '#4332-4852',
+        tickets: '<span class="text-nowrap">№648-221</span>, <span class="text-nowrap">№263-399</span>, <span class="text-nowrap">№359-452</span>',
+    },
+    {
+        orderNumber: '#4332-4852',
+        tickets: '<span class="text-nowrap">№648-221</span>, <span class="text-nowrap">№263-399</span>, <span class="text-nowrap">№359-452</span>',
+    },
+    {
+        orderNumber: '#4332-1843',
+        tickets: '<span class="text-nowrap">№256-654</span>, <span class="text-nowrap">№648-154</span>, <span class="text-nowrap">№478-007</span>, <span class="text-nowrap">№359-148</span>, <span class="text-nowrap">№457-059</span>',
+    },
+    {
+        orderNumber: '#4332-4852',
+        tickets: '<span class="text-nowrap">№648-221</span>, <span class="text-nowrap">№263-399</span>, <span class="text-nowrap">№359-452</span>',
+    },
+    {
+        orderNumber: '#4332-4852',
+        tickets: '<span class="text-nowrap">№648-221</span>, <span class="text-nowrap">№263-399</span>, <span class="text-nowrap">№359-452</span>',
+    },
+    {
+        orderNumber: '#4332-4852',
+        tickets: '<span class="text-nowrap">№648-221</span>, <span class="text-nowrap">№263-399</span>, <span class="text-nowrap">№359-452</span>',
+    },
+    {
+        orderNumber: '#4332-4852',
+        tickets: '<span class="text-nowrap">№648-221</span>, <span class="text-nowrap">№263-399</span>, <span class="text-nowrap">№359-452</span>',
+    },
+]
+
+---
+<Layout title="Лутерея">
+
+    <FinishPromo
+        noteText="Спасибо за участие!"
+        titleWinner="<span class='u-text-second'>Робукс</span><span class='u-text-third'>Фест</span> завершен"
+        text="Итоги розыгрыша мы&nbsp;подвели на&nbsp;стриме"
+        buttonText="Смотреть итоги на Twitch"
+        isWinner={true}
+        boxTitle="Увы, в этот раз<br> без призов"
+        boxTitleWinner="Поздравляем! Вы выиграли:<br> Nintendo Switch 2"
+        boxText="В&nbsp;следующий раз вам обязательно повезёт! Не&nbsp;теряйте надежду и&nbsp;следите за&nbsp;анонсами"
+        boxTextWinner="Воу, вот это удача! Мы&nbsp;свяжемся с&nbsp;вами в&nbsp;личных сообщениях на&nbsp;FunPay, чтобы обсудить доставку приза. Пусть вам везёт и&nbsp;дальше"
+        myTicketsBoxTitle1="Выиграл билет:"
+    ></FinishPromo>
+
+    <div class="container">
+        <Winners
+            title="Победители"
+            items={prizes}
+            winnerName="Победитель"
+            ticket="Билет"
+            modalText="Этот приз успешно залутали:"
+            buttonText="Посмотреть мои билеты"
+            allTickets="Все билеты"
+            ticketItems={myTickets}
+            myTicketsBoxTitle1="У вас"
+            myTicketsBoxTitle2="37 билетиков"
+            ticketItems={myTickets}
+            tableParamName="Заказ"
+            tableValueName="Билеты"
+        ></Winners>
+    </div>
+</Layout>

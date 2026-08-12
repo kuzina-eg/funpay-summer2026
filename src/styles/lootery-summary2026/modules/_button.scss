@@ -1,0 +1,190 @@
+@use "@styles/lootery-summary2026/mixins" as *;
+
+.ui-button {
+	display: grid;
+    grid-auto-flow: column;
+	align-items: center;
+	justify-content: center;
+    gap: 8px;
+    padding: 0 14px;
+    background-color: $color-accent;
+    border: none;
+    border-radius: $radius-xs;
+    box-shadow: none;
+	width: fit-content;
+	height: $button-height;
+	font-weight: 500;
+    font-size: $text-size-md-all;
+	line-height: 1.25;
+	text-align: center;
+	color: $color-white;
+    text-decoration: none;
+	transition: $duration background-color, $duration color, $duration border-color;
+	user-select: none;
+	cursor: pointer;
+
+    &__icon {
+        position: relative;
+
+        svg {
+            &:not(.ui-icon--stroke) {
+                fill: currentColor;
+            }
+
+            &.ui-icon-arrow-left-primary,
+            &.ui-icon-arrow-right-primary,
+            &.ui-icon-sort-2 {
+                fill: none;
+                stroke: currentColor;
+                stroke-width: 2;
+                stroke-linecap: round;
+                stroke-linejoin: round;
+            }
+        }
+    }
+
+    &__icon,
+    &__svg {
+        svg {
+            display: block;
+
+            &:not(.ui-icon--sm) {
+                width: $icon-size;
+                height: $icon-size;
+            }
+        }
+    }
+
+    &__svg {
+        path[fill] {
+            fill: currentColor;
+        }
+        path[stroke] {
+            stroke: currentColor;
+        }
+    }
+
+    &--text-first &__text {
+        order: -1;
+    }
+
+    &__icon-amount {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        top: -2px;
+        right: 2px;
+        transform: translateX(50%);
+        background-color: $color-accent;
+        border-radius: 2rem;
+        padding: 0 3px;
+        min-width: 13px;
+        text-align: center;
+        line-height: 13px;
+        font-size: 10px;
+        font-weight: 600;
+        color: $color-white;
+    }
+
+	&--fill {
+		width: 100%;
+	}
+
+	&--center {
+		margin-right: auto;
+		margin-left: auto;
+	}
+
+	&:hover,
+    &:focus-visible {
+        background-color: $color-accent-hover;
+        color: $color-white;
+    }
+
+    &:focus {
+        //outline-color: $color-accent-hover;
+        outline-color: transparent;
+        color: $color-white;
+    }
+
+	&:focus-visible {
+		outline-color: $color-accent-hover;
+	}
+
+    &--lg {
+        @include media-min(mob) {
+            height: $button-height-lg;
+            font-size: 20px;
+            font-weight: 600;
+        }
+    }
+
+    &--second {
+        background-color: $color-black;
+        color: $color-white;
+
+        &:hover,
+        &:focus-visible {
+            background-color: $color-accent-hover;
+            color: $color-white;
+        }
+    }
+
+    &--third {
+        background-color: rgba(168, 191, 244, 0.3);
+        color: $color-accent;
+
+        &:hover,
+        &:focus-visible {
+            background-color: $color-accent-hover;
+            color: $color-white;
+        }
+    }
+
+    &--light {
+        background-color: $color-grey-light;
+        color: $color-white;
+
+        &:hover,
+        &:focus-visible {
+            background-color: $color-grey;
+            color: $color-white;
+        }
+    }
+
+    &--outline {
+        background-color: $color-white;
+        color: $color-accent;
+
+        &:hover,
+        &:focus-visible {
+            background-color: $color-second;
+            color: $color-accent;
+        }
+    }
+
+    &--link {
+        border: none;
+        background-color: transparent;
+        padding: 0;
+        height: auto;
+		color: $color-accent;
+
+        &:hover {
+            background-color: transparent;
+            color: $color-accent-hover;
+        }
+    }
+
+    &:disabled,
+    &.is-disabled {
+        background-color: $color-disabled;
+        background: $color-disabled;
+        color: $color-grey-light;
+        cursor: default;
+        pointer-events: none;
+    }
+}
+
+

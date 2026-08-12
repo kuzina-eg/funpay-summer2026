@@ -1,0 +1,169 @@
+---
+import Layout from '@layouts/Layout.astro';
+import Picture from '@components/modules/Picture.astro';
+
+import FinishPromo from '@components/sections/FinishPromo.astro';
+import Winners from '@components/sections/Winners.astro';
+
+const prizes = [
+    {
+        title: 'God-tier PC',
+        count: '1 pcs.',
+        image: 'pc',
+        avatar: '01',
+        user: 'Lootkiller',
+        ticket: '№7362-9053',
+        winners: ['KiskaMoriska'],
+        isDetail: true,
+    },
+    {
+        title: 'Playstation 5 Pro',
+        count: '3 pcs.',
+        image: 'playstation',
+        avatar: '02',
+        winners: ['Architekto_bz','trallalelo','shaska-pulemet'],
+    },
+    {
+        title: 'LG 27GX790A-B display',
+        count: '3 pcs.',
+        image: 'lg',
+        avatar: '03',
+        winners: ['Architekto_bz','trallalelo','shaska-pulemet'],
+    },
+    {
+        title: 'iPhone 17 Pro Max',
+        count: '5 pcs.',
+        image: 'iphone',
+        avatar: '',
+        winners: ['Architekto_bz','trallalelo','shaska-pulemet','shaska-pulemet','annapipka'],
+    },
+    {
+        title: 'OnePlus 15',
+        count: '5 pcs.',
+        image: 'oneplus',
+        avatar: '',
+        winners: ['Architekto_bz','trallalelo','shaska-pulemet','shaska-pulemet','annapipka'],
+    },
+    {
+        title: 'Steam Deck OLED',
+        count: '10 pcs.',
+        image: 'steam',
+        avatar: '04',
+        winners: ['Architekto_bz','trallalelo','shaska-pulemet','shaska-pulemet','annapipka','shaska-pulemet','annapipka','shaska-pulemet','annapipka','shaska-pulemet'],
+    },
+    {
+        title: 'Branded FunPay glass',
+        count: '50 pcs.',
+        image: 'cup',
+        avatar: '',
+        winners: ['Architekto_bz','trallalelo','shaska-pulemet'],
+    },
+    {
+        title: 'Branded FunPay hoodie',
+        count: '50 pcs.',
+        image: 'hoodie',
+        avatar: '',
+        winners: ['Architekto_bz','trallalelo','shaska-pulemet','annapipka','rock&ball'],
+    },
+    {
+        title: 'Games worth 10&nbsp;000&nbsp;RUB',
+        count: '50 pcs.',
+        image: 'games10',
+        avatar: '',
+        winners: ['Architekto_bz','trallalelo','shaska-pulemet','annapipka','rock&ball','Architekto_bz','trallalelo','shaska-pulemet','annapipka','rock&ball','Architekto_bz','trallalelo','shaska-pulemet','annapipka','rock&ball','Architekto_bz','trallalelo','shaska-pulemet','annapipka','rock&ball'],
+    },
+    {
+        title: 'Games worth 5&nbsp;000&nbsp;RUB',
+        count: '100 pcs.',
+        image: 'games5',
+        avatar: '',
+        winners: ['Architekto_bz','trallalelo','shaska-pulemet','annapipka','rock&ball','Architekto_bz','trallalelo','shaska-pulemet','annapipka','rock&ball','Architekto_bz','trallalelo','shaska-pulemet','annapipka','rock&ball','Architekto_bz','trallalelo','shaska-pulemet','annapipka','rock&ball'],
+    },
+]
+
+const myTickets = [
+    {
+        orderNumber: '#4332-4852',
+        tickets: '<span class="text-nowrap">№648-221</span>, <span class="text-nowrap">№263-399</span>, <span class="text-nowrap">№359-452</span>',
+    },
+    {
+        orderNumber: '#4332-1843',
+        tickets: '<span class="text-nowrap">№256-654</span>, <span class="text-nowrap">№648-154</span>, <span class="text-nowrap">№478-007</span>, <span class="text-nowrap">№359-148</span>, <span class="text-nowrap">№457-059</span>',
+    },
+    {
+        orderNumber: '#4332-4852',
+        tickets: '<span class="text-nowrap">№648-221</span>, <span class="text-nowrap">№263-399</span>, <span class="text-nowrap">№359-452</span>',
+    },
+    {
+        orderNumber: '#4332-4852',
+        tickets: '<span class="text-nowrap">№648-221</span>, <span class="text-nowrap">№263-399</span>, <span class="text-nowrap">№359-452</span>',
+    },
+    {
+        orderNumber: '#4332-4852',
+        tickets: '<span class="text-nowrap">№648-221</span>, <span class="text-nowrap">№263-399</span>, <span class="text-nowrap">№359-452</span>',
+    },
+    {
+        orderNumber: '#4332-4852',
+        tickets: '<span class="text-nowrap">№648-221</span>, <span class="text-nowrap">№263-399</span>, <span class="text-nowrap">№359-452</span>',
+    },
+    {
+        orderNumber: '#4332-4852',
+        tickets: '<span class="text-nowrap">№648-221</span>, <span class="text-nowrap">№263-399</span>, <span class="text-nowrap">№359-452</span>',
+    },
+    {
+        orderNumber: '#4332-1843',
+        tickets: '<span class="text-nowrap">№256-654</span>, <span class="text-nowrap">№648-154</span>, <span class="text-nowrap">№478-007</span>, <span class="text-nowrap">№359-148</span>, <span class="text-nowrap">№457-059</span>',
+    },
+    {
+        orderNumber: '#4332-4852',
+        tickets: '<span class="text-nowrap">№648-221</span>, <span class="text-nowrap">№263-399</span>, <span class="text-nowrap">№359-452</span>',
+    },
+    {
+        orderNumber: '#4332-4852',
+        tickets: '<span class="text-nowrap">№648-221</span>, <span class="text-nowrap">№263-399</span>, <span class="text-nowrap">№359-452</span>',
+    },
+    {
+        orderNumber: '#4332-4852',
+        tickets: '<span class="text-nowrap">№648-221</span>, <span class="text-nowrap">№263-399</span>, <span class="text-nowrap">№359-452</span>',
+    },
+    {
+        orderNumber: '#4332-4852',
+        tickets: '<span class="text-nowrap">№648-221</span>, <span class="text-nowrap">№263-399</span>, <span class="text-nowrap">№359-452</span>',
+    },
+]
+
+---
+<Layout title="Lootery">
+
+    <FinishPromo
+        noteText="Thanks for playing!"
+        title="<span class='u-text-accent'>Loot</span>ery is over"
+        titleWinner="<span class='u-text-accent'>Loot</span>ery is over"
+        text="Watch the draw replay on Twitch"
+        buttonText="Watch results on Twitch"
+        isWinner={true}
+        boxTitle="No loot this time"
+        boxTitleWinner="Congratulations! You’ve won:<br> Nintendo Switch 2"
+        boxText="Better luck next round! Don&rsquo;t lose faith&nbsp;&mdash; more giveaways are on&nbsp;the way!"
+        boxTextWinner="Whoa, that’s some luck!<br> We’ll contact you via FunPay messages to arrange prize delivery.<br> May the RNG gods smile on you again soon."
+        myTicketsBoxTitle1="Winning ticket:"
+    ></FinishPromo>
+
+    <div class="container">
+        <Winners
+            title="Winners"
+            items={prizes}
+            winnerName="Winner"
+            ticket="Ticket"
+            modalText="This prize has been looted!"
+            buttonText="View my tickets"
+            allTickets="All tickets"
+            ticketItems={myTickets}
+            myTicketsBoxTitle1="You’ve got:"
+            myTicketsBoxTitle2="37 tickets"
+            ticketItems={myTickets}
+            tableParamName="Order"
+            tableValueName="Tickets"
+        ></Winners>
+    </div>
+</Layout>

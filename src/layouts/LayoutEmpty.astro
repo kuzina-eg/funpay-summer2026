@@ -1,0 +1,25 @@
+---
+import site from '@data/site.json';
+import '../styles/lootery-summary2026/style.scss';
+
+export interface Props {
+	title: string;
+}
+---
+
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width"/>
+		<link rel="icon" type="image/svg+xml" href="favicon/favicon.svg" />
+        <title>{site.name}</title>
+	</head>
+	<body>
+		<div class="wrapper">
+			<main class="main">
+				<slot />
+			</main>
+		</div>
+	</body>
+</html>
