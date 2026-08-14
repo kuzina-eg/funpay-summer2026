@@ -57,17 +57,8 @@ const {
             <Fragment>{statisticTextLast}</Fragment>
             <strong>{statisticValue}</strong>
         </div>
-        <div class="lootery-promo__header">
-            <Picture
-                class="lootery-promo__header-image"
-                name="header"
-                directory="img/lootery-summary2026/promo/"
-                type="png"
-                imageWidth="1030"
-                imageHeight="340"
-                alt=`${title}. ${text}`
-            ></Picture>
-        </div>
+        <h1 class="lootery-promo__title" set:html={title}></h1>
+        <div class="lootery-promo__descr" set:html={text}></div>
         <div class="lootery-promo__button">
             {
                 isLogin ?
@@ -78,15 +69,28 @@ const {
         </div>
         <div class="lootery-promo__photo">
             <div class="lootery-promo__bg"></div>
-            <Picture
-                class="lootery-promo__image"
-                name="promo"
-                directory="img/lootery-summary2026/promo/"
-                type="png"
-                imageWidth="1561"
-                imageHeight="560"
-                sourceMobile='<source type="image/webp" srcset="img/lootery-summary2026/promo/promo-mobile@2x.webp 2x" media="(max-width: 767px)">'
-            ></Picture>
+            <video
+                class="lootery-promo__video"
+                data-responsive-video
+                data-video="img/lootery-summary2026/promo/promo.mp4"
+                data-video-mobile="img/lootery-summary2026/promo/promo-mobile.mp4"
+                autoplay
+                muted
+                loop
+                playsinline
+                preload="metadata"
+            ></video>
+            <div class="lootery-promo__overlay">
+                <Picture
+                    class="lootery-promo__overlay-image"
+                    name="promo-bg"
+                    directory="img/lootery-summary2026/promo/"
+                    type="png"
+                    imageWidth="1561"
+                    imageHeight="560"
+                    sourceMobile='<source type="image/webp" srcset="img/lootery-summary2026/promo/promo-bg-mobile@2x.webp 2x" media="(max-width: 767px)">'
+                ></Picture>
+            </div>
         </div>
 
         <div class="lootery-countdown">

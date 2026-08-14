@@ -286,7 +286,7 @@
         border-radius: 16px;
         min-height: 70px;
         display: grid;
-        grid-template-columns: 80px 184px;
+        grid-template-columns: 80px 210px;
         justify-content: center;
         gap: 18px;
         align-items: center;
@@ -332,6 +332,67 @@
 
             &-text {
                 font-size: 16px;
+            }
+        }
+    }
+
+    &__promo {
+        display: grid;
+        grid-template-columns: 80px 184px;
+        justify-content: center;
+        align-items: center;
+        gap: 18px;
+        min-height: 70px;
+        margin-top: 9px;
+        padding: 15px 15px 15px 20px;
+        border-radius: 16px;
+        background: linear-gradient(106.76deg, #A632FF 32.95%, #FF812E 110.37%);
+        text-decoration: none;
+        transition: filter $duration;
+
+        &,
+        &:hover,
+        &:focus,
+        &:focus-visible {
+            color: $color-white;
+        }
+
+        @include hover {
+            filter: brightness(1.08);
+        }
+
+        &-logo {
+            display: flex;
+
+            svg {
+                width: 100%;
+                height: auto;
+            }
+        }
+
+        &-text {
+            font-weight: 600;
+            font-size: 12px;
+            line-height: 1.1;
+            text-align: center;
+        }
+
+        @include media-min(mob-md) {
+            gap: 28px;
+            grid-template-columns: 90px 258px;
+            margin-top: 11px;
+
+            &-text {
+                font-size: 14px;
+            }
+        }
+
+        @include media-min(mob) {
+            grid-template-columns: 100px 300px;
+            min-height: 80px;
+
+            &-text {
+                font-size: 20px;
             }
         }
     }

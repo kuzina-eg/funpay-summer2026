@@ -95,7 +95,7 @@
         }
 
         @include media-min(mob) {
-            max-width: 624px;
+            max-width: 745px;
             margin-left: auto;
             margin-right: auto;
             font-size: 22px;
@@ -105,7 +105,7 @@
     &__button {
         margin-top: 30px;
         position: relative;
-        z-index: 10;
+        z-index: 11;
 
         .ui-button {
             min-width: 16.25rem;
@@ -115,8 +115,7 @@
     &__photo {
         position: relative;
         z-index: 10;
-        margin-top: -14px;
-        margin-bottom: -2px;
+        margin: -14px -31px -2px;
         pointer-events: none;
 
         @include media-min(mob-md) {
@@ -131,7 +130,7 @@
         }
 
         @include media(mob) {
-            aspect-ratio: 560 / 460;
+            aspect-ratio: 626 / 462;
         }
     }
 
@@ -163,12 +162,50 @@
             left: 50%;
             transform: translate(-50%,-50%);
         }
+
+        @include media(mob) {
+            display: none;
+        }
     }
 
     &__image {
         position: relative;
         z-index: 10;
         //pointer-events: none;
+    }
+
+    &__video {
+        position: relative;
+        z-index: 10;
+        display: block;
+        width: 100%;
+        height: auto;
+        aspect-ratio: 1560 / 560;
+        mix-blend-mode: multiply;
+
+        @include media(mob) {
+            aspect-ratio: 626 / 462;
+            mix-blend-mode: normal;
+        }
+    }
+
+    &__overlay {
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: 11;
+        width: 100%;
+        pointer-events: none;
+
+        picture {
+            display: block;
+        }
+    }
+
+    &__overlay-image {
+        display: block;
+        width: 100%;
+        height: auto;
     }
 }
 

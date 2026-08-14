@@ -82,6 +82,12 @@ export default function initFancybox() {
     Fancybox.bind('[data-fancybox]:not([data-fancybox^="gallery-"]):not([data-fancybox="donated-pcs"])', {
         ...options,
         on: {
+            reveal: (fancybox, slide) => {
+                if (!slide || !slide.el) return;
+                slide.el.querySelectorAll('[data-carousel-track]').forEach((track) => {
+                    track.scrollLeft = 0;
+                });
+            },
             shouldClose: (fancybox, event) => {
                 if (mediaOpen) {
                     event.preventDefault();

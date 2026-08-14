@@ -12,8 +12,32 @@
             "disabled": false
         },
         {
+            "name": "Главная. Eng",
+            "link": "home-eng.html",
+            "status": "",
+            "disabled": false
+        },
+        {
+            "name": "Главная. Ua",
+            "link": "home-ua.html",
+            "status": "",
+            "disabled": false
+        },
+        {
             "name": "Пользователь залогинен",
             "link": "home-login.html",
+            "status": "",
+            "disabled": false
+        },
+        {
+            "name": "Пользователь залогинен. Eng",
+            "link": "home-login-eng.html",
+            "status": "",
+            "disabled": false
+        },
+        {
+            "name": "Пользователь залогинен. Ua",
+            "link": "home-login-ua.html",
             "status": "",
             "disabled": false
         },
@@ -24,8 +48,32 @@
             "disabled": false
         },
         {
+            "name": "Финал. Eng",
+            "link": "finish-eng.html",
+            "status": "",
+            "disabled": false
+        },
+        {
+            "name": "Финал. Ua",
+            "link": "finish-ua.html",
+            "status": "",
+            "disabled": false
+        },
+        {
             "name": "Финал. Победитель",
             "link": "finish-winner.html",
+            "status": "",
+            "disabled": false
+        },
+        {
+            "name": "Финал. Победитель. Eng",
+            "link": "finish-winner-eng.html",
+            "status": "",
+            "disabled": false
+        },
+        {
+            "name": "Финал. Победитель. Ua",
+            "link": "finish-winner-ua.html",
             "status": "",
             "disabled": false
         }

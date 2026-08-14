@@ -4,89 +4,106 @@ import Picture from '@components/modules/Picture.astro';
 
 import Promo from '@components/sections/Promo.astro';
 import Prizes from '@components/sections/Prizes.astro';
+import DonatedPcs from '@components/sections/DonatedPcs.astro';
 import MyTickets from '@components/sections/MyTickets.astro';
 import Instructions from '@components/sections/Instructions.astro';
 import Faq from '@components/sections/Faq.astro';
 
 const prizes = [
     {
-        title: 'God-tier PC',
-        count: '1 pcs.',
-        image: 'pc',
-        param: 'RTX 5090 + 9800X3D',
-        text: 'Sydney Sweeney of&nbsp;gaming rigs.<br> 10/10 looks&nbsp;&mdash; even sweeter under the hood. A&nbsp;config featuring the latest GPU and custom design inspired by&nbsp;your favorite anime (or&nbsp;whatever you desire).',
-        note: '*Appearance may differ from promo images.',
-    },
-    {
-        title: 'Playstation 5 Pro',
-        count: '3 pcs.',
-        image: 'playstation',
+        title: 'God-tier PC with RTX&nbsp;5090 and a custom design',
+        count: '',
+        image: 'pc-roblox',
         param: '',
-        text: 'Beast of&nbsp;a&nbsp;console from Sony with a&nbsp;size-five SSD. Can fit all the exclusives&nbsp;&mdash; and then more. Though honestly, is&nbsp;there anywhere they wouldn&rsquo;t fit?',
+        text: 'A gaming rig with top-tier hardware. And it comes with a custom visual design of your choosing. And it also comes with a desk. And a chair. And a keyboard. And a mouse. And a monitor. We always throw in some extras because this particular prize has an unlimited budget!',
         note: '',
     },
     {
-        title: 'LG display',
-        count: '3 pcs.',
-        image: 'lg',
+        title: 'The Ultimate setup for GTA&nbsp;VI',
+        count: '1 prize',
+        image: 'setup-gta6',
         param: '',
-        text: 'That cousin of&nbsp;yours that graduated Harward in&nbsp;five. OLED, 480&nbsp;Hz, ultra-low response time. You&rsquo;ll be&nbsp;landing flicks like ZywOo or&nbsp;m0NESY.',
+        text: 'Everything you&rsquo;d ever want or need to enjoy GTA&nbsp;VI: the most expensive edition of the game, the perfect console for it, the perfect TV for that console, and the perfect soundbar to top it off. We&rsquo;ve thought of everything this time.',
         note: '',
     },
     {
-        title: 'iPhone 17 PRO MAX',
-        count: '5 pcs.',
+        title: 'Herman&nbsp;Miller X&nbsp;Logitech Embody Gaming chair',
+        count: '3 prizes',
+        image: 'armchair',
+        param: '',
+        text: 'A lifelong dream of one of our employees is to plant every single gamer&rsquo;s butt into one of these exquisite ergonomic chairs. For now, they&rsquo;re moving towards this goal at the rate of three chairs per Lootery.',
+        note: '',
+    },
+    {
+        title: '64GB of G.SKILL Trident&nbsp;Z5 Royal&nbsp;Neo RAM',
+        count: '3 prizes',
+        image: 'ddr',
+        param: '',
+        text: 'G.SKILL Trident&nbsp;Z5 Royal&nbsp;Neo<br> DDR5 CL26<br> With the current state of memory prices, you&rsquo;d better not tell anyone if you win this. You could also trade it for a car or an entire house later down the line.',
+        note: '',
+    },
+    {
+        title: 'iPhone&nbsp;17 Pro&nbsp;Max',
+        count: '5 prizes',
         image: 'iphone',
         param: '',
-        text: 'Big, matte and smooth. Nice cooling when you can&rsquo;t keep your cool. Durable enough to&nbsp;survive a&nbsp;tilt after a&nbsp;scuffed game.',
-        note: '*Appearance may differ from promo images.',
+        text: '&ldquo;This is my Eiffel Tower, my Rachmaninoff&rsquo;s Third Symphony, my Piet&agrave;,&rdquo; Tim&nbsp;Cook said about his latest iPhone. We believe him.',
+        note: '',
     },
     {
-        title: 'OnePlus 15',
-        count: '5 pcs.',
-        image: 'oneplus',
+        title: 'PS5&nbsp;Pro + GTA&nbsp;VI Ultimate',
+        count: '5 prizes',
+        image: 'playstation',
         param: '',
-        text: 'The one smartphone to&nbsp;survive every Genshin update. A&nbsp;top-tier CPU, a&nbsp;165&nbsp;Hz display and a&nbsp;massive battery that&rsquo;ll last you even if&nbsp;you get stuck in&nbsp;after-hours.',
-        note: '*Appearance may differ from promo images.',
+        text: 'It&rsquo;s a shame that Sony removed all mentions of PlayStation being &ldquo;the best platform for GTA&nbsp;VI&rdquo;. This statement is true, at least until the PC version comes out.',
+        note: '',
+    },
+    {
+        title: 'Xbox + GTA&nbsp;VI Ultimate',
+        count: '5 prizes',
+        image: 'xbox',
+        param: '',
+        text: 'Of course, this is the Series&nbsp;X version, which features the second most powerful hardware (exceeding the base PS5). According to the writer&rsquo;s slightly biased opinion, it also boasts the best, most minimalist design of this generation.',
+        note: '',
     },
     {
         title: 'Steam Deck OLED',
-        count: '10 pcs.',
+        count: '5 prizes',
         image: 'steam',
         param: '',
-        text: 'Your trusty buddy on&nbsp;every questionable family trip. Lock yourself in&nbsp;a&nbsp;bathroom, launch Arc Raiders and rat until they blow the door out.',
+        text: 'The best console to tackle your ever-growing backlog of indie games from the comfort of your couch. You don&rsquo;t even really have to leave your house to realize how essential this handheld is to your gaming life.',
         note: '',
     },
     {
-        title: 'Branded FunPay glass',
-        count: '50 pcs.',
-        image: 'cup',
+        title: 'Millennium&nbsp;Falcon&trade; LEGO&nbsp;set',
+        count: '5 prizes',
+        image: 'lego',
         param: '',
-        text: 'Holy Grail for protein enjoyers, almond matcha and good ol&rsquo; carbonated H2O. If&nbsp;you&rsquo;re not a&nbsp;performative male, just put some soda in&nbsp;it.',
-        note: '*Appearance may differ from promo images.',
+        text: 'If you already happen to own one&nbsp;&mdash; we can replace it with something else in the same price range. We&rsquo;re totally not jealous if you really do have it.',
+        note: '',
     },
     {
-        title: 'Branded FunPay hoodie',
-        count: '50 pcs.',
-        image: 'hoodie',
+        title: 'Razer Viper&nbsp;V4&nbsp;Pro gaming mouse',
+        count: '10 prizes',
+        image: 'mouse',
         param: '',
-        text: 'Light armor.&nbsp;+10% ice resist, +15&nbsp;style and a&nbsp;random chance of&nbsp;successful barter. Can be&nbsp;enchanted by&nbsp;Michael for protection against &laquo;AWOOOOO&raquo;.',
-        note: '*Appearance may differ from promo images.',
+        text: 'If your old mouse is slow and heavy like your grandma&rsquo;s flat iron, this sub-50g speed demon will practically win your games for you.',
+        note: '',
     },
     {
-        title: 'Games worth 10&nbsp;000&nbsp;RUB',
-        count: '100 pcs.',
+        title: '100&nbsp;&euro; worth of games',
+        count: '50 prizes',
         image: 'games10',
         param: '',
-        text: 'Enough Silksong&rsquo;s spider strings to&nbsp;supply you, your brother and half your class&rsquo;s families.',
+        text: 'Enough for a couple of triple-A titles<br> and a boatload of indie games on sale.',
         note: '',
     },
     {
-        title: 'Games worth 5&nbsp;000&nbsp;RUB',
-        count: '100 pcs.',
+        title: '50&nbsp;&euro; worth of games',
+        count: '100 prizes',
         image: 'games5',
         param: '',
-        text: 'Can get you Battlefield&nbsp;6, Dispatch, or&nbsp;whatever game gets swept by&nbsp;Expedition 33&nbsp;at the Game Awards.',
+        text: 'Enough for a new game,<br> or a handful of older titles at a discount.',
         note: '',
     },
 ]
@@ -145,56 +162,56 @@ const myTickets = [
 const instructions = [
     {
         num: '1',
-        title: 'Buy or sell<br> on FunPay',
-        text: 'Join the raffle by&nbsp;clicking &laquo;Join&raquo;.<br> Buy or&nbsp;sell any service/product worth 100RUB and more to&nbsp;get your first ticket.<br> You can earn up&nbsp;to&nbsp;100&nbsp;tickets.',
-        buttonText: 'Got it! I’m off shopping',
+        title: 'Buy and sell<br> goods and services<br> on FunPay',
+        text: 'Enter the raffle by clicking the &ldquo;Join&rdquo; button. Buy or sell any service or product worth 1&nbsp;&euro; and more to get your first ticket. You can earn up to 100&nbsp;tickets in total.',
+        buttonText: 'Got it! I&rsquo;m off shopping!',
     },
     {
         num: '2',
-        title: 'Earn<br> tickets',
-        text: 'Any Lootery ticket has a&nbsp;chance to&nbsp;win. So&nbsp;you might get not one, but several great prizes.',
+        title: 'Save up<br> your tickets',
+        text: 'Any Lootery ticket has a chance to win. So you might get not one, but multiple great prizes.',
         buttonText: 'Need more tickets!',
     },
     {
         num: '3',
-        title: 'Wait for<br> the Lootery results',
-        text: 'On&nbsp;January&nbsp;16, we&rsquo;ll run the draw and reveal the winning tickets live on&nbsp;Twitch.<br> During the stream, you can find your tickets by&nbsp;clicking &laquo;Check my&nbsp;tickets&raquo;.<br> Save the date!',
-        buttonText: 'Subscribe to Twitch',
+        title: 'Wait for<br> the results',
+        text: 'On September&nbsp;16th, we&rsquo;ll be livestreaming our raffle on Twitch. During the stream, you can find your tickets by clicking the &ldquo;Check my tickets&rdquo; button. Don&rsquo;t miss the broadcast!',
+        buttonText: 'Follow our Twitch channel',
     },
 ]
 
 const faq = [
     {
-        title: 'Where can&nbsp;I find complete raffle rules and conditions?',
-        text: 'Full rules and conditions are <a href="#">right here</a>',
+        title: 'Where can I read the terms and conditions for the raffle?',
+        text: 'A full list of the terms and conditions can be found <a href="#">here</a>.',
     },
     {
-        title: 'I&nbsp;haven&rsquo;t received any tickets after a&nbsp;purchase/sale. What do&nbsp;I&nbsp;do?',
-        text: 'Check if&nbsp;you&rsquo;ve clicked the &laquo;Join&raquo; button.<br> Check your purchase/sale status. Were they made during the raffle period?<br> If&nbsp;yes, contact our support. The team will help you get the missing tickets.',
+        title: 'I haven&rsquo;t received my tickets after a transaction. What should I do?',
+        text: 'Double-check if you&rsquo;ve clicked the &ldquo;Join&rdquo; button. Make sure your orders were fulfilled during the allotted period and are eligible. If the orders are eligible but you still haven&rsquo;t gotten your tickets, please contact our customer support. Our team will do their best to help you.',
     },
     {
-        title: 'I&nbsp;trade via &laquo;Trades&raquo;. Does it&nbsp;count?',
-        text: 'Yes, sales made via &laquo;Trades&raquo; are eligible for raffle. The ticket earning rate is&nbsp;the same.',
+        title: 'I trade via &ldquo;Trades&rdquo;. Are these sales eligible?',
+        text: 'Yes, sales made via &ldquo;Trades&rdquo; are also eligible for the raffle. The ticket conversion rate is the same.',
     },
     {
-        title: 'I&nbsp;trade in&nbsp;a&nbsp;different currency. Do&nbsp;my&nbsp;transactions count?',
-        text: 'Yes, both sales and purchases made in&nbsp;currencies other than RUB also count. You&rsquo;ll receive the tickets according to&nbsp;FunPay&rsquo;s internal rate.',
+        title: 'I trade in a different currency. Do my transactions still count?',
+        text: 'Yes, both sales and purchases made in currencies other than RUB also count. You&rsquo;ll receive the tickets according to FunPay&rsquo;s internal exchange rate.',
     },
     {
-        title: 'I&nbsp;was trading on&nbsp;FunPay but didn&rsquo;t know about the raffle. Will I&nbsp;receive some tickets?',
-        text: 'Yes, sales/purchases made between December 15&nbsp;and January 15&nbsp;are eligible for the raffle. Please, click &laquo;Join&raquo; on&nbsp;the Lootery&rsquo;s main page&nbsp;&mdash; we&rsquo;ll send you the tickets.',
+        title: 'I was trading on FunPay but didn&rsquo;t know about the raffle. Will I receive any tickets?',
+        text: 'Yes, sales and purchases made between August&nbsp;15th and September&nbsp;15th are eligible for the raffle. Please click the &ldquo;Join&rdquo; button on the Lootery&rsquo;s main page to receive your tickets.',
     },
     {
-        title: 'I&nbsp;participate outside Russia. Can I&nbsp;participate?',
-        text: 'Yes. We&rsquo;ll do&nbsp;our best to&nbsp;deliver your prize, even if&nbsp;you live in&nbsp;West Robloxia.',
+        title: 'Can I still participate if I&rsquo;m not a Russian resident?',
+        text: 'Yes. We&rsquo;ll do our best to ship your prize, even if you live in West Robloxia.',
     },
     {
-        title: 'I&rsquo;ve won! How do&nbsp;I claim my&nbsp;prize?',
-        text: 'Congrats! We&rsquo;ll contact you via direct messages on&nbsp;FunPay and discuss the delivery details. No&nbsp;need to&nbsp;reach&nbsp;us yourself.',
+        title: 'I&rsquo;ve won! How do I claim my prize?',
+        text: 'Congrats! We&rsquo;ll reach out to you via direct messages on FunPay and discuss the delivery details. You don&rsquo;t have to contact anyone yourself.',
     },
     {
-        title: 'My&nbsp;order was cancelled. Do&nbsp;I&nbsp;keep the tickets for&nbsp;it?',
-        text: 'No, tickets earned from a&nbsp;canceled order will be&nbsp;revoked and won&rsquo;t be&nbsp;eligible for the raffle.',
+        title: 'My order was cancelled. Do I keep the tickets for it?',
+        text: 'No, tickets earned from a canceled order are automatically revoked and won&rsquo;t be eligible for the raffle.',
     },
 ]
 
@@ -204,10 +221,10 @@ const faq = [
     <Promo
         statisticTextStart="Total"
         statisticTextLink="tickets"
-        statisticTextLast="in the draw:"
+        statisticTextLast="in the raffle:"
         statisticValue="135&nbsp;658&nbsp;224"
         title="<span class='u-text-accent'>Loot</span>ery"
-        text="Trade on&nbsp;FunPay between<br> December 15&nbsp;to&nbsp;January 15<br> and join the raffle for handy loot"
+        text="Buy and sell on FunPay between August&nbsp;15th and September&nbsp;15th and join the raffle for a chance to win gamer loot"
         buttonText="Join"
         buttonTextLogin="My tickets"
         countdownTitle="Expires in:"
@@ -221,20 +238,24 @@ const faq = [
     <div class="container">
         <Prizes
             items={prizes}
-            modalText="Want to&nbsp;boost your chances?<br> Trade on&nbsp;FunPay"
-            buttonText="I’m off trading!"
+            modalText="Noticed a prize you really like?<br> Boost your chances to win."
+            buttonText="Go Shopping"
         ></Prizes>
+
+        <DonatedPcs
+            title="Previous versions of God-tier PCs"
+        ></DonatedPcs>
 
         <MyTickets
             title="My tickets"
             myTicketsText1="Every"
-            myTicketsText2="100 RUB"
-            myTicketsText3="on FunPay earns"
+            myTicketsText2="1 &euro;"
+            myTicketsText3="spent on FunPay earns you"
             myTicketsText4="1 ticket."
-            note="More tickets&nbsp;&mdash; more chances to&nbsp;loot valuable prize"
+            note="The more tickets you collect, the higher your chances of looting valuable prizes."
             myTicketsBoxTitle1="You have"
             myTicketsBoxTitle2="37 tickets"
-            myTicketsBoxText="<p>Participants: <span class='ticket-participants'>235&nbsp;6589</span></p><p>Average tickets per participant: <span class='ticket-average'>15</span></p>"
+            myTicketsBoxText="<p>Total participants: <span class='ticket-participants'>235&nbsp;6589</span></p><p>Average tickets per participant: <span class='ticket-average'>15</span></p>"
             buttonText="Check my tickets"
             items={myTickets}
             tableParamName="Order"
@@ -242,13 +263,13 @@ const faq = [
         ></MyTickets>
 
         <Instructions
-            title="How to join?"
+            title="How do I participate?"
             items={instructions}
-            note="Note: sales and purchases are eligible only if&nbsp;made between December 15&nbsp;and January&nbsp;15. Trade on&nbsp;FunPay and loot away!"
+            note="Important: only sales and purchases made between August&nbsp;15th and September&nbsp;15th are eligible for the raffle.<br> Trade on FunPay and grab your loot!"
         ></Instructions>
 
         <Faq
-            title="Got some questions left?"
+            title="Still have questions?"
             items={faq}
         ></Faq>
     </div>

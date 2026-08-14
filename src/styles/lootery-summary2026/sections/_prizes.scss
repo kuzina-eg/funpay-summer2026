@@ -13,19 +13,19 @@
         //@include grid-columns(6);
 
         grid-template-areas:
-            "second second first third third"
-            "fourth fourth first fifth fifth"
-            "sixth sixth seventh eighth  ninth";
+            "fifth sixth first second second"
+            "third third first ninth seventh"
+            "tenth eighth fourth eleventh twelfth";
     }
 
-    &__plug {
-        display: none;
-
-        @include media(tab) {
-            display: flex;
-            align-items: flex-end;
-            justify-content: center;
-            padding-bottom: 4px;
-        }
-    }
+    //&__plug {
+    //    display: none;
+    //
+    //    @include media(tab) {
+    //        display: flex;
+    //        align-items: flex-end;
+    //        justify-content: center;
+    //        padding-bottom: 4px;
+    //    }
+    //}
 }

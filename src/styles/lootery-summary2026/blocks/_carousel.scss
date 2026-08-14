@@ -90,6 +90,33 @@
 }
 
 
+.modal-pc-photos {
+    .carousel__nav {
+        top: 62%;
+
+        @include media(mob-md) {
+            width: 15px;
+            height: 15px;
+        }
+    }
+
+    .carousel__nav--prev {
+        left: 10px;
+    }
+
+    .carousel__nav--next {
+        right: 10px;
+    }
+
+    &__image {
+        display: block;
+        width: 100%;
+        aspect-ratio: 5 / 4;
+        object-fit: contain;
+    }
+}
+
+
 .modal-photos {
     @include media(tab) {
         padding-left: 18px;
