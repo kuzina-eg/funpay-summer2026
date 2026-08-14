@@ -135,6 +135,8 @@
     }
 
     &__bg {
+        display: none;
+
         position: absolute;
         top: 17%;
         left: 0;
@@ -162,10 +164,6 @@
             left: 50%;
             transform: translate(-50%,-50%);
         }
-
-        @include media(mob) {
-            display: none;
-        }
     }
 
     &__image {
@@ -181,11 +179,9 @@
         width: 100%;
         height: auto;
         aspect-ratio: 1560 / 560;
-        mix-blend-mode: multiply;
 
         @include media(mob) {
             aspect-ratio: 626 / 462;
-            mix-blend-mode: normal;
         }
     }
 

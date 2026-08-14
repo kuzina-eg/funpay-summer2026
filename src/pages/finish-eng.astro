@@ -8,8 +8,8 @@ import Winners from '@components/sections/Winners.astro';
 const prizes = [
     {
         title: 'God-tier PC',
-        count: '1 pcs.',
-        image: 'pc',
+        count: '',
+        image: 'pc-roblox',
         avatar: '01',
         user: 'Lootkiller',
         ticket: '№7362-9053',
@@ -17,64 +17,78 @@ const prizes = [
         isDetail: true,
     },
     {
-        title: 'Playstation 5 Pro',
-        count: '3 pcs.',
-        image: 'playstation',
+        title: 'The Ultimate setup for GTA&nbsp;VI',
+        count: '1 prize',
+        image: 'setup-gta6',
         avatar: '02',
-        winners: ['Architekto_bz','trallalelo','shaska-pulemet'],
+        winners: ['Architekto_bz','trallalelo','shaska-pulemet','trallalelo','shaska-pulemet'],
     },
     {
-        title: 'LG 27GX790A-B display',
-        count: '3 pcs.',
-        image: 'lg',
+        title: 'Herman&nbsp;Miller X&nbsp;Logitech Embody Gaming chair',
+        count: '3 prizes',
+        image: 'armchair',
         avatar: '03',
         winners: ['Architekto_bz','trallalelo','shaska-pulemet'],
     },
     {
-        title: 'iPhone 17 Pro Max',
-        count: '5 pcs.',
+        title: '64GB of G.SKILL Trident&nbsp;Z5 Royal&nbsp;Neo RAM',
+        count: '3 prizes',
+        image: 'ddr',
+        avatar: '',
+        winners: ['Architekto_bz','trallalelo','shaska-pulemet','shaska-pulemet','annapipka'],
+    },
+    {
+        title: 'iPhone&nbsp;17 Pro&nbsp;Max',
+        count: '5 prizes',
         image: 'iphone',
-        avatar: '',
-        winners: ['Architekto_bz','trallalelo','shaska-pulemet','shaska-pulemet','annapipka'],
-    },
-    {
-        title: 'OnePlus 15',
-        count: '5 pcs.',
-        image: 'oneplus',
-        avatar: '',
-        winners: ['Architekto_bz','trallalelo','shaska-pulemet','shaska-pulemet','annapipka'],
-    },
-    {
-        title: 'Steam Deck OLED',
-        count: '10 pcs.',
-        image: 'steam',
         avatar: '04',
         winners: ['Architekto_bz','trallalelo','shaska-pulemet','shaska-pulemet','annapipka','shaska-pulemet','annapipka','shaska-pulemet','annapipka','shaska-pulemet'],
     },
     {
-        title: 'Branded FunPay glass',
-        count: '50 pcs.',
-        image: 'cup',
+        title: 'PS5&nbsp;Pro + GTA&nbsp;VI Ultimate',
+        count: '5 prizes',
+        image: 'playstation',
         avatar: '',
         winners: ['Architekto_bz','trallalelo','shaska-pulemet'],
     },
     {
-        title: 'Branded FunPay hoodie',
-        count: '50 pcs.',
-        image: 'hoodie',
+        title: 'Xbox + GTA&nbsp;VI Ultimate',
+        count: '5 prizes',
+        image: 'xbox',
         avatar: '',
         winners: ['Architekto_bz','trallalelo','shaska-pulemet','annapipka','rock&ball'],
     },
     {
-        title: 'Games worth 10&nbsp;000&nbsp;RUB',
-        count: '50 pcs.',
+        title: 'Steam Deck OLED',
+        count: '5 prizes',
+        image: 'steam',
+        avatar: '',
+        winners: ['Architekto_bz','trallalelo','shaska-pulemet','annapipka','rock&ball','Architekto_bz','trallalelo','shaska-pulemet','annapipka','rock&ball','Architekto_bz','trallalelo','shaska-pulemet','annapipka','rock&ball','Architekto_bz','trallalelo','shaska-pulemet','annapipka','rock&ball'],
+    },
+    {
+        title: 'Millennium&nbsp;Falcon&trade; LEGO&nbsp;set',
+        count: '5 prizes',
+        image: 'lego',
+        avatar: '',
+        winners: ['Architekto_bz','trallalelo','shaska-pulemet','annapipka','rock&ball','Architekto_bz','trallalelo','shaska-pulemet','annapipka','rock&ball','Architekto_bz','trallalelo','shaska-pulemet','annapipka','rock&ball','Architekto_bz','trallalelo','shaska-pulemet','annapipka','rock&ball'],
+    },
+    {
+        title: 'Razer Viper&nbsp;V4&nbsp;Pro gaming mouse',
+        count: '10 prizes',
+        image: 'mouse',
+        avatar: '',
+        winners: ['Architekto_bz','trallalelo','shaska-pulemet','annapipka','rock&ball','Architekto_bz','trallalelo','shaska-pulemet','annapipka','rock&ball','Architekto_bz','trallalelo','shaska-pulemet','annapipka','rock&ball','Architekto_bz','trallalelo','shaska-pulemet','annapipka','rock&ball'],
+    },
+    {
+        title: '100&nbsp;&euro; worth of games',
+        count: '50 prizes',
         image: 'games10',
         avatar: '',
         winners: ['Architekto_bz','trallalelo','shaska-pulemet','annapipka','rock&ball','Architekto_bz','trallalelo','shaska-pulemet','annapipka','rock&ball','Architekto_bz','trallalelo','shaska-pulemet','annapipka','rock&ball','Architekto_bz','trallalelo','shaska-pulemet','annapipka','rock&ball'],
     },
     {
-        title: 'Games worth 5&nbsp;000&nbsp;RUB',
-        count: '100 pcs.',
+        title: '50&nbsp;&euro; worth of games',
+        count: '100 prizes',
         image: 'games5',
         avatar: '',
         winners: ['Architekto_bz','trallalelo','shaska-pulemet','annapipka','rock&ball','Architekto_bz','trallalelo','shaska-pulemet','annapipka','rock&ball','Architekto_bz','trallalelo','shaska-pulemet','annapipka','rock&ball','Architekto_bz','trallalelo','shaska-pulemet','annapipka','rock&ball'],
@@ -136,16 +150,15 @@ const myTickets = [
 <Layout title="Lootery">
 
     <FinishPromo
-        noteText="Thanks for playing!"
-        title="<span class='u-text-accent'>Loot</span>ery is over"
-        titleWinner="<span class='u-text-accent'>Loot</span>ery is over"
-        text="Watch the draw replay on Twitch"
-        buttonText="Watch results on Twitch"
+        title="The raffle has concluded"
+        titleWinner="The <span class='u-text-accent'>Loot</span>ery has concluded"
+        text="We&rsquo;ve announced the winners on our Twitch stream"
+        buttonText="Watch the broadcast on Twitch"
         isWinner={false}
-        boxTitle="No loot this time"
-        boxTitleWinner="Congratulations! You’ve won:<br> Nintendo Switch 2"
-        boxText="Better luck next round! Don&rsquo;t lose faith&nbsp;&mdash; more giveaways are on&nbsp;the way!"
-        boxTextWinner="Whoa, that’s some luck!<br> We’ll contact you via FunPay messages to arrange prize delivery.<br> May the RNG gods smile on you again soon."
+        boxTitle="Sorry, no prizes<br> for now"
+        boxTitleWinner="Congrats! You won:<br> Nintendo Switch 2"
+        boxText="Better luck next time! Keep your head up and stay tuned for future announcements"
+        boxTextWinner="Wow, talk about luck! We&rsquo;ll reach out to you via DMs on FunPay to sort out the delivery. Hope your winning streak keeps on going"
         myTicketsBoxTitle1="Winning ticket:"
     ></FinishPromo>
 
@@ -155,13 +168,12 @@ const myTickets = [
             items={prizes}
             winnerName="Winner"
             ticket="Ticket"
-            modalText="This prize has been looted!"
-            buttonText="View my tickets"
+            modalText="This prize has been successfully Looted:"
+            buttonText="Check my tickets"
             allTickets="All tickets"
             ticketItems={myTickets}
-            myTicketsBoxTitle1="You’ve got:"
+            myTicketsBoxTitle1="You have"
             myTicketsBoxTitle2="37 tickets"
-            ticketItems={myTickets}
             tableParamName="Order"
             tableValueName="Tickets"
         ></Winners>

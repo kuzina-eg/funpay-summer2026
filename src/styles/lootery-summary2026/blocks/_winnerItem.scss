@@ -50,7 +50,7 @@
         @include media-min(mob-md) {
             align-items: center;
             gap: 1rem;
-            @include grid-columns(2);
+            grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
         }
     }
 

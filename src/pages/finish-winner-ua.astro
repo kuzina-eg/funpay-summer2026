@@ -7,9 +7,9 @@ import Winners from '@components/sections/Winners.astro';
 
 const prizes = [
     {
-        title: 'Царь-пекарня',
-        count: '1 шт.',
-        image: 'pc',
+        title: 'Комп мрії',
+        count: '',
+        image: 'pc-roblox',
         avatar: '01',
         user: 'Lootkiller',
         ticket: '№7362-9053',
@@ -17,64 +17,78 @@ const prizes = [
         isDetail: true,
     },
     {
-        title: 'Playstation 5 Pro',
-        count: '3 шт.',
-        image: 'playstation',
+        title: 'Ультимативний сетап для&nbsp;GTA&nbsp;VI',
+        count: '1 приз',
+        image: 'setup-gta6',
         avatar: '02',
-        winners: ['Architekto_bz','trallalelo','shaska-pulemet'],
+        winners: ['Architekto_bz','trallalelo','shaska-pulemet','trallalelo','shaska-pulemet'],
     },
     {
-        title: 'Монітор LG 27GK790A-B',
-        count: '3 шт.',
-        image: 'lg',
+        title: 'Крісло Herman&nbsp;Miller Embody&nbsp;X&nbsp;Logitech',
+        count: '3 призи',
+        image: 'armchair',
         avatar: '03',
         winners: ['Architekto_bz','trallalelo','shaska-pulemet'],
     },
     {
+        title: '64 гіга королівської оперативки',
+        count: '3 призи',
+        image: 'ddr',
+        avatar: '',
+        winners: ['Architekto_bz','trallalelo','shaska-pulemet','shaska-pulemet','annapipka'],
+    },
+    {
         title: 'iPhone 17 Pro Max',
-        count: '5 шт.',
+        count: '5 призів',
         image: 'iphone',
-        avatar: '',
-        winners: ['Architekto_bz','trallalelo','shaska-pulemet','shaska-pulemet','annapipka'],
-    },
-    {
-        title: 'OnePlus 15',
-        count: '5 шт.',
-        image: 'oneplus',
-        avatar: '',
-        winners: ['Architekto_bz','trallalelo','shaska-pulemet','shaska-pulemet','annapipka'],
-    },
-    {
-        title: 'Steam Deck OLED',
-        count: '10 шт.',
-        image: 'steam',
         avatar: '04',
         winners: ['Architekto_bz','trallalelo','shaska-pulemet','shaska-pulemet','annapipka','shaska-pulemet','annapipka','shaska-pulemet','annapipka','shaska-pulemet'],
     },
     {
-        title: 'Фірмовий стакан FunPay',
-        count: '50 шт.',
-        image: 'cup',
+        title: 'PS5 Pro + GTA VI Ultimate',
+        count: '5 призів',
+        image: 'playstation',
         avatar: '',
         winners: ['Architekto_bz','trallalelo','shaska-pulemet'],
     },
     {
-        title: 'Фірмова толстовка FunPay',
-        count: '50 шт.',
-        image: 'hoodie',
+        title: 'Xbox + GTA VI Ultimate',
+        count: '5 призів',
+        image: 'xbox',
         avatar: '',
         winners: ['Architekto_bz','trallalelo','shaska-pulemet','annapipka','rock&ball'],
     },
     {
-        title: 'Ігри на&nbsp;суму до&nbsp;100&nbsp;євро',
-        count: '50 шт.',
+        title: 'Steam Deck OLED',
+        count: '5 призів',
+        image: 'steam',
+        avatar: '',
+        winners: ['Architekto_bz','trallalelo','shaska-pulemet','annapipka','rock&ball','Architekto_bz','trallalelo','shaska-pulemet','annapipka','rock&ball','Architekto_bz','trallalelo','shaska-pulemet','annapipka','rock&ball','Architekto_bz','trallalelo','shaska-pulemet','annapipka','rock&ball'],
+    },
+    {
+        title: 'LEGO &laquo;Тисячолітній Сокіл&raquo;',
+        count: '5 призів',
+        image: 'lego',
+        avatar: '',
+        winners: ['Architekto_bz','trallalelo','shaska-pulemet','annapipka','rock&ball','Architekto_bz','trallalelo','shaska-pulemet','annapipka','rock&ball','Architekto_bz','trallalelo','shaska-pulemet','annapipka','rock&ball','Architekto_bz','trallalelo','shaska-pulemet','annapipka','rock&ball'],
+    },
+    {
+        title: 'Мишка Viper&nbsp;V4&nbsp;Pro',
+        count: '10 призів',
+        image: 'mouse',
+        avatar: '',
+        winners: ['Architekto_bz','trallalelo','shaska-pulemet','annapipka','rock&ball','Architekto_bz','trallalelo','shaska-pulemet','annapipka','rock&ball','Architekto_bz','trallalelo','shaska-pulemet','annapipka','rock&ball','Architekto_bz','trallalelo','shaska-pulemet','annapipka','rock&ball'],
+    },
+    {
+        title: 'Ігри на суму 100&nbsp;євро',
+        count: '50 призів',
         image: 'games10',
         avatar: '',
         winners: ['Architekto_bz','trallalelo','shaska-pulemet','annapipka','rock&ball','Architekto_bz','trallalelo','shaska-pulemet','annapipka','rock&ball','Architekto_bz','trallalelo','shaska-pulemet','annapipka','rock&ball','Architekto_bz','trallalelo','shaska-pulemet','annapipka','rock&ball'],
     },
     {
-        title: 'Ігри на&nbsp;суму до&nbsp;50&nbsp;євро',
-        count: '100 шт.',
+        title: 'Ігри на суму 50&nbsp;євро',
+        count: '100 призів',
         image: 'games5',
         avatar: '',
         winners: ['Architekto_bz','trallalelo','shaska-pulemet','annapipka','rock&ball','Architekto_bz','trallalelo','shaska-pulemet','annapipka','rock&ball','Architekto_bz','trallalelo','shaska-pulemet','annapipka','rock&ball','Architekto_bz','trallalelo','shaska-pulemet','annapipka','rock&ball'],
@@ -136,17 +150,16 @@ const myTickets = [
 <Layout title="Лутерея">
 
     <FinishPromo
-        noteText="Дякую за участь!"
-        title="<span class='u-text-accent'>Лут</span>ерею завершено"
+        noteText="Дякуємо за участь!"
         titleWinner="<span class='u-text-accent'>Лут</span>ерею завершено"
         text="Підсумки розіграшу ми&nbsp;підбили на&nbsp;стрімі"
-        buttonText="Подивитися підсумки на&nbsp;Twitch"
+        buttonText="Подивитися підсумки на Twitch"
         isWinner={true}
-        boxTitle="На жаль,<br> цього разу без призів"
+        boxTitle="На жаль, цього<br> разу без призів"
         boxTitleWinner="Вітаємо! Ви виграли:<br> Nintendo Switch 2"
         boxText="Наступного разу вам обов&rsquo;язково пощастить! Не&nbsp;втрачайте надії, слідкуйте за&nbsp;анонсами"
-        boxTextWinner="Воу! Оце так удача! Ми&nbsp;зв&rsquo;яжемося з&nbsp;вами в&nbsp;особистих повідомленнях на&nbsp;FunPay, щоб обговорити доставку призу. Нехай щастить і&nbsp;надалі"
-        myTicketsBoxTitle1="Виграв квиток:"
+        boxTextWinner="Воу! Оце так пощастило! Ми&nbsp;зв&rsquo;яжемося з&nbsp;вами в&nbsp;особистих повідомленнях на&nbsp;FunPay, щоб обговорити доставку призу. Нехай щастить і&nbsp;надалі"
+        myTicketsBoxTitle1="Виграв білет:"
     ></FinishPromo>
 
     <div class="container">
@@ -154,16 +167,15 @@ const myTickets = [
             title="Переможці"
             items={prizes}
             winnerName="Переможець"
-            ticket="Квиток"
+            ticket="Білет"
             modalText="Цей приз успішно залутали:"
-            buttonText="Подивитись мої квитки"
-            allTickets="Усі квитки"
+            buttonText="Переглянути мої білети"
+            allTickets="Усі білети"
             ticketItems={myTickets}
             myTicketsBoxTitle1="У вас"
-            myTicketsBoxTitle2="37 квитків"
-            ticketItems={myTickets}
+            myTicketsBoxTitle2="37 білетів"
             tableParamName="Замовлення"
-            tableValueName="Квитки"
+            tableValueName="Білети"
         ></Winners>
     </div>
 </Layout>

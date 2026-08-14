@@ -7,9 +7,9 @@ import Winners from '@components/sections/Winners.astro';
 
 const prizes = [
     {
-        title: 'Царь-пекарня',
-        count: '1 шт.',
-        image: 'pc',
+        title: 'Комп мечты',
+        count: '',
+        image: 'pc-roblox',
         avatar: '01',
         user: 'Lootkiller',
         ticket: '№7362-9053',
@@ -17,58 +17,79 @@ const prizes = [
         isDetail: true,
     },
     {
-        title: 'Ноутбук<br> ASUS',
-        count: '5 шт.',
-        image: 'asus',
+        title: 'Ультимативный сетап для&nbsp;GTA&nbsp;VI',
+        count: '1 приз',
+        image: 'setup-gta6',
         avatar: '02',
         winners: ['Architekto_bz','trallalelo','shaska-pulemet','trallalelo','shaska-pulemet'],
     },
     {
-        title: 'iPad Pro 13"',
-        count: '3 шт.',
-        image: 'ipad',
+        title: 'Кресло Herman Miller Embody&nbsp;X Logitech',
+        count: '3 приза',
+        image: 'armchair',
         avatar: '03',
         winners: ['Architekto_bz','trallalelo','shaska-pulemet'],
     },
     {
-        title: 'OnePlus 15',
-        count: '10 шт.',
-        image: 'oneplus',
+        title: '64 гига королевской оперативки',
+        count: '3 приза',
+        image: 'ddr',
         avatar: '',
         winners: ['Architekto_bz','trallalelo','shaska-pulemet','shaska-pulemet','annapipka'],
     },
     {
-        title: '22 500 робуксов',
-        count: '30 паков',
-        image: 'robux-xl',
+        title: 'iPhone 17 Pro Max',
+        count: '5 призов',
+        image: 'iphone',
         avatar: '04',
         winners: ['Architekto_bz','trallalelo','shaska-pulemet','shaska-pulemet','annapipka','shaska-pulemet','annapipka','shaska-pulemet','annapipka','shaska-pulemet'],
     },
     {
-        title: '13 000 робуксов',
-        count: '50 паков',
-        image: 'robux-lg',
+        title: 'PS5 Pro + GTA VI Ultimate',
+        count: '5 призов',
+        image: 'playstation',
         avatar: '',
         winners: ['Architekto_bz','trallalelo','shaska-pulemet'],
     },
     {
-        title: '6 000 робуксов',
-        count: '100 паков',
-        image: 'robux',
+        title: 'Xbox + GTA VI Ultimate',
+        count: '5 призов',
+        image: 'xbox',
         avatar: '',
         winners: ['Architekto_bz','trallalelo','shaska-pulemet','annapipka','rock&ball'],
     },
     {
-        title: '2 000 робуксов',
-        count: '150 паков',
-        image: 'robux-sm',
+        title: 'Steam Deck OLED',
+        count: '5 призов',
+        image: 'steam',
         avatar: '',
         winners: ['Architekto_bz','trallalelo','shaska-pulemet','annapipka','rock&ball','Architekto_bz','trallalelo','shaska-pulemet','annapipka','rock&ball','Architekto_bz','trallalelo','shaska-pulemet','annapipka','rock&ball','Architekto_bz','trallalelo','shaska-pulemet','annapipka','rock&ball'],
     },
     {
-        title: '1 200 робуксов',
-        count: '200 паков',
-        image: 'robux-xs',
+        title: 'LEGO &laquo;Сокол Тысячелетия&raquo;',
+        count: '5 призов',
+        image: 'lego',
+        avatar: '',
+        winners: ['Architekto_bz','trallalelo','shaska-pulemet','annapipka','rock&ball','Architekto_bz','trallalelo','shaska-pulemet','annapipka','rock&ball','Architekto_bz','trallalelo','shaska-pulemet','annapipka','rock&ball','Architekto_bz','trallalelo','shaska-pulemet','annapipka','rock&ball'],
+    },
+    {
+        title: 'Мышка Viper&nbsp;V4&nbsp;Pro',
+        count: '10 призов',
+        image: 'mouse',
+        avatar: '',
+        winners: ['Architekto_bz','trallalelo','shaska-pulemet','annapipka','rock&ball','Architekto_bz','trallalelo','shaska-pulemet','annapipka','rock&ball','Architekto_bz','trallalelo','shaska-pulemet','annapipka','rock&ball','Architekto_bz','trallalelo','shaska-pulemet','annapipka','rock&ball'],
+    },
+    {
+        title: 'Игры на сумму до&nbsp;10&nbsp;000&nbsp;₽',
+        count: '50 призов',
+        image: 'games10',
+        avatar: '',
+        winners: ['Architekto_bz','trallalelo','shaska-pulemet','annapipka','rock&ball','Architekto_bz','trallalelo','shaska-pulemet','annapipka','rock&ball','Architekto_bz','trallalelo','shaska-pulemet','annapipka','rock&ball','Architekto_bz','trallalelo','shaska-pulemet','annapipka','rock&ball'],
+    },
+    {
+        title: 'Игры на сумму до&nbsp;5&nbsp;000&nbsp;₽',
+        count: '100 призов',
+        image: 'games5',
         avatar: '',
         winners: ['Architekto_bz','trallalelo','shaska-pulemet','annapipka','rock&ball','Architekto_bz','trallalelo','shaska-pulemet','annapipka','rock&ball','Architekto_bz','trallalelo','shaska-pulemet','annapipka','rock&ball','Architekto_bz','trallalelo','shaska-pulemet','annapipka','rock&ball'],
     },
@@ -129,16 +150,15 @@ const myTickets = [
 <Layout title="Лутерея">
 
     <FinishPromo
-        noteText=""
         title="Конкурс завершен"
         titleWinner="<span class='u-text-accent'>Лут</span>ерея завершена"
         text="Итоги розыгрыша мы&nbsp;подвели на&nbsp;стриме"
         buttonText="Смотреть итоги на Twitch"
         isWinner={false}
-        boxTitle="Увы, в этот раз<br> без призов"
+        boxTitle="Увы, в этот<br> раз без призов"
         boxTitleWinner="Поздравляем! Вы выиграли:<br> Nintendo Switch 2"
         boxText="В&nbsp;следующий раз вам обязательно повезёт! Не&nbsp;теряйте надежду и&nbsp;следите за&nbsp;анонсами"
-        boxTextWinner="Воу, вот это удача! Мы&nbsp;свяжемся с&nbsp;вами в&nbsp;личных сообщениях на&nbsp;FunPay, чтобы обсудить доставку приза. Пусть вам везёт и&nbsp;дальше"
+        boxTextWinner="Воу, вот это удача! Мы&nbsp;свяжемся с&nbsp;вами&nbsp;в&nbsp;личных сообщениях на&nbsp;FunPay, чтобы обсудить доставку приза. Пусть&nbsp;вам везёт и&nbsp;дальше"
         myTicketsBoxTitle1="Выиграл билет:"
     ></FinishPromo>
 
@@ -154,7 +174,6 @@ const myTickets = [
             ticketItems={myTickets}
             myTicketsBoxTitle1="У вас"
             myTicketsBoxTitle2="37 билетиков"
-            ticketItems={myTickets}
             tableParamName="Заказ"
             tableValueName="Билеты"
         ></Winners>

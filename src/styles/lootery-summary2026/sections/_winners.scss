@@ -34,16 +34,20 @@
         display: flex;
         justify-content: center;
         pointer-events: none;
-        margin-left: -8%;
-        margin-right: -8%;
 
         @include media-min(mob) {
-            margin-left: -85px;
-            margin-right: -85px;
         }
     }
 
     &__image {
-        //width: 914px;
+        width: 227px;
+
+        @include media-min(mob) {
+            width: 265px;
+        }
+
+        @include media-min(tab) {
+            width: 287px;
+        }
     }
 }

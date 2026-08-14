@@ -100,22 +100,23 @@
 
     &__photo {
         position: absolute;
-        left: -36px;
-        right: -36px;
-        top: 0;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
         z-index: 10;
+        width: 412px;
         pointer-events: none;
 
         @include media-min(mob-md) {
-            left: -45px;
-            right: -45px;
-            //top: -51px;
+            width: 646px;
         }
 
         @include media-min(mob) {
-            left: -173px;
-            right: -173px;
-            //top: -56px;
+            width: 1054px;
+        }
+
+        @include media-min(tab) {
+            width: 1091px;
         }
     }
 
@@ -148,7 +149,7 @@
     &__box-content {
         margin-left: 5.88%;
         margin-right: 5.88%;
-        padding: 36px 30px 61px;
+        padding: 72px 30px 33px;
         font-size: 16px;
         background-color: $color-white;
         border-radius: 16px;
@@ -160,13 +161,13 @@
         @include media-min(mob-md) {
             margin-left: 6%;
             margin-right: 6%;
-            padding: 47px 100px 46px;
+            padding: 80px 100px 36px;
         }
 
         @include media-min(mob) {
             margin-left: 0;
             margin-right: 0;
-            padding: 51px 160px 66px;
+            padding: 110px 160px 22px;
         }
     }
 
@@ -176,7 +177,7 @@
 
         @include media-min(mob-md) {
             padding-top: 66px;
-            padding-bottom: 72px;
+            padding-bottom: 75px;
         }
 
         @include media-min(mob) {
@@ -205,16 +206,21 @@
 
     &__box-title {
         margin-bottom: 13px;
+        margin-left: -8%;
+        margin-right: -8%;
         font-weight: 700;
         font-size: 16px;
         line-height: 1.2;
 
         @include media-min(mob-md) {
-            font-size: 20px;
+            margin-left: -28%;
+            margin-right: -28%;
+            font-size: 25px;
         }
 
         @include media-min(mob) {
-            font-size: 24px;
+            margin-left: -28%;
+            margin-right: -28%;
         }
 
         @include media-min(tab) {
@@ -241,15 +247,6 @@
                 margin-left: 8%;
                 margin-right: 8%;
             }
-        }
-
-        @include media-min(mob) {
-            //font-size: 16px;
-
-            //&.--notwinner {
-            //    margin-left: 15%;
-            //    margin-right: 15%;
-            //}
         }
     }
 
