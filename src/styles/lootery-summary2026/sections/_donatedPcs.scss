@@ -9,10 +9,45 @@
         }
     }
 
-    &__carousel {
-        padding: 40px 60px;
+    &__panel {
         background-color: rgba($color-white-rgb, .5);
         border-radius: 12px;
+    }
+
+    &__more {
+        position: relative;
+        z-index: 5;
+        margin-top: -10px;
+        padding: 0 20px 10px;
+        text-align: center;
+
+        @include media-min(tab) {
+            margin-top: -20px;
+            padding-bottom: 20px;
+        }
+    }
+
+    &__link {
+        font-size: 11px;
+        line-height: 1.2;
+        color: $color-accent;
+        text-decoration: underline;
+
+        @include media-min(mob-md) {
+            font-size: 16px;
+        }
+
+        @include media-min(tab) {
+            font-size: 26px;
+        }
+
+        @include hover {
+            color: $color-accent-hover;
+        }
+    }
+
+    &__carousel {
+        padding: 20px 60px;
 
         @include media(tab) {
             .carousel__slide {

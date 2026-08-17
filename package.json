@@ -13,7 +13,9 @@
     "start": "gulp svg && astro dev",
     "build": "gulp svg && astro build && gulp beautify",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "frames": "node tools/prepare-sequence.mjs",
+    "check:sequence": "node tools/check-scroll-sequence.mjs"
   },
   "dependencies": {
     "@fancyapps/ui": "^5.0.36",

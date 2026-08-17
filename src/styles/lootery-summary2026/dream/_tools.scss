@@ -1,0 +1,12 @@
+@use "sass:math";
+
+$dream-viewport-desktop: 14.4;  // макет 1440
+$dream-viewport-mobile: 5.76;   // макет 576
+
+@function dream-unit($viewport) {
+    @return #{math.div(1, $viewport)}vw;
+}
+
+@function du($value) {
+    @return calc(var(--dream-u) * #{$value});
+}

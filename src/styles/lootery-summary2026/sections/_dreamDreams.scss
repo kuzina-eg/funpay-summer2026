@@ -1,0 +1,30 @@
+@use "@styles/lootery-summary2026/mixins" as *;
+@use "@styles/lootery-summary2026/dream/tools" as *;
+
+.dream-dreams {
+    margin-top: du(52.3);
+
+    @include media-min(tab) {
+        margin-top: du(153);
+    }
+
+    &__title {
+        margin-top: 0;
+    }
+
+    &__video {
+        margin-top: du(43.6);
+
+        @include media-min(tab) {
+            margin-top: du(103);
+        }
+    }
+
+    &__button {
+        margin-top: du(53.5);
+
+        @include media-min(tab) {
+            margin-top: du(138);
+        }
+    }
+}

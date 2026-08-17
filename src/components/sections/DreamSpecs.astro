@@ -1,0 +1,51 @@
+---
+import Picture from '@components/modules/Picture.astro';
+
+interface Props {
+    title?: string;
+    items?: Array<any>;
+    class?: string;
+    [x: string]: any;
+}
+
+const {
+    title,
+    items = [],
+    class: className,
+    ...rest
+} = Astro.props;
+
+const directory = 'img/lootery-summary2026/dream/';
+---
+<section class:list={['dream-specs', className]} {...rest}>
+    <div class="dream__container">
+        <h2 class="dream-specs__title dream__title" set:html={title}></h2>
+
+        {items.map((item, index) => (
+            <div
+                class:list={[
+                    'dream-specs__row',
+                    index % 2 === 1 ? 'dream-specs__row--photo-right' : 'dream-specs__row--photo-left'
+                ]}
+                data-scroll-reveal
+            >
+                <div class="dream-specs__photo">
+                    <Picture
+                        class="dream-specs__image"
+                        name={item.image}
+                        directory={directory}
+                        type="jpg"
+                        imageWidth="675"
+                        imageHeight="450"
+                        alt={item.alt}
+                    ></Picture>
+                </div>
+                <ul class="dream-specs__list">
+                    {item.features.map((feature) => (
+                        <li class="dream-specs__item" set:html={feature}></li>
+                    ))}
+                </ul>
+            </div>
+        ))}
+    </div>
+</section>

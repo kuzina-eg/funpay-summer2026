@@ -1,0 +1,86 @@
+@use "@styles/lootery-summary2026/mixins" as *;
+@use "@styles/lootery-summary2026/dream/tools" as *;
+
+.dream {
+    --dream-u: #{dream-unit($dream-viewport-mobile)};
+    --dream-container: #{du(556)};
+    --dream-text: #2D2D2D;
+    --dream-title: #000000;
+
+    margin: 0;
+    border: none;
+    overflow: hidden;
+    padding-top: du(110);
+    padding-bottom: du(58);
+    background-color: $color-white;
+    font-family: $base-font-family;
+    font-weight: 400;
+    color: var(--dream-text);
+
+    @include media-min(tab) {
+        --dream-u: #{dream-unit($dream-viewport-desktop)};
+        --dream-container: #{du(1124)};
+
+        padding-bottom: du(125);
+    }
+
+    @include media-min(pc-l) {
+        --dream-u: 1px;
+    }
+
+    picture {
+        display: block;
+    }
+
+    &__container {
+        width: var(--dream-container);
+        max-width: calc(100% - #{du(20)});
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    &__title {
+        margin: 0;
+        font-weight: 700;
+        font-size: du(35);
+        line-height: 1.1;
+        text-align: center;
+        color: var(--dream-title);
+
+        @include media-min(tab) {
+            font-size: du(80);
+        }
+    }
+}
+
+.dream-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: du(264.333);
+    height: du(61);
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 du(20);
+    border-radius: du(8.133);
+    background-color: $color-accent;
+    font-weight: 600;
+    font-size: du(20.333);
+    line-height: 1;
+    text-align: center;
+    text-decoration: none;
+    color: $color-white;
+    transition: background-color $duration;
+
+    @include media-min(tab) {
+        width: du(481);
+        height: du(111);
+        border-radius: du(14.8);
+        font-size: du(37);
+    }
+
+    @include hover {
+        background-color: $color-accent-hover;
+        color: $color-white;
+    }
+}

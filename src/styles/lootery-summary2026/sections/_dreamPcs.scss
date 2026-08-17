@@ -1,0 +1,134 @@
+@use "@styles/lootery-summary2026/mixins" as *;
+@use "@styles/lootery-summary2026/dream/tools" as *;
+
+.dream-pcs {
+    &__item {
+        position: relative;
+    }
+
+    &__item--poe {
+        z-index: 3;
+    }
+
+    &__item--wow {
+        z-index: 2;
+    }
+
+    &__item--roblox {
+        z-index: 1;
+    }
+
+    &__text {
+        position: absolute;
+        z-index: 2;
+        left: 0;
+        right: 0;
+        text-align: center;
+    }
+
+    &__title {
+        margin: 0;
+        font-weight: 700;
+        font-size: du(40);
+        line-height: 1.14;
+        color: var(--dream-title);
+
+        br {
+            display: none;
+        }
+    }
+
+    &__subtitle {
+        margin: du(3) 0 0;
+        font-weight: 400;
+        font-size: du(20);
+        line-height: 1.21;
+        color: var(--dream-title);
+    }
+
+    &__media {
+        position: relative;
+        display: block;
+        overflow: hidden;
+        width: 100%;
+        aspect-ratio: 1;
+        margin-left: auto;
+        margin-right: auto;
+
+        @include media(tab) {
+            width: 120%;
+            margin-left: -10%;
+            margin-right: -10%;
+        }
+    }
+
+    &__media &__frame {
+        display: block;
+        width: 118.68%;
+        max-width: none;
+        height: auto;
+        margin-left: -9.34%;
+        margin-top: -9.34%;
+    }
+
+    &__canvas {
+        display: none;
+    }
+
+    &__media.is-ready &__canvas {
+        display: block;
+    }
+
+    &__media.is-ready picture {
+        display: none;
+    }
+
+    @include media-min(tab) {
+        &__item {
+            margin-top: du(-190);
+        }
+
+        &__text {
+            top: du(190);
+        }
+
+        &__title {
+            font-size: du(70);
+
+            br {
+                display: block;
+            }
+        }
+
+        &__subtitle {
+            margin-top: du(22);
+            font-size: du(32);
+        }
+
+        &__media {
+            width: du(910);
+        }
+
+        &__item--poe &__media,
+        &__item--roblox &__media {
+            margin-right: -15%;
+        }
+
+        &__item--wow &__media {
+            margin-left: -15%;
+        }
+
+        &__item--poe &__text,
+        &__item--roblox &__text {
+            right: auto;
+            width: du(560);
+            text-align: left;
+        }
+
+        &__item--wow &__text {
+            left: auto;
+            width: du(560);
+            text-align: right;
+        }
+    }
+}

@@ -42,6 +42,24 @@
             "disabled": false
         },
         {
+            "name": "Комп мечты",
+            "link": "dream-pc.html",
+            "status": "",
+            "disabled": false
+        },
+        {
+            "name": "Комп мечты. Eng",
+            "link": "dream-pc-eng.html",
+            "status": "",
+            "disabled": false
+        },
+        {
+            "name": "Комп мечты. Ua",
+            "link": "dream-pc-ua.html",
+            "status": "",
+            "disabled": false
+        },
+        {
             "name": "Финал",
             "link": "finish.html",
             "status": "",

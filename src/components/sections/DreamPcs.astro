@@ -1,0 +1,49 @@
+---
+import Picture from '@components/modules/Picture.astro';
+
+interface Props {
+    items?: Array<any>;
+    class?: string;
+    [x: string]: any;
+}
+
+const {
+    items = [],
+    class: className,
+    ...rest
+} = Astro.props;
+
+const directory = 'img/lootery-summary2026/dream/';
+---
+<section class:list={['dream-pcs', className]} {...rest}>
+    <div class="dream__container">
+        {items.map((item) => (
+            <div class:list={['dream-pcs__item', `dream-pcs__item--${item.id}`]}>
+                <div class="dream-pcs__text">
+                    <h2 class="dream-pcs__title" set:html={item.title}></h2>
+                    <div class="dream-pcs__subtitle" set:html={item.subtitle}></div>
+                </div>
+                <div
+                    class="dream-pcs__media"
+                    data-scroll-sequence={item.frames > 1 ? true : undefined}
+                    data-sequence-src={item.frames > 1 ? `${directory}${item.id}/{d}/{i}.webp` : undefined}
+                    data-sequence-count={item.frames > 1 ? item.frames : undefined}
+                    data-sequence-offset={item.frames > 1 && item.offset ? item.offset : undefined}
+                >
+                    {item.frames > 1 && (
+                        <canvas class="dream-pcs__frame dream-pcs__canvas" width="1" height="1" aria-hidden="true"></canvas>
+                    )}
+                    <Picture
+                        class="dream-pcs__frame dream-pcs__image"
+                        name={item.image}
+                        directory={directory}
+                        type="png"
+                        imageWidth={item.imageWidth}
+                        imageHeight={item.imageWidth}
+                        alt={item.alt}
+                    ></Picture>
+                </div>
+            </div>
+        ))}
+    </div>
+</section>

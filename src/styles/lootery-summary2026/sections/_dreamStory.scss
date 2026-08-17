@@ -1,0 +1,71 @@
+@use "@styles/lootery-summary2026/mixins" as *;
+@use "@styles/lootery-summary2026/dream/tools" as *;
+
+.dream-story {
+    margin-top: du(46);
+
+    @include media-min(tab) {
+        margin-top: du(110);
+    }
+
+    &__slide {
+        display: grid;
+        grid-template-columns: du(265.274) du(227);
+        gap: du(18.66);
+        padding-left: du(31.07);
+
+        @include media-min(tab) {
+            grid-template-columns: du(537.965) du(455);
+            gap: du(52.1);
+            padding-left: du(63);
+        }
+    }
+
+    &__poster {
+        overflow: hidden;
+        border-radius: du(8.884);
+
+        @include media-min(tab) {
+            border-radius: du(18.017);
+        }
+    }
+
+    &__image {
+        display: block;
+        width: 100%;
+        height: auto;
+        aspect-ratio: 16 / 9;
+        object-fit: cover;
+    }
+
+    &__text {
+        font-size: du(10);
+        line-height: 1.21;
+
+        @include media-min(tab) {
+            font-size: du(20.72);
+        }
+    }
+
+    .carousel__wrapper {
+        gap: 0;
+    }
+
+    .carousel__nav {
+        width: du(20.217);
+        height: du(20.217);
+
+        @include media-min(tab) {
+            width: du(41);
+            height: du(41);
+        }
+    }
+
+    .carousel__nav--prev {
+        left: 0;
+    }
+
+    .carousel__nav--next {
+        right: 0;
+    }
+}

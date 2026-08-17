@@ -1,0 +1,26 @@
+---
+interface Props {
+    text?: string;
+    note?: string;
+    accent?: string;
+    class?: string;
+    [x: string]: any;
+}
+
+const {
+    text,
+    note,
+    accent,
+    class: className,
+    ...rest
+} = Astro.props;
+---
+<section class:list={['dream-intro', className]} {...rest}>
+    <div class="dream__container">
+        <div class="dream-intro__text">
+            <Fragment set:html={text}></Fragment>
+            <Fragment set:html={note}></Fragment>
+            <span class="dream-intro__accent" set:html={accent}></span>
+        </div>
+    </div>
+</section>

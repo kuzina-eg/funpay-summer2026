@@ -1,0 +1,122 @@
+---
+import Layout from '@layouts/Layout.astro';
+
+import DreamPcs from '@components/sections/DreamPcs.astro';
+import DreamIntro from '@components/sections/DreamIntro.astro';
+import DreamStory from '@components/sections/DreamStory.astro';
+import DreamSpecs from '@components/sections/DreamSpecs.astro';
+import DreamDreams from '@components/sections/DreamDreams.astro';
+import DreamVideo from '@components/modules/DreamVideo.astro';
+
+const directory = 'img/lootery-summary2026/dream/';
+
+const pcs = [
+    {
+        id: 'poe',
+        title: 'The Orb Vault',
+        subtitle: 'Summer 2025 Lootery Main Prize',
+        alt: 'Summer 2025 Lootery main prize, The Orb Vault',
+        image: 'pc-poe',
+        imageWidth: '632',
+        frames: 98,
+    },
+    {
+        id: 'wow',
+        title: 'The Emerald Dream',
+        subtitle: 'Winter 2025 Lootery Main Prize',
+        alt: 'Winter 2025 Lootery main prize, The Emerald Dream',
+        image: 'pc-wow',
+        imageWidth: '540',
+        frames: 141,
+    },
+    {
+        id: 'roblox',
+        title: 'The Roblox <br>Block Tower',
+        subtitle: 'Summer 2026 RobuxFest Main Prize',
+        alt: 'Summer 2026 RobuxFest main prize, The Roblox Block Tower',
+        image: 'pc-roblox',
+        imageWidth: '540',
+        frames: 195,
+        offset: 0.5,
+    },
+]
+
+const stories = [
+    {
+        image: 'story-1',
+        alt: 'Ruslan from Moscow, winner of the very first Lootery',
+        text: 'Ruslan from Moscow was a winner in our very first, FunPay-themed Lootery. As a fan of Path of&nbsp;Exile (a game that is central to our trading platform), he received a custom, Orb-decorated PC.',
+    },
+    {
+        image: 'story-2',
+        alt: 'Vika from Stavropol, winner of the 2025 New Year&rsquo;s Eve Lootery',
+        text: 'Vika from Stavropol was one of our winners during the New Year&rsquo;s Eve Lootery of 2025. She provides World of Warcraft services on FunPay and is a huge fan of Ysera. Her PC was designed with the Green Dragonflight and The Emerald Dream themes in mind: with crystals, vines and a Ysera figurine.',
+    },
+]
+
+const specs = [
+    {
+        image: 'spec-1',
+        alt: 'God-tier PC case with a custom water cooling loop',
+        features: [
+            'Designer case with custom water cooling loop.',
+            'Top-tier GPU: currently ASUS GeForce RTX&nbsp;5090 ROG Astral BTF.',
+            'Best gaming CPU: currently AMD Ryzen&nbsp;9 9950X3D.',
+        ],
+    },
+    {
+        image: 'spec-2',
+        alt: 'Inside the God-tier PC',
+        features: [
+            'Lots of RAM: 64GB of Kingston FURY Renegade RGB.',
+            'Massive dual NVMe storage: 4TB Samsung 990&nbsp;PRO as primary drive and 2TB Samsung 9100&nbsp;PRO as secondary.',
+            'Highest spec motherboard: ASUS ROG CROSSHAIR X870E HERO BTF.',
+        ],
+    },
+    {
+        image: 'spec-3',
+        alt: 'Roblox-themed God-tier PC',
+        features: [
+            'OLED monitor, a headset, keyboard, mouse, mic&nbsp;&mdash; all the necessary peripherals a gaming PC like this deserves.',
+            'Specialized desk that can withstand all the weight as well as an ergonomic gaming chair from Herman Miller.',
+            'This list is not set in stone: we may include something better or throw in some game codes. No cliches when it comes to the grand prize and we always cater to the winner&rsquo;s wishes and preferences.',
+        ],
+    },
+]
+---
+<Layout title="God-tier PC" looteryClass="dream">
+
+
+    <DreamPcs items={pcs}></DreamPcs>
+
+    <DreamIntro
+        text="We aren&rsquo;t just giving away a simple pre-built with top of the line specs, but a whole setup with a desk, a gaming chair, keyboard, mouse, headset and a monitor! We pick the best possible models, things that we use ourselves (one of our employees will push Herman Miller chairs to the end). The main attraction, of course, is a custom-designed case"
+        note="made in collaboration with HyperPC,"
+        accent="perfectly fitting the client&rsquo;s tastes."
+    ></DreamIntro>
+
+    <DreamStory items={stories}></DreamStory>
+
+    <div class="dream__container">
+        <DreamVideo
+            class="dream-video--faces"
+            src={`${directory}faces.mp4`}
+            poster={`${directory}faces-poster@2x.jpg`}
+        ></DreamVideo>
+    </div>
+
+    <DreamSpecs
+        title="Technical <br>specs"
+        items={specs}
+    ></DreamSpecs>
+
+    <DreamDreams
+        title="How we made the <br>dreams come true"
+        videoSrc={`${directory}dreams.mp4`}
+        videoPoster={`${directory}dreams-poster@2x.jpg`}
+        videoInteractive={true}
+        videoPlayLabel="Watch the video"
+        buttonText="Join"
+    ></DreamDreams>
+
+</Layout>

@@ -1,0 +1,53 @@
+---
+interface Props {
+    src?: string;
+    poster?: string;
+    interactive?: boolean;
+    playLabel?: string;
+    class?: string;
+    [x: string]: any;
+}
+
+const {
+    src,
+    poster,
+    interactive = false,
+    playLabel = 'Смотреть видео',
+    class: className,
+    ...rest
+} = Astro.props;
+---
+
+<div
+    class:list={['dream-video', { 'dream-video--interactive': interactive }, className]}
+    data-video-player={interactive ? true : undefined}
+    {...rest}
+>
+    {interactive ? (
+        <Fragment>
+            <video
+                class="dream-video__media"
+                src={src}
+                poster={poster}
+                playsinline
+                preload="none"
+            ></video>
+            <button class="ui-button dream-video__play" type="button" aria-label={playLabel}>
+                <svg width="28" height="32" viewBox="0 0 28 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <path d="M26.5 13.4A3 3 0 0 1 26.5 18.6L4.5 31.3A3 3 0 0 1 0 28.7V3.3A3 3 0 0 1 4.5 0.7L26.5 13.4Z" fill="currentColor"/>
+                </svg>
+            </button>
+        </Fragment>
+    ) : (
+        <video
+            class="dream-video__media"
+            src={src}
+            poster={poster}
+            autoplay
+            muted
+            loop
+            playsinline
+            preload="metadata"
+        ></video>
+    )}
+</div>

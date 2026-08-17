@@ -1,0 +1,42 @@
+---
+import Carousel from '@components/modules/Carousel.astro';
+import Picture from '@components/modules/Picture.astro';
+
+interface Props {
+    items?: Array<any>;
+    class?: string;
+    [x: string]: any;
+}
+
+const {
+    items = [],
+    class: className,
+    ...rest
+} = Astro.props;
+
+const directory = 'img/lootery-summary2026/dream/';
+---
+<section class:list={['dream-story', className]} {...rest}>
+    <div class="dream__container">
+        <Carousel class="dream-story__carousel" data-carousel-loop>
+            {items.map((item) => (
+                <div class="carousel__slide">
+                    <div class="dream-story__slide">
+                        <div class="dream-story__poster">
+                            <Picture
+                                class="dream-story__image"
+                                name={item.image}
+                                directory={directory}
+                                type="jpg"
+                                imageWidth="538"
+                                imageHeight="303"
+                                alt={item.alt}
+                            ></Picture>
+                        </div>
+                        <div class="dream-story__text" set:html={item.text}></div>
+                    </div>
+                </div>
+            ))}
+        </Carousel>
+    </div>
+</section>

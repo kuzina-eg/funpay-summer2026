@@ -4,12 +4,16 @@ import Carousel from '@components/modules/Carousel.astro';
 
 interface Props {
     title?: string;
+    linkText?: string;
+    linkHref?: string;
     class?: string;
     [x: string]: any;
 }
 
 const {
     title = 'Прошлые компы мечты',
+    linkText,
+    linkHref = '#',
     class: className,
     ...rest
 } = Astro.props;
@@ -20,24 +24,32 @@ const photos = ['20', '01', '02', '03', '04', '05', '06', '07', '08', '09', '10'
 <section class:list={['donated-pcs', 'lootery-section', className]} {...rest}>
     <h2 class="donated-pcs__title lootery-section__title" set:html={title}></h2>
 
-    <Carousel class="donated-pcs__carousel">
-        {photos.map((photo) => (
-            <div class="carousel__slide">
-                <a
-                    href={`${directory}${photo}.webp`}
-                    class="donated-pcs__item"
-                    data-fancybox="donated-pcs"
-                >
-                    <Picture
-                        class="donated-pcs__image"
-                        name={photo}
-                        directory={directory}
-                        type="jpg"
-                        imageWidth="400"
-                        imageHeight="300"
-                    ></Picture>
-                </a>
+    <div class="donated-pcs__panel">
+        <Carousel class="donated-pcs__carousel">
+            {photos.map((photo) => (
+                <div class="carousel__slide">
+                    <a
+                        href={`${directory}${photo}.webp`}
+                        class="donated-pcs__item"
+                        data-fancybox="donated-pcs"
+                    >
+                        <Picture
+                            class="donated-pcs__image"
+                            name={photo}
+                            directory={directory}
+                            type="jpg"
+                            imageWidth="400"
+                            imageHeight="300"
+                        ></Picture>
+                    </a>
+                </div>
+            ))}
+        </Carousel>
+
+        {linkText ? (
+            <div class="donated-pcs__more">
+                <a class="donated-pcs__link" href={linkHref} set:html={linkText}></a>
             </div>
-        ))}
-    </Carousel>
+        ) : null}
+    </div>
 </section>

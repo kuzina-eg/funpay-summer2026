@@ -1,0 +1,45 @@
+---
+import DreamVideo from '@components/modules/DreamVideo.astro';
+
+interface Props {
+    title?: string;
+    videoSrc?: string;
+    videoPoster?: string;
+    videoInteractive?: boolean;
+    videoPlayLabel?: string;
+    buttonText?: string;
+    buttonHref?: string;
+    class?: string;
+    [x: string]: any;
+}
+
+const {
+    title,
+    videoSrc,
+    videoPoster,
+    videoInteractive = false,
+    videoPlayLabel,
+    buttonText,
+    buttonHref = '#',
+    class: className,
+    ...rest
+} = Astro.props;
+---
+
+<section class:list={['dream-dreams', className]} {...rest}>
+    <div class="dream__container">
+        <h2 class="dream-dreams__title dream__title" set:html={title}></h2>
+
+        <DreamVideo
+            class="dream-dreams__video dream-video--dreams"
+            src={videoSrc}
+            poster={videoPoster}
+            interactive={videoInteractive}
+            playLabel={videoPlayLabel}
+        ></DreamVideo>
+
+        <div class="dream-dreams__button">
+            <a class="dream-button" href={buttonHref} set:html={buttonText}></a>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,128 @@
+@use "@styles/lootery-summary2026/mixins" as *;
+@use "@styles/lootery-summary2026/dream/tools" as *;
+
+.dream-specs {
+    margin-top: du(45);
+
+    @include media-min(tab) {
+        margin-top: du(93);
+    }
+
+    &__title {
+        margin-top: 0;
+    }
+
+    &__row {
+        display: grid;
+        align-items: start;
+        margin-top: du(45.3);
+
+        @include media-min(tab) {
+            margin-top: du(100);
+        }
+
+        &:first-of-type {
+            margin-top: du(54);
+
+            @include media-min(tab) {
+                margin-top: du(103);
+            }
+        }
+    }
+
+    &__row--photo-left {
+        grid-template-columns: du(303.985) minmax(0, 1fr);
+        gap: du(25);
+
+        @include media-min(tab) {
+            grid-template-columns: du(675) minmax(0, 1fr);
+            gap: du(51);
+        }
+    }
+
+    &__row--photo-right {
+        grid-template-columns: minmax(0, 1fr) du(303.985);
+        gap: du(5);
+
+        @include media-min(tab) {
+            grid-template-columns: minmax(0, 1fr) du(675);
+            gap: du(67);
+        }
+
+        .dream-specs__photo {
+            order: 2;
+        }
+    }
+
+    &__photo {
+        overflow: hidden;
+        border-radius: du(20.267);
+
+        @include media-min(tab) {
+            border-radius: du(45);
+        }
+    }
+
+    &__image {
+        display: block;
+        width: 100%;
+        height: auto;
+        aspect-ratio: 3 / 2;
+        object-fit: cover;
+    }
+
+    &__list {
+        margin: 0;
+        padding-left: du(18);
+        font-size: du(12);
+        line-height: 1.21;
+
+        @include media-min(tab) {
+            padding-left: du(34.5);
+            font-size: du(23);
+        }
+    }
+
+    &__item + &__item {
+        margin-top: du(10);
+
+        @include media-min(tab) {
+            margin-top: du(20);
+        }
+    }
+
+    &__photo,
+    &__list {
+        opacity: 0;
+        transition: opacity .7s ease, transform .7s ease;
+    }
+
+    &__row--photo-left &__photo,
+    &__row--photo-right &__list {
+        transform: translate3d(du(-60), du(30), 0);
+    }
+
+    &__row--photo-left &__list,
+    &__row--photo-right &__photo {
+        transform: translate3d(du(60), du(30), 0);
+    }
+
+    &__row {
+        @include visible {
+            .dream-specs__photo,
+            .dream-specs__list {
+                opacity: 1;
+                transform: none;
+            }
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        &__photo,
+        &__list {
+            opacity: 1;
+            transform: none;
+            transition: none;
+        }
+    }
+}

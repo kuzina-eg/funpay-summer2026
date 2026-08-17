@@ -1,0 +1,122 @@
+---
+import Layout from '@layouts/Layout.astro';
+
+import DreamPcs from '@components/sections/DreamPcs.astro';
+import DreamIntro from '@components/sections/DreamIntro.astro';
+import DreamStory from '@components/sections/DreamStory.astro';
+import DreamSpecs from '@components/sections/DreamSpecs.astro';
+import DreamDreams from '@components/sections/DreamDreams.astro';
+import DreamVideo from '@components/modules/DreamVideo.astro';
+
+const directory = 'img/lootery-summary2026/dream/';
+
+const pcs = [
+    {
+        id: 'poe',
+        title: 'Хранилище сфер',
+        subtitle: 'Комп Летней Лутереи&nbsp;2025',
+        alt: 'Комп Летней Лутереи 2025 «Хранилище сфер»',
+        image: 'pc-poe',
+        imageWidth: '632',
+        frames: 98,
+    },
+    {
+        id: 'wow',
+        title: 'Изумрудный сон',
+        subtitle: 'Комп Зимней Лутереи&nbsp;2025',
+        alt: 'Комп Зимней Лутереи 2025 «Изумрудный сон»',
+        image: 'pc-wow',
+        imageWidth: '540',
+        frames: 141,
+    },
+    {
+        id: 'roblox',
+        title: 'Системный <br>блокс',
+        subtitle: 'Комп Летнего РобуксФеста&nbsp;2026',
+        alt: 'Комп Летнего РобуксФеста 2026',
+        image: 'pc-roblox',
+        imageWidth: '540',
+        frames: 195,
+        offset: 0.5,
+    },
+]
+
+const stories = [
+    {
+        image: 'story-1',
+        alt: 'Руслан из Москвы, победитель первой Лутереи',
+        text: 'Руслан из&nbsp;Москвы&nbsp;&mdash; выиграл в&nbsp;самой первой Лутерее, посвящённой десятилетию FunPay. Оказался фанатом Path of&nbsp;Exile, одной из&nbsp;важнейших игр для сайта, и&nbsp;получил комп мечты, заполненный ценными артефактами.',
+    },
+    {
+        image: 'story-2',
+        alt: 'Вика из Ставрополя, победительница новогодней Лутереи 2025',
+        text: 'Вика из&nbsp;Ставрополя&nbsp;&mdash; победительница новогодней Лутереи 2025. Продаёт на&nbsp;FunPay услуги по&nbsp;WoW и&nbsp;фанатеет от&nbsp;героини Изеры. Её&nbsp;комп мечты&nbsp;&mdash; с&nbsp;кристаллами, лозами и&nbsp;драконом.',
+    },
+]
+
+const specs = [
+    {
+        image: 'spec-1',
+        alt: 'Корпус компа мечты с водяным охлаждением',
+        features: [
+            'Дизайнерский корпус с&nbsp;кастомным водяным охлаждением.',
+            'Лучшая видеокарта: сегодня это ASUS GeForce RTX&nbsp;5090 ROG Astral BTF.',
+            'Лучший процессор: сегодня это AMD Ryzen&nbsp;9 9950X3D.',
+        ],
+    },
+    {
+        image: 'spec-2',
+        alt: 'Начинка компа мечты',
+        features: [
+            'Дофига оперативки: 64GB Kingston FURY Renegade RGB.',
+            'SSD с&nbsp;запасом: основной 4TB Samsung 990&nbsp;PRO и&nbsp;дополнительный 2TB Samsung 9100&nbsp;PRO.',
+            'Идеальная материнка: ASUS ROG CROSSHAIR X870E HERO BTF.',
+        ],
+    },
+    {
+        image: 'spec-3',
+        alt: 'Комп мечты в стиле Роблокса',
+        // TODO: figma-sync — в макетах 576 и 360 порядок «наушники, клавиатура», на десктопе обратный
+        features: [
+            'OLED-монитор, клавиатура, наушники, мышь, микрофон&nbsp;&mdash; вся периферия, нужная для раскрытия потенциала системы.',
+            'Кастомный стол, чтобы выдержал вес техники, и&nbsp;эргономичное кресло от&nbsp;Herman Miller.',
+            'Комплект может меняться: то&nbsp;железо найдём лучше, то&nbsp;игр докупим. Никакого типового подхода, подбираем всё под хотелки победителя.',
+        ],
+    },
+]
+---
+<Layout title="Комп мечты" looteryClass="dream">
+
+
+    <DreamPcs items={pcs}></DreamPcs>
+
+    <DreamIntro
+        text="Дарим не&nbsp;просто системный блок с&nbsp;лучшим железом, а&nbsp;сразу сетап из&nbsp;стола, кресла, клавы, мыши, наушников, монитора! Выбираем лучшие модели, которыми пользуемся и&nbsp;сами (как же&nbsp;у&nbsp;нас за&nbsp;Herman Miller топит один из&nbsp;сотрудников!). Главное украшение, конечно,&nbsp;&mdash; уникальный корпус компа мечты,"
+        note="разработанный совместно с&nbsp;HyperPC"
+        accent="точно под вкусы победителя."
+    ></DreamIntro>
+
+    <DreamStory items={stories}></DreamStory>
+
+    <div class="dream__container">
+        <DreamVideo
+            class="dream-video--faces"
+            src={`${directory}faces.mp4`}
+            poster={`${directory}faces-poster@2x.jpg`}
+        ></DreamVideo>
+    </div>
+
+    <DreamSpecs
+        title="Технические <br>характеристики"
+        items={specs}
+    ></DreamSpecs>
+
+    <DreamDreams
+        title="Как мы&nbsp;исполняли мечты"
+        videoSrc={`${directory}dreams.mp4`}
+        videoPoster={`${directory}dreams-poster@2x.jpg`}
+        videoInteractive={true}
+        buttonText="Участвовать"
+    ></DreamDreams>
+
+</Layout>
