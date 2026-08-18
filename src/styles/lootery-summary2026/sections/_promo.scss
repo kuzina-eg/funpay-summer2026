@@ -132,6 +132,14 @@
         @include media(mob) {
             aspect-ratio: 626 / 462;
         }
+
+        &--video-light {
+            @include media-min(mob) {
+                padding-top: 0.89%;
+                padding-right: 2.67%;
+                padding-left: 1.78%;
+            }
+        }
     }
 
     &__bg {
