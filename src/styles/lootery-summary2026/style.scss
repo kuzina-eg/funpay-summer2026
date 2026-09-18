@@ -23,7 +23,6 @@
 @use "./blocks/instructionItem";
 @use "./blocks/tableTicket";
 @use "./blocks/winnerItem";
-@use "./blocks/dreamVideo";
 
 // Site sections
 @use "./sections/promo";
@@ -34,12 +33,3 @@
 @use "./sections/faq";
 @use "./sections/finish";
 @use "./sections/winners";
-
-// Site pages
-@use "./pages/dream";
-@use "./sections/dreamPcs";
-@use "./sections/dreamIntro";
-@use "./sections/dreamStory";
-@use "./sections/dreamSpecs";
-@use "./sections/dreamDreams";
-

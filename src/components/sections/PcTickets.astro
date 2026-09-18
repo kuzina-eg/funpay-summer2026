@@ -1,0 +1,19 @@
+---
+interface Props {
+    title?: string;
+    buttonText?: string;
+    buttonHref?: string;
+}
+
+const {
+    title,
+    buttonText,
+    buttonHref = '#',
+} = Astro.props;
+---
+
+<section class="pc-section pc-tickets">
+    <h2 class="pc-title pc-tickets__title" set:html={title}></h2>
+
+    <a class="pc-button pc-tickets__button" href={buttonHref}>{buttonText}</a>
+</section>

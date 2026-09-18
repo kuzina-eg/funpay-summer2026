@@ -1,0 +1,176 @@
+@use "sass:math";
+@use "@styles/lootery-summary2026/mixins" as *;
+@use "tools" as *;
+
+.pc-point {
+    position: absolute;
+    top: var(--pc-point-y);
+    left: var(--pc-point-x);
+    z-index: 2;
+    width: pu(24);
+    height: pu(24);
+    cursor: pointer;
+    transform: translate(-50%, -50%);
+
+    &::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: 50%;
+        background-image: radial-gradient(circle closest-side, #255FE4 0%, rgba(37, 95, 228, .3) 100%, rgba(37, 95, 228, 0) 100%);
+        transition: opacity $duration, transform $duration;
+    }
+
+    &::before {
+        content: "";
+        position: absolute;
+        z-index: 2;
+        top: 50%;
+        left: 50%;
+        width: pu(12);
+        height: pu(12);
+        border: #{pu(1)} solid $color-white;
+        border-radius: 50%;
+        background-color: #07122E;
+        transform: translate(-50%, -50%);
+        transition: transform $duration, background-color $duration, border-color $duration;
+    }
+
+    &__halo {
+        position: absolute;
+        z-index: 1;
+        inset: 0;
+        border-radius: 50%;
+        background-image:
+            radial-gradient(circle closest-side, #255FE4 0%, rgba(37, 167, 228, .3) 100%, rgba(37, 167, 228, 0) 100%),
+            radial-gradient(circle closest-side, #255FE4 0%, rgba(37, 95, 228, .3) 100%, rgba(37, 95, 228, 0) 100%);
+        background-position: center, center;
+        background-repeat: no-repeat;
+        background-size: 100% 100%, 80% 80%;
+        opacity: 0;
+        transition: opacity $duration, transform $duration;
+    }
+
+    &:hover,
+    &:focus-visible,
+    &.is-open {
+        &::before,
+        &::after,
+        .pc-point__halo {
+            transition-duration: .6s;
+            transition-timing-function: ease-in-out;
+        }
+
+        &::before {
+            background-color: #2597E4;
+            transform: translate(-50%, -50%) scale(#{math.div(16, 12)});
+        }
+
+        &::after {
+            opacity: 0;
+            transform: scale(#{math.div(40, 24)});
+        }
+
+        .pc-point__halo {
+            opacity: 1;
+            transform: scale(#{math.div(40, 24)});
+        }
+    }
+
+    &__tip {
+        position: absolute;
+        z-index: 0;
+        width: max-content;
+        padding: pu(6) pu(10);
+        border-radius: 0 #{pu(14)} 0 #{pu(14)};
+        background-color: $color-white;
+        box-shadow: #{pu(6)} #{pu(3)} #{pu(10)} 0 rgba(0, 0, 0, .08);
+        font-size: pu(10);
+        font-weight: 500;
+        line-height: 1.2;
+        letter-spacing: 0;
+        color: var(--pc-title);
+        text-align: left;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateX(var(--pc-tip-shift, 0px));
+        transition: opacity $duration, visibility $duration;
+    }
+
+    &__label {
+        color: var(--pc-text);
+    }
+
+    &--wide &__tip {
+        max-width: pu(144);
+        font-weight: 500;
+        color: var(--pc-text);
+    }
+
+    &__more {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: pu(4);
+        margin-top: pu(6);
+        color: var(--pc-accent);
+        text-decoration: none;
+
+        svg {
+            flex-shrink: 0;
+            width: pu(8);
+            height: pu(8);
+        }
+
+        &:hover,
+        &:focus-visible {
+            text-decoration: underline;
+        }
+    }
+
+    &--top &__tip {
+        bottom: calc(100% + #{pu(6)});
+        left: 50%;
+        transform: translateX(calc(-50% + var(--pc-tip-shift, 0px)));
+        text-align: center;
+    }
+
+    &--br &__tip {
+        top: 50%;
+        left: 50%;
+    }
+
+    &--bl &__tip {
+        top: 50%;
+        right: 50%;
+    }
+
+    &--tr &__tip {
+        bottom: 50%;
+        left: 50%;
+    }
+
+    &--tl &__tip {
+        bottom: 50%;
+        right: 50%;
+    }
+
+    &.is-open &__tip,
+    &:focus-visible &__tip {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    @media (hover: hover) {
+        &:hover &__tip {
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+
+    &:hover,
+    &:focus-visible,
+    &.is-open {
+        z-index: 4;
+    }
+}

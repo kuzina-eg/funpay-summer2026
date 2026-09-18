@@ -1,0 +1,41 @@
+@use "sass:math";
+@use "@styles/lootery-summary2026/mixins" as *;
+
+$pc-viewport-desktop: 14.4;
+$pc-viewport-mobile: 5.76;
+$pc-viewport-small: 3.6;
+
+@function pc-unit($viewport) {
+    @return #{math.div(1, $viewport)}vw;
+}
+
+@function pu($value) {
+    @return calc(var(--pc-u) * #{$value});
+}
+
+/*
+    Переменные страницы. Вынесены в миксин, потому что нужны не только на .pc:
+    fancybox переносит модальное окно в свой контейнер в конце body, за пределы
+    страницы, и там --pc-u уже не видно — все calc() с ней становятся
+    недействительными, а вместе с ними пропадают ширины, поля и сетка.
+*/
+@mixin pc-tokens {
+    --pc-u: #{pc-unit($pc-viewport-small)};
+
+    --pc-title: #07142D;
+    --pc-text: #8F98AB;
+    --pc-accent: #{$color-accent};
+    --pc-card: #FFFFFF;
+
+    @include media-min(mob-md) {
+        --pc-u: #{pc-unit($pc-viewport-mobile)};
+    }
+
+    @include media-min(tab) {
+        --pc-u: #{pc-unit($pc-viewport-desktop)};
+    }
+
+    @include media-min(pc-l) {
+        --pc-u: 1px;
+    }
+}

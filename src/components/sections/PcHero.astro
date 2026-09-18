@@ -1,0 +1,75 @@
+---
+import Picture from '@components/modules/Picture.astro';
+
+interface Item {
+    id: string;
+    number: string;
+    name: string;
+    image: string;
+    alt: string;
+}
+
+interface Props {
+    title?: string;
+    subtitle?: string;
+    linkText?: string;
+    linkHref?: string;
+    scrollText?: string;
+    items?: Item[];
+    directory?: string;
+}
+
+const {
+    title,
+    subtitle,
+    linkText,
+    linkHref = '#',
+    scrollText,
+    items = [],
+    directory,
+} = Astro.props;
+
+const slots = ['is-left', 'is-center', 'is-right'];
+---
+
+<section class="pc-section pc-hero">
+    <a class="pc-pill pc-hero__link" href={linkHref}>
+        {linkText}
+        <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M3.75 10H16.25" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            <path d="M11.25 5L16.25 10L11.25 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </a>
+
+    <h1 class="pc-title pc-hero__title" set:html={title}></h1>
+    <p class="pc-text pc-hero__subtitle" set:html={subtitle}></p>
+
+    <div class="pc-hero__carousel" data-pc-hero>
+        {items.map((item, index) => (
+            <article class:list={['pc-hero__card', slots[index]]} data-pc-hero-card>
+                <div class="pc-hero__image">
+                    <Picture
+                        name={item.image}
+                        directory={directory}
+                        type="png"
+                        imageWidth="488"
+                        imageHeight="496"
+                        alt={item.alt}
+                    ></Picture>
+                </div>
+                <div class="pc-hero__label">
+                    <span class="pc-hero__number">{item.number}</span>
+                    <h2 class="pc-hero__name">{item.name}</h2>
+                </div>
+            </article>
+        ))}
+    </div>
+
+    <div class="pc-hero__scroll">
+        <svg width="22" height="40" viewBox="0 0 22 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M11 7V15" stroke="#959CAA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <rect x="1" y="1" width="20" height="38" rx="10" stroke="#959CAA" stroke-width="2"/>
+        </svg>
+        <span set:html={scrollText}></span>
+    </div>
+</section>

@@ -1,0 +1,38 @@
+---
+interface Props {
+    x?: string;
+    y?: string;
+    label?: string;
+    text?: string;
+    place?: 'tl' | 'tr' | 'bl' | 'br' | 'top';
+    more?: string;
+    wide?: boolean;
+}
+
+const { x, y, label, text, place = 'top', more, wide = false } = Astro.props;
+---
+
+<div
+    class:list={['pc-point', `pc-point--${place}`, wide && 'pc-point--wide']}
+    style={`--pc-point-x: ${x}; --pc-point-y: ${y}`}
+    tabindex="0"
+    aria-expanded="false"
+    data-pc-point
+>
+    <span class="pc-point__halo"></span>
+
+    <span class="pc-point__tip">
+        {label && <span class="pc-point__label">{label}</span>}
+        {text && <Fragment set:html={text}></Fragment>}
+
+        {more && (
+            <a class="pc-point__more" href={`#${more}`} data-fancybox data-type="inline">
+                Подробнее
+                <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <path d="M3 8H13" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                    <path d="M9 4L13 8L9 12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </a>
+        )}
+    </span>
+</div>

@@ -1,0 +1,205 @@
+@use "@styles/lootery-summary2026/mixins" as *;
+@use "tools" as *;
+
+@property --pc-fade {
+    syntax: "<number>";
+    inherits: false;
+    initial-value: 1;
+}
+
+.pc-setup {
+    padding: pu(30) pu(16) pu(20);
+
+    @include media-min(mob-md) {
+        padding-bottom: pu(40);
+    }
+
+    @include media-min(tab) {
+        padding: pu(27);
+    }
+
+    &__inner {
+        @include media-min(tab) {
+            display: grid;
+            grid-template-columns: #{pu(350)} 1fr;
+            grid-template-areas:
+                "title media"
+                "descr media";
+            align-items: center;
+            gap: pu(20) pu(75);
+            grid-template-rows: auto 1fr;
+        }
+    }
+
+    &__title {
+        font-size: pu(28);
+
+        @include media-min(mob-md) {
+            font-size: pu(35);
+        }
+
+        @include media-min(tab) {
+            grid-area: title;
+            align-self: end;
+            font-size: pu(43);
+        }
+    }
+
+    &__descr {
+        margin-top: pu(16);
+        font-size: pu(15);
+
+        @include media-min(mob-md) {
+            margin-top: pu(20);
+            font-size: pu(17);
+        }
+
+        @include media-min(tab) {
+            grid-area: descr;
+            align-self: start;
+            margin-top: 0;
+            font-size: pu(18);
+
+            .pc-text + .pc-text {
+                margin-top: pu(8);
+            }
+        }
+    }
+
+    &__media {
+        margin-top: pu(16);
+
+        @include media-min(tab) {
+            grid-area: media;
+            margin-top: 0;
+            margin-right: pu(-27);
+        }
+    }
+
+    &__carousel {
+        position: relative;
+
+        &::after {
+            content: "";
+            position: absolute;
+            z-index: 2;
+            top: 0;
+            bottom: 0;
+            pointer-events: none;
+
+            @include media(tab) {
+                display: none;
+            }
+        }
+
+        &::after {
+            right: 0;
+            width: var(--pc-shade-right, 0px);
+            background: linear-gradient(88.26deg, rgba(0, 0, 0, 0) 1.4%, rgba(0, 0, 0, .7) 74.79%);
+            opacity: .8;
+        }
+    }
+
+    &__slide {
+        position: relative;
+        opacity: .8;
+        transition: opacity .7s cubic-bezier(.23, .33, .17, 1);
+
+        &.is-active {
+            opacity: 1;
+        }
+
+        &.is-before {
+            opacity: .2;
+        }
+
+        @include media-min(mob-md) {
+            flex-basis: 84%;
+        }
+
+        @include media-min(tab) {
+            flex-basis: 66%;
+            scroll-snap-align: center;
+        }
+    }
+
+    &__slide:not(.is-active) .pc-point {
+        visibility: hidden;
+        pointer-events: none;
+    }
+
+    &__carousel .pc-carousel__track {
+        @include media-min(tab) {
+            gap: pu(20);
+
+            mask-image: linear-gradient(to right, transparent 0, #000 calc(#{pu(140)} * var(--pc-fade, 1)));
+            transition: --pc-fade .7s cubic-bezier(.23, .33, .17, 1);
+        }
+    }
+
+    &__carousel.is-start .pc-carousel__track {
+        --pc-fade: 0;
+        transition: none;
+    }
+
+    &__slide img {
+        width: 100%;
+        border-radius: pu(12);
+
+        @include media-min(tab) {
+            border-radius: pu(16);
+        }
+    }
+
+    &__nav {
+        position: absolute;
+        top: 50%;
+        z-index: 3;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: pu(40);
+        height: pu(40);
+        padding: 0;
+        border: none;
+        background-color: var(--pc-accent);
+        color: $color-white;
+        cursor: pointer;
+        transform: translateY(-50%);
+        transition: background-color $duration, opacity $duration, visibility $duration;
+
+        svg {
+            width: pu(20);
+            height: pu(20);
+        }
+
+        &:hover,
+        &:focus-visible {
+            background-color: $color-accent-hover;
+        }
+
+        &[disabled] {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+    }
+
+    &__nav--prev {
+        left: pu(16);
+        border-radius: 0 #{pu(16)} 0 #{pu(16)};
+
+        @include media-min(tab) {
+            left: pu(20);
+        }
+    }
+
+    &__nav--next {
+        right: pu(16);
+        border-radius: #{pu(16)} 0 #{pu(16)} 0;
+
+        @include media-min(tab) {
+            right: pu(20);
+        }
+    }
+}

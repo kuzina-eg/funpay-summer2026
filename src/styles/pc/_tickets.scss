@@ -1,0 +1,46 @@
+@use "@styles/lootery-summary2026/mixins" as *;
+@use "tools" as *;
+
+.pc-tickets {
+    padding: pu(32) pu(16) pu(20);
+    background: linear-gradient(to right, #EACFFF 0%, #B4F1FF 100%);
+    text-align: center;
+
+    @include media-min(mob-md) {
+        padding: pu(47) pu(40) pu(39);
+    }
+
+    @include media-min(tab) {
+        padding: pu(50) pu(40) pu(40);
+    }
+
+    &__title {
+        max-width: pu(280);
+        margin-inline: auto;
+        font-size: pu(28);
+
+        @include media-min(mob-md) {
+            font-size: pu(35);
+        }
+
+        @include media-min(tab) {
+            max-width: none;
+            font-size: pu(44);
+        }
+    }
+
+    &__button {
+        display: flex;
+        width: 100%;
+        max-width: pu(320);
+        margin: pu(14) auto 0;
+
+        @include media-min(mob-md) {
+            margin-top: pu(16);
+        }
+
+        @include media-min(tab) {
+            margin-top: pu(15);
+        }
+    }
+}

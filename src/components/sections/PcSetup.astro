@@ -1,0 +1,79 @@
+---
+import Picture from '@components/modules/Picture.astro';
+import PcPoint from '@components/modules/PcPoint.astro';
+
+interface Point {
+    x: string;
+    y: string;
+    label?: string;
+    text?: string;
+    place?: string;
+}
+
+interface Photo {
+    image: string;
+    alt: string;
+    points?: Point[];
+}
+
+interface Props {
+    title?: string;
+    texts?: string[];
+    photos?: Photo[];
+    directory?: string;
+}
+
+const {
+    title,
+    texts = [],
+    photos = [],
+    directory,
+} = Astro.props;
+---
+
+<section class="pc-section pc-setup">
+    <div class="pc-setup__inner">
+        <h2 class="pc-title pc-setup__title" set:html={title}></h2>
+
+        <div class="pc-setup__media">
+            <div class="pc-setup__carousel pc-carousel" data-pc-carousel data-pc-carousel-smooth="25">
+                <div class="pc-carousel__track" data-pc-carousel-track>
+                    {photos.map((photo) => (
+                        <div class="pc-carousel__slide pc-setup__slide">
+                            <Picture
+                                name={photo.image}
+                                directory={directory}
+                                type="jpg"
+                                imageWidth="624"
+                                imageHeight="415"
+                                alt={photo.alt}
+                            ></Picture>
+
+                            {(photo.points ?? []).map((point) => (
+                                <PcPoint x={point.x} y={point.y} label={point.label} text={point.text} place={point.place}></PcPoint>
+                            ))}
+                        </div>
+                    ))}
+                </div>
+
+                <button class="pc-setup__nav pc-setup__nav--prev" type="button" aria-label="Previous photo" data-pc-carousel-prev>
+                    <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <path d="M16.875 10H3.125" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M8.75 4.375L3.125 10L8.75 15.625" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+
+                <button class="pc-setup__nav pc-setup__nav--next" type="button" aria-label="Next photo" data-pc-carousel-next>
+                    <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <path d="M3.125 10H16.875" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M11.25 4.375L16.875 10L11.25 15.625" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <div class="pc-setup__descr">
+            {texts.map((text) => <p class="pc-text" set:html={text}></p>)}
+        </div>
+    </div>
+</section>

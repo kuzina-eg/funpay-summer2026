@@ -11,7 +11,7 @@
   "scripts": {
     "dev": "gulp svg && astro dev",
     "start": "gulp svg && astro dev",
-    "build": "gulp svg && astro build && gulp beautify",
+    "build": "gulp svg && astro build && node tools/bundle-scripts.mjs && gulp beautify",
     "preview": "astro preview",
     "astro": "astro",
     "frames": "node tools/prepare-sequence.mjs",

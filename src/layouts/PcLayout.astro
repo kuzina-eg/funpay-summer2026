@@ -1,0 +1,41 @@
+---
+import site from '@data/site.json';
+import '../styles/pc/pc.scss';
+
+export interface Props {
+    title?: string;
+    lang?: string;
+    bodyClass?: string;
+}
+
+const {
+    title,
+    lang = 'ru',
+    bodyClass,
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang={lang}>
+	<head>
+		<meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>{site.name} - {title}</title>
+		<meta name="description" content="Описание страницы" />
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Onest:wght@100..900&display=swap" rel="stylesheet">
+
+        <link href="https://funpay.com/694/css/main.css" rel="stylesheet" media="all">
+    </head>
+	<body class={bodyClass ? bodyClass : ''}>
+		<div class="">
+			<div class="pc">
+				<slot />
+			</div>
+		</div>
+
+        <script src="../scripts/pc.js"></script>
+
+	</body>
+</html>

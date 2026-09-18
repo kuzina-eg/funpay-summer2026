@@ -1,0 +1,96 @@
+@use "@styles/lootery-summary2026/mixins" as *;
+@use "tools" as *;
+
+.pc-carousel {
+    &__track {
+        display: flex;
+        gap: pu(12);
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
+    }
+
+    &__slide {
+        flex: 0 0 100%;
+        scroll-snap-align: start;
+    }
+
+    &__nav {
+        display: flex;
+        align-items: center;
+        gap: pu(12);
+        margin-top: pu(8);
+
+        @include media-min(tab) {
+            gap: pu(14);
+        }
+    }
+
+    &__progress {
+        position: relative;
+        flex-grow: 1;
+        display: flex;
+        align-items: stretch;
+        gap: pu(8);
+        height: pu(7);
+        border-radius: pu(4);
+
+        @include media-min(tab) {
+            gap: pu(8);
+            height: pu(8);
+        }
+    }
+
+    &__slot {
+        flex: 1 1 0;
+        min-width: 0;
+        border-radius: inherit;
+        background-color: #D5DCEE;
+    }
+
+    &__bar {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 0;
+        height: 100%;
+        border-radius: inherit;
+        background-color: var(--pc-accent);
+    }
+
+    &__arrow {
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+        border: none;
+        background-color: transparent;
+        color: var(--pc-accent);
+        cursor: pointer;
+        transition: color $duration, opacity $duration;
+
+        svg {
+            width: pu(28);
+            height: pu(28);
+        }
+
+        &[disabled] {
+            color: var(--pc-text);
+            cursor: default;
+            opacity: .5;
+        }
+
+        @include media-min(tab) {
+            svg {
+                width: pu(20);
+                height: pu(20);
+            }
+        }
+    }
+}

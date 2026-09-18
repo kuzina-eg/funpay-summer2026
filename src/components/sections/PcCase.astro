@@ -1,0 +1,294 @@
+---
+import Picture from '@components/modules/Picture.astro';
+import PcPoint from '@components/modules/PcPoint.astro';
+
+interface Point {
+    x: string;
+    y: string;
+    label?: string;
+    text?: string;
+    place?: string;
+    heading?: string;
+    story?: string[];
+    photos?: string[];
+    audio?: string;
+    audioLength?: number;
+    audioPeaks?: string;
+}
+
+interface Spec {
+    text: string;
+    label?: string;
+    image?: string;
+    imageAlt?: string;
+}
+
+interface Props {
+    number?: string;
+    total?: string;
+    title?: string;
+    texts?: string[];
+    image?: string;
+    imageAlt?: string;
+    imageWidth?: string;
+    imageHeight?: string;
+    points?: Point[];
+    hint?: string;
+    videoLabel?: string;
+    videoTitle?: string;
+    videoPhoto?: string;
+    videoPhotoAlt?: string;
+    videoPreview?: string;
+    videoUrl?: string;
+    specs?: Spec[];
+    reverse?: boolean;
+    directory?: string;
+}
+
+const {
+    number,
+    total,
+    title,
+    texts = [],
+    image,
+    imageAlt,
+    imageWidth = '520',
+    imageHeight = '520',
+    points = [],
+    hint,
+    videoLabel,
+    videoTitle,
+    videoPhoto,
+    videoPhotoAlt,
+    videoPreview,
+    videoUrl,
+    specs = [],
+    reverse = false,
+    directory,
+} = Astro.props;
+
+const full = (name) => (name ? name.replace(/-sm$/, '') : '');
+const videoFull = full(videoPreview);
+
+const videoHref = videoUrl || `${directory}${videoFull}.mp4`;
+
+const time = (seconds = 0) => {
+    const total = Math.floor(seconds);
+
+    return `${Math.floor(total / 60)}:${String(total % 60).padStart(2, '0')}`;
+};
+---
+
+<section class:list={['pc-section', 'pc-case', reverse && 'pc-case--reverse']}>
+    <div class="pc-case__inner">
+        <div class="pc-case__text-col">
+            <div class="pc-case__head">
+                <h2 class="pc-title pc-case__title" set:html={title}></h2>
+                <div class="pc-case__number">{number} <span>/ {total}</span></div>
+            </div>
+
+            <div class="pc-case__descr">
+                {texts.map((text) => <p class="pc-text" set:html={text}></p>)}
+            </div>
+        </div>
+
+        <div class="pc-case__figure">
+            <Picture
+                class="pc-case__image"
+                name={image}
+                directory={directory}
+                type="png"
+                imageWidth={imageWidth}
+                imageHeight={imageHeight}
+                alt={imageAlt}
+            ></Picture>
+
+            {points.map((point, index) => (
+                <PcPoint
+                    x={point.x}
+                    y={point.y}
+                    label={point.label}
+                    text={point.text}
+                    place={point.place}
+                    wide={Boolean(point.story)}
+                    more={point.story ? `story-${number}-${index + 1}` : undefined}
+                ></PcPoint>
+            ))}
+
+            <div class="pc-case__hint">
+                <span class="pc-pill">
+                    <svg viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <path d="M17.1875 9.625C17.474 9.625 17.7425 9.67871 17.9932 9.78613C18.2438 9.89355 18.4622 10.0404 18.6484 10.2266C18.8346 10.4128 18.9814 10.6312 19.0889 10.8818C19.1963 11.1325 19.25 11.401 19.25 11.6875V15.8125C19.25 16.6647 19.0889 17.4668 18.7666 18.2188C18.4443 18.9707 18.0003 19.626 17.4346 20.1846C16.8688 20.7432 16.2135 21.1836 15.4688 21.5059C14.724 21.8281 13.9219 21.9928 13.0625 22C12.0312 22 11.0716 21.8031 10.1836 21.4092C9.29557 21.0153 8.48633 20.4567 7.75586 19.7334L2.68555 14.6631C2.48503 14.4626 2.33105 14.2298 2.22363 13.9648C2.11621 13.6999 2.0625 13.4277 2.0625 13.1484C2.0625 12.8477 2.11979 12.5684 2.23438 12.3105C2.34896 12.0527 2.50293 11.8236 2.69629 11.623C2.88965 11.4225 3.11523 11.2721 3.37305 11.1719C3.63086 11.0716 3.91016 11.0143 4.21094 11C4.79818 11 5.30306 11.2113 5.72559 11.6338L6.875 12.7725V9.16309C6.45247 8.96257 6.07292 8.71191 5.73633 8.41113C5.39974 8.11035 5.11328 7.77018 4.87695 7.39062C4.64062 7.01107 4.45443 6.60286 4.31836 6.16602C4.18229 5.72917 4.11784 5.27799 4.125 4.8125C4.125 4.14648 4.25033 3.52344 4.50098 2.94336C4.75163 2.36328 5.09538 1.85124 5.53223 1.40723C5.96908 0.963216 6.47754 0.619466 7.05762 0.375977C7.6377 0.132487 8.26432 0.00716146 8.9375 0C9.60352 0 10.2266 0.125326 10.8066 0.375977C11.3867 0.626628 11.8988 0.970378 12.3428 1.40723C12.7868 1.84408 13.1305 2.35254 13.374 2.93262C13.6175 3.5127 13.7428 4.13932 13.75 4.8125C13.75 5.47852 13.6175 6.11589 13.3525 6.72461C13.0876 7.33333 12.7116 7.86686 12.2246 8.3252C12.4753 8.38965 12.7008 8.49707 12.9014 8.64746C13.1019 8.79785 13.2773 8.98405 13.4277 9.20605C13.75 9.02702 14.0866 8.9375 14.4375 8.9375C14.7956 8.9375 15.1286 9.01986 15.4365 9.18457C15.7445 9.34928 15.9915 9.58561 16.1777 9.89355C16.5 9.71452 16.8366 9.625 17.1875 9.625ZM5.5 4.8125C5.5 5.34961 5.62174 5.86165 5.86523 6.34863C6.10872 6.83561 6.44531 7.24023 6.875 7.5625V4.8125C6.875 4.52604 6.92871 4.25749 7.03613 4.00684C7.14355 3.75618 7.29036 3.53776 7.47656 3.35156C7.66276 3.16536 7.88119 3.01855 8.13184 2.91113C8.38249 2.80371 8.65104 2.75 8.9375 2.75C9.22396 2.75 9.49251 2.80371 9.74316 2.91113C9.99381 3.01855 10.2122 3.16536 10.3984 3.35156C10.5846 3.53776 10.7314 3.75618 10.8389 4.00684C10.9463 4.25749 11 4.52604 11 4.8125V7.5625C11.4297 7.24023 11.7663 6.83561 12.0098 6.34863C12.2533 5.86165 12.375 5.34961 12.375 4.8125C12.375 4.33984 12.2855 3.89583 12.1064 3.48047C11.9274 3.0651 11.6803 2.70345 11.3652 2.39551C11.0501 2.08757 10.6849 1.84049 10.2695 1.6543C9.85417 1.4681 9.41016 1.375 8.9375 1.375C8.46484 1.375 8.02083 1.46452 7.60547 1.64355C7.1901 1.82259 6.82487 2.06966 6.50977 2.38477C6.19466 2.69987 5.94759 3.0651 5.76855 3.48047C5.58952 3.89583 5.5 4.33984 5.5 4.8125ZM17.875 11.6875C17.875 11.5013 17.807 11.3402 17.6709 11.2041C17.5348 11.068 17.3737 11 17.1875 11C16.944 11 16.7757 11.068 16.6826 11.2041C16.5895 11.3402 16.5322 11.5085 16.5107 11.709C16.4893 11.9095 16.4857 12.1315 16.5 12.375C16.5143 12.6185 16.5143 12.8369 16.5 13.0303C16.4857 13.2236 16.4284 13.3955 16.3281 13.5459C16.2279 13.6963 16.056 13.7643 15.8125 13.75C15.5475 13.75 15.3685 13.6676 15.2754 13.5029C15.1823 13.3382 15.125 13.1234 15.1035 12.8584C15.082 12.5934 15.0892 12.3177 15.125 12.0312C15.1608 11.7448 15.168 11.4691 15.1465 11.2041C15.125 10.9391 15.0713 10.7279 14.9854 10.5703C14.8994 10.4128 14.7168 10.3268 14.4375 10.3125C14.194 10.3125 14.0257 10.3805 13.9326 10.5166C13.8395 10.6527 13.7822 10.821 13.7607 11.0215C13.7393 11.222 13.7357 11.444 13.75 11.6875C13.7643 11.931 13.7643 12.1494 13.75 12.3428C13.7357 12.5361 13.6784 12.708 13.5781 12.8584C13.4779 13.0088 13.306 13.0768 13.0625 13.0625C12.7975 13.0625 12.6185 12.9801 12.5254 12.8154C12.4323 12.6507 12.375 12.4359 12.3535 12.1709C12.332 11.9059 12.3392 11.6302 12.375 11.3438C12.4108 11.0573 12.418 10.7816 12.3965 10.5166C12.375 10.2516 12.3213 10.0404 12.2354 9.88281C12.1494 9.72526 11.9668 9.63932 11.6875 9.625C11.444 9.625 11.2757 9.69303 11.1826 9.8291C11.0895 9.96517 11.0322 10.1335 11.0107 10.334C10.9893 10.5345 10.9857 10.7565 11 11C11.0143 11.2435 11.0143 11.4619 11 11.6553C10.9857 11.8486 10.9284 12.0205 10.8281 12.1709C10.7279 12.3213 10.556 12.3893 10.3125 12.375C10.1263 12.375 9.96517 12.307 9.8291 12.1709C9.69303 12.0348 9.625 11.8737 9.625 11.6875V4.8125C9.625 4.6263 9.55697 4.46517 9.4209 4.3291C9.28483 4.19303 9.1237 4.125 8.9375 4.125C8.7513 4.125 8.59017 4.19303 8.4541 4.3291C8.31803 4.46517 8.25 4.6263 8.25 4.8125V13.2666C8.25 13.4313 8.22135 13.5817 8.16406 13.7178C8.10677 13.8538 8.02441 13.9792 7.91699 14.0938C7.80957 14.2083 7.68424 14.2907 7.54102 14.3408C7.39779 14.391 7.2474 14.4232 7.08984 14.4375C6.93229 14.4375 6.7819 14.4089 6.63867 14.3516C6.49544 14.2943 6.36296 14.2083 6.24121 14.0938L4.74805 12.6006C4.59766 12.4502 4.41862 12.375 4.21094 12.375C4.00326 12.375 3.82422 12.4502 3.67383 12.6006C3.52344 12.751 3.44466 12.9336 3.4375 13.1484C3.4375 13.3561 3.5127 13.5352 3.66309 13.6855L8.7334 18.7666C9.33496 19.3682 9.99381 19.8265 10.71 20.1416C11.4261 20.4567 12.2103 20.6178 13.0625 20.625C13.7285 20.625 14.3516 20.4997 14.9316 20.249C15.5117 19.9984 16.0202 19.6546 16.457 19.2178C16.8939 18.7809 17.2376 18.2725 17.4883 17.6924C17.7389 17.1123 17.8678 16.4857 17.875 15.8125V11.6875Z" fill="currentColor"/>
+                    </svg>
+                    <span set:html={hint}></span>
+                </span>
+            </div>
+        </div>
+
+        <div class="pc-case__media">
+            <div class="pc-carousel" data-pc-carousel>
+                <div class="pc-carousel__track" data-pc-carousel-track>
+                    <div class="pc-carousel__slide">
+                        <div class="pc-specs pc-specs--video">
+                            <div class="pc-specs__photo">
+                                <Picture
+                                    name={videoPhoto}
+                                    directory={directory}
+                                    type="jpg"
+                                    imageWidth="470"
+                                    imageHeight="310"
+                                    alt={videoPhotoAlt}
+                                ></Picture>
+                            </div>
+
+                            <div class="pc-specs__item pc-specs__item--wide">
+                                <div class="pc-specs__body">
+                                    <span class="pc-specs__label">{videoLabel}</span>
+                                    <p class="pc-specs__text">{videoTitle}</p>
+                                </div>
+
+                                <a
+                                    class="pc-specs__image"
+                                    href={videoHref}
+                                    data-fancybox={videoFull}
+                                    data-type={videoUrl ? undefined : 'html5video'}
+                                    aria-label={videoTitle}
+                                >
+                                    <Picture
+                                        name={videoPreview}
+                                        directory={directory}
+                                        type="jpg"
+                                        imageWidth="229"
+                                        imageHeight="150"
+                                        alt=""
+                                    ></Picture>
+
+                                    <span class="pc-specs__play">
+                                        <svg width="58" height="65" viewBox="0 0 58 65" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M54.6662 37.6451C58.7156 35.3072 58.7156 29.4624 54.6662 27.1245L9.11067 0.822983C5.06129 -1.51493 -0.000434875 1.40746 -0.000434875 6.08329L-0.000434875 58.6863C-0.000434875 63.3621 5.06129 66.2845 9.11068 63.9466L54.6662 37.6451Z" fill="#255FE4"/>
+                                        </svg>
+                                    </span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    {specs.length > 0 && (
+                        <div class="pc-carousel__slide">
+                            <div class="pc-specs">
+                                {specs.map((spec) => (
+                                    <div class:list={['pc-specs__item', spec.image && 'pc-specs__item--wide']}>
+                                        <div class="pc-specs__body">
+                                            {spec.label && <span class="pc-specs__label">{spec.label}</span>}
+                                            <p class="pc-specs__text" set:html={spec.text}></p>
+                                        </div>
+
+                                        {spec.image && (
+                                            <a
+                                                class="pc-specs__image"
+                                                href={`${directory}${full(spec.image)}.webp`}
+                                                data-fancybox={full(spec.image)}
+                                            >
+                                                <Picture
+                                                    name={spec.image}
+                                                    directory={directory}
+                                                    type="jpg"
+                                                    imageWidth="233"
+                                                    imageHeight="152"
+                                                    alt={spec.imageAlt}
+                                                ></Picture>
+                                            </a>
+                                        )}
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    )}
+                </div>
+
+                <div class="pc-carousel__nav">
+                    <button class="pc-carousel__arrow" type="button" aria-label="Back" data-pc-carousel-prev>
+                        <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                            <path d="M16.875 10H3.125" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M8.75 4.375L3.125 10L8.75 15.625" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+
+                    <div class="pc-carousel__progress">
+                        <span class="pc-carousel__bar" data-pc-carousel-bar></span>
+                    </div>
+
+                    <button class="pc-carousel__arrow" type="button" aria-label="Next" data-pc-carousel-next>
+                        <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                            <path d="M3.125 10H16.875" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M11.25 4.375L16.875 10L11.25 15.625" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {points.map((point, index) => point.story && (
+        <div class="pc-story" id={`story-${number}-${index + 1}`}>
+            <div class:list={['pc-story__body', (point.photos ?? []).length > 0 && 'pc-story__body--split']}>
+                <div class="pc-story__col">
+                    <p class="pc-story__eyebrow">{point.heading}</p>
+                    <h3 class="pc-story__title" set:html={title}></h3>
+
+                    <div class="pc-story__text">
+                        {point.story.map((paragraph) => <p set:html={paragraph}></p>)}
+                    </div>
+                </div>
+
+                {(point.photos ?? []).length > 0 && (
+                    <div class="pc-story__media">
+                        {(point.photos ?? []).map((photo, index) => (
+                            <a class="pc-story__photo" href={`${directory}${photo}.webp`} data-fancybox="photos">
+                                {index < 2 && (
+                                    <Picture
+                                        name={photo}
+                                        directory={directory}
+                                        type="jpg"
+                                        imageWidth="440"
+                                        imageHeight="248"
+                                        alt=""
+                                    ></Picture>
+                                )}
+                            </a>
+                        ))}
+                    </div>
+                )}
+            </div>
+
+            {point.audio && (
+                <div class="pc-story__audio pc-audio" data-pc-audio data-peaks={point.audioPeaks}>
+                    <span class="pc-story__time" data-pc-audio-current>0:00</span>
+                    <button type="button" class="pc-audio__toggle" data-audio-toggle aria-label="Play">
+                        <span class="pc-audio__icon pc-audio__icon--play">
+                            <svg width="19" height="22" viewBox="0 0 19 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M18 12.3953C19.3333 11.6255 19.3333 9.70096 18 8.93116L3 0.270903C1.66667 -0.498898 0 0.463354 0 2.00295V19.3235C0 20.8631 1.66667 21.8253 3 21.0555L18 12.3953Z" fill="#255FE4"/>
+                            </svg>
+                        </span>
+                        <span class="pc-audio__icon pc-audio__icon--pause">
+                            <svg width="19" height="22" viewBox="0 0 19 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="1" y="1" width="6" height="20" rx="2" fill="#255FE4"/>
+                            <rect x="12" y="1" width="6" height="20" rx="2" fill="#255FE4"/>
+                        </svg>
+                        </span>
+                    </button>
+                    <button class="pc-story__wave" type="button" aria-label="Play" data-pc-audio-wave>
+                        <canvas></canvas>
+                    </button>
+
+                    <span class="pc-story__time">{time(point.audioLength)}</span>
+
+                    <audio preload="metadata" data-pc-audio-el>
+                        <source src={`${directory}${point.audio}.m4a`} type="audio/mp4" />
+                        <source src={`${directory}${point.audio}.ogg`} type="audio/ogg" />
+                    </audio>
+                </div>
+            )}
+        </div>
+    ))}
+</section>
