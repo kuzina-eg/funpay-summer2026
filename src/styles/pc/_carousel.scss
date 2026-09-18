@@ -41,7 +41,6 @@
         border-radius: pu(4);
 
         @include media-min(tab) {
-            gap: pu(8);
             height: pu(8);
         }
     }

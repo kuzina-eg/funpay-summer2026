@@ -1,3 +1,17 @@
+const clipper = (el) => {
+    let node = el.parentElement;
+
+    while (node && node !== document.body) {
+        const cs = getComputedStyle(node);
+
+        if (cs.overflowX !== 'visible' || cs.overflowY !== 'visible') return node;
+
+        node = node.parentElement;
+    }
+
+    return null;
+};
+
 export default function initPcHotspots() {
     const points = Array.from(document.querySelectorAll('[data-pc-point]'));
     if (!points.length) return;
@@ -15,14 +29,35 @@ export default function initPcHotspots() {
         const fit = () => {
             if (!tip) return;
 
-            const frame = point.closest('.pc-section');
-            if (!frame) return;
-
+            point.classList.remove('is-flip-x', 'is-flip-y');
             tip.style.setProperty('--pc-tip-shift', '0px');
 
+            const frame = clipper(point);
+            if (!frame) return;
+
             const edge = frame.getBoundingClientRect();
-            const box = tip.getBoundingClientRect();
             const gap = 8;
+
+            const over = () => {
+                const box = tip.getBoundingClientRect();
+
+                return {
+                    x: Math.max(0, edge.left + gap - box.left) + Math.max(0, box.right - (edge.right - gap)),
+                    y: Math.max(0, edge.top + gap - box.top) + Math.max(0, box.bottom - (edge.bottom - gap)),
+                };
+            };
+
+            for (const axis of ['x', 'y']) {
+                if (!over()[axis]) continue;
+
+                const was = over()[axis];
+                const flip = axis === 'x' ? 'is-flip-x' : 'is-flip-y';
+
+                point.classList.add(flip);
+                if (over()[axis] >= was) point.classList.remove(flip);
+            }
+
+            const box = tip.getBoundingClientRect();
             let shift = 0;
 
             if (box.right > edge.right - gap) shift = edge.right - gap - box.right;

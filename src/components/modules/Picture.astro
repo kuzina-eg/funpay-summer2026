@@ -8,6 +8,7 @@ interface Props {
     forMobile?: boolean;
     sourceMobile?: string;
     alt?: string;
+    loading?: string | null;
 }
 
 const {
@@ -19,6 +20,7 @@ const {
     forMobile = true,
     sourceMobile = '',
     alt='',
+    loading = 'lazy',
     class: className,
     ...rest
 } = Astro.props;
@@ -47,6 +49,6 @@ const {
         alt={alt}
         width={imageWidth}
         height={imageHeight}
-        loading="lazy"
+        loading={loading}
     >
 </picture>

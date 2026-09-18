@@ -87,7 +87,6 @@
 
 .pc-text {
     margin: 0;
-    color: var(--pc-text);
 
     & + & {
         margin-top: 1em;
@@ -119,7 +118,6 @@
         color: $color-white;
     }
 
-    &,
     &:hover,
     &:focus,
     &:focus-visible {
@@ -171,7 +169,6 @@
     }
 
     @include media-min(tab) {
-        gap: pu(10);
         padding: pu(11) pu(22);
         font-size: pu(15);
 
